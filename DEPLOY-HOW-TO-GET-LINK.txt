@@ -13,8 +13,13 @@ FASTEST (about 1 minute, no Git required)
    dinuja-portfolio → your link becomes https://dinuja-portfolio.netlify.app
 5. Share that single HTTPS link anywhere.
 
-OPTION B — GitHub Pages (good if you use GitHub)
-------------------------------------------------
+OPTION B — Vercel (recommended with Git)
+----------------------------------------
+Import the GitHub repo in Vercel for automatic deploys on every push.
+See VERCEL-DEPLOY.txt in this repo for the exact project settings.
+
+OPTION C — GitHub Pages (good if you use GitHub)
+-------------------------------------------------
 1. Push this project to your GitHub repo (main branch, with index.html at the root).
 2. Repository → Settings → Pages → Build and deployment.
 3. Under "Source", choose "Deploy from a branch".

@@ -2,6 +2,14 @@
   "name": "Dinuja Thishean — Portfolio",
   "short_name": "Portfolio",
   "description": "Personal portfolio — Cyber Security & web projects",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
