@@ -8,16 +8,13 @@ A passionate Cyber Security undergraduate at SLIIT with hands-on experience in n
 
 ## Live site
 
-The [workflow](.github/workflows/deploy-github-pages.yml) pushes this folder to the **`gh-pages`** branch on every push to `main`.
+GitHub Pages must be turned on once in the repo (see **`SETUP-GITHUB-PAGES.txt`** for step‑by‑step screenshots-style instructions).
 
-1. Wait until the **Actions** tab shows a green run for **Deploy portfolio to GitHub Pages**.
-2. **Settings → Pages → Build and deployment**
-3. **Source:** choose **Deploy from a branch**
-4. **Branch:** `gh-pages` — folder **`/ (root)`** — Save.
-
-Then open:
+**Quick setup:** **Settings → Pages → Source:** *Deploy from a branch* → **Branch:** `main` → folder **`/ (root)`** → Save. Wait a minute, then open:
 
 **https://dinujathishean.github.io/Portfolio/**
+
+Pushing to `main` updates the site automatically; no separate deploy workflow is required.
 
 ## Tech stack
 

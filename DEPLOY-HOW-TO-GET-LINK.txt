@@ -15,12 +15,11 @@ FASTEST (about 1 minute, no Git required)
 
 OPTION B — GitHub Pages (good if you use GitHub)
 ------------------------------------------------
-1. Push this project to your GitHub repo (main branch).
-2. Wait until Actions finishes "Deploy portfolio to GitHub Pages" (green).
-   The workflow publishes the site to the gh-pages branch.
-3. Repository → Settings → Pages → Build and deployment.
-4. Under "Source", choose "Deploy from a branch" (not GitHub Actions).
-5. Branch: gh-pages — folder: / (root) — Save.
+1. Push this project to your GitHub repo (main branch, with index.html at the root).
+2. Repository → Settings → Pages → Build and deployment.
+3. Under "Source", choose "Deploy from a branch".
+4. Branch: main — folder: / (root) — Save. (See SETUP-GITHUB-PAGES.txt in this repo.)
+5. Wait 1–3 minutes for the first build.
 6. Your site URL is usually:
    https://YOUR_USERNAME.github.io/YOUR_REPOSITORY/
 
