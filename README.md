@@ -8,13 +8,15 @@ A passionate Cyber Security undergraduate at SLIIT with hands-on experience in n
 
 ## Live site
 
-GitHub Pages must be turned on once in the repo (see **`SETUP-GITHUB-PAGES.txt`**). If **Deployments** shows failed **`github-pages`** runs, your Pages **Source** is probably still set to **GitHub Actions** — switch it to **Deploy from a branch** → **`main`** as described there.
+### Vercel (recommended)
 
-**Quick setup:** **Settings → Pages → Source:** *Deploy from a branch* → **Branch:** `main` → folder **`/ (root)`** → Save. Wait a minute, then open:
+Import this repo in [Vercel](https://vercel.com) — see **`VERCEL-DEPLOY.txt`** for exact settings (static site, no build command). You get an `https://*.vercel.app` URL that updates on every push.
 
-**https://dinujathishean.github.io/Portfolio/**
+### GitHub Pages (optional)
 
-Pushing to `main` updates the site automatically; no separate deploy workflow is required.
+See **`SETUP-GITHUB-PAGES.txt`**. Use **Deploy from a branch** → **`main`** → **`/`** — not **GitHub Actions**, or old workflows can show failed **`github-pages`** deployments.
+
+**https://dinujathishean.github.io/Portfolio/** (after Pages is enabled as above.)
 
 ## Tech stack
 

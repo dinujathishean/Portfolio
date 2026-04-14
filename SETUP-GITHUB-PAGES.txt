@@ -20,8 +20,11 @@ source and publish the site straight from your **main** branch instead:
 Old failed deployments may still appear in History — that is normal. What matters
 is that the site loads after the steps above.
 
-This repository no longer uses a GitHub Actions workflow for Pages; updates
+This repository no longer ships a GitHub Actions workflow for Pages; updates
 happen when you push to **main**.
+
+If GitHub still shows an old workflow "Deploy portfolio to GitHub Pages":
+  Repo → **Actions** → click that workflow → **...** menu → **Disable workflow**.
 
 -------------------------------------------------------------------------------------
 ORIGINAL 404 FIX (same steps as above)
