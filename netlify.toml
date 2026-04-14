@@ -2,7 +2,7 @@
 # or connect the repo to Netlify for automatic deploys.
 
 [build]
-  publish = "project"
+  publish = "."
   command = "echo Static site; exit 0"
 
 [[headers]]

@@ -10,11 +10,11 @@ A passionate Cyber Security undergraduate at SLIIT with hands-on experience in n
 
 ### Vercel (recommended)
 
-Import this repo in [Vercel](https://vercel.com) — see **`VERCEL-DEPLOY.txt`**. Set **Root Directory** to **`project`**, framework **Other**, no build command. That is the most reliable setup (site loads at your `.vercel.app` URL root).
+Import this repo in [Vercel](https://vercel.com) — see **`VERCEL-DEPLOY.txt`**. Use **Root Directory `.`** (default), framework **Other**, no build command. The site files are at the **repository root** (`index.html`, `app.js`, etc.) so Vercel serves them with no extra configuration.
 
 ### GitHub Pages (optional)
 
-See **`SETUP-GITHUB-PAGES.txt`**. Use **Deploy from a branch** → **`main`** → **`/project`** — not **GitHub Actions**, or old workflows can show failed **`github-pages`** deployments.
+See **`SETUP-GITHUB-PAGES.txt`**. Use **Deploy from a branch** → **`main`** → **`/`** (root) — not **GitHub Actions**.
 
 **https://dinujathishean.github.io/Portfolio/** (after Pages is enabled as above.)
 
@@ -22,17 +22,12 @@ See **`SETUP-GITHUB-PAGES.txt`**. Use **Deploy from a branch** → **`main`** �
 
 - Static HTML, CSS, and JavaScript (no framework build step)
 - Responsive layout, light/dark theme
-- Content driven by **`project/data.json`** (with an embedded copy in **`project/index.html`** for local `file://` use)
-
-## Repository layout
-
-- **`project/`** — static portfolio (HTML, CSS, JS, `assets/`, manifest).
-- **Repo root** — `start.bat`, `serve-static.ps1`, deploy notes, `README.md`.
+- Content driven by `data.json` (with an embedded copy in `index.html` for local `file://` use)
 
 ## Run locally
 
-- Open **`project/index.html`** in a browser, or  
-- Use **`start.bat`** / **`serve-static.ps1`** (serves the **`project/`** folder over HTTP).
+- Open **`index.html`** in a browser, or  
+- Use **`start.bat`** / **`serve-static.ps1`** (serves the repo root over HTTP).
 
 ## GitHub repository description (optional)
 

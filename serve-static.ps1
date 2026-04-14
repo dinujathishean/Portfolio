@@ -12,17 +12,11 @@ if ([string]::IsNullOrWhiteSpace($repoRoot)) {
     $repoRoot = (Get-Location).Path
 }
 $repoRootNorm = [System.IO.Path]::GetFullPath($repoRoot).TrimEnd([System.IO.Path]::DirectorySeparatorChar)
-$projectDir = Join-Path $repoRootNorm 'project'
-$indexInProject = Join-Path $projectDir 'index.html'
-$indexAtRoot = Join-Path $repoRootNorm 'index.html'
-if (Test-Path -LiteralPath $indexInProject -PathType Leaf) {
-    $rootNorm = [System.IO.Path]::GetFullPath($projectDir).TrimEnd([System.IO.Path]::DirectorySeparatorChar)
-} elseif (Test-Path -LiteralPath $indexAtRoot -PathType Leaf) {
-    $rootNorm = $repoRootNorm
-} else {
-    Write-Host "index.html not found. Expected either:" -ForegroundColor Red
-    Write-Host "  $indexInProject" -ForegroundColor Yellow
-    Write-Host "  or $indexAtRoot" -ForegroundColor Yellow
+$rootNorm = $repoRootNorm
+$indexPath = Join-Path $rootNorm 'index.html'
+if (-not (Test-Path -LiteralPath $indexPath -PathType Leaf)) {
+    Write-Host "index.html not found at: $indexPath" -ForegroundColor Red
+    Write-Host "Keep serve-static.ps1 next to index.html (repo root)." -ForegroundColor Yellow
     Read-Host 'Press Enter to exit'
     exit 1
 }

@@ -1,60 +1,39 @@
 ================================================================================
-VERCEL — GET YOUR PORTFOLIO SHOWING (dinujathishean / Portfolio)
+VERCEL — STATIC SITE AT REPO ROOT (works out of the box)
 ================================================================================
 
-Your site files live in the **project/** folder. Use ONE of these setups.
+This repo has **index.html** at the **repository root** (same level as README.md).
+No subfolder, no rewrites required.
 
---------------------------------------------------------------------------------
-OPTION A — RECOMMENDED (simplest, fewer bugs)
---------------------------------------------------------------------------------
-Tell Vercel to treat **project/** as the app root. No URL rewrites needed.
+STEPS
+-----
+1. https://vercel.com → Sign in with GitHub.
 
-1. Open https://vercel.com and sign in (GitHub is fine).
+2. **Add New… → Project** → Import **dinujathishean / Portfolio**.
 
-2. Open your **Portfolio** project (or **Add New → Project** and import
-   https://github.com/dinujathishean/Portfolio ).
-
-3. **Project → Settings → General** (not Environment Variables).
-
-4. Find **Root Directory**:
-   - Click **Edit**
-   - Set to: **project**
-   - **Save**
-
-5. **Settings → Build & Deployment** (or redeploy from Deployments):
+3. **Configure:**
    - **Framework Preset:** Other
-   - **Build Command:** leave **empty**
-   - **Output Directory:** leave **empty**
-   - **Install Command:** leave **empty** (no package.json at site root)
+   - **Root Directory:** **.**  (leave default — do NOT type "project")
+   - **Build Command:** empty
+   - **Output Directory:** empty
 
-6. Go to **Deployments** → open the latest deployment → **⋯** → **Redeploy**
-   (check "Use existing Build Cache" **off** if the site still looks wrong).
+4. **Deploy.**
 
-7. Open the **.vercel.app** URL from the project. You should see the portfolio
-   at **/** (home), not a blank page.
+5. Open the **.vercel.app** URL — you should see the portfolio home page.
 
-**Note:** With Root Directory = **project**, Vercel reads **project/vercel.json**
-(headers). You do not need to change the repo root **vercel.json** for this.
+IF YOU ALREADY CREATED THE PROJECT WITH WRONG SETTINGS
+-------------------------------------------------------
+**Project → Settings → General → Root Directory** → set to **.** → Save.
 
---------------------------------------------------------------------------------
-OPTION B — Root Directory "." (repository root)
---------------------------------------------------------------------------------
-Keeps Root Directory at **.** (default). The repo root **vercel.json** rewrites
-**/** to **/project/index.html**. If the site is blank or 404, switch to **Option A**.
+**Deployments →** latest → **⋯** → **Redeploy** (disable "Use existing Build Cache"
+if the old deploy was broken).
 
---------------------------------------------------------------------------------
-IF IT STILL DOES NOT SHOW
---------------------------------------------------------------------------------
-- Confirm **main** branch on GitHub has the **project/** folder with **index.html**
-  (Code tab on https://github.com/dinujathishean/Portfolio ).
+IF THE SITE IS STILL BLANK
+---------------------------
+- Push the latest **main** branch to GitHub (must contain **index.html** at root).
 
-- **Redeploy** after changing Root Directory (required).
+- In Vercel: **Deployments** → open the build → read the log for errors.
 
-- Wrong team / wrong project: make sure you opened the project connected to this
-  **Portfolio** repo, not an old empty project.
+- Try an incognito window or another browser (cache).
 
-- Check **Deployments →** failed build logs (red). Fix any error shown there.
-
-- Custom domain: **Settings → Domains** — ensure the domain points to this project.
-
-Live repo: https://github.com/dinujathishean/Portfolio
+Repo: https://github.com/dinujathishean/Portfolio
