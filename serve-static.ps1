@@ -4,8 +4,14 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-$root = if ($PSScriptRoot) { $PSScriptRoot } else { (Get-Location).Path }
-$rootNorm = [System.IO.Path]::GetFullPath($root).TrimEnd([System.IO.Path]::DirectorySeparatorChar)
+$repoRoot = if ($PSScriptRoot) { $PSScriptRoot } else { (Get-Location).Path }
+$repoRootNorm = [System.IO.Path]::GetFullPath($repoRoot).TrimEnd([System.IO.Path]::DirectorySeparatorChar)
+$webDir = Join-Path $repoRootNorm 'web'
+$rootNorm = if (Test-Path -LiteralPath $webDir -PathType Container) {
+    [System.IO.Path]::GetFullPath($webDir).TrimEnd([System.IO.Path]::DirectorySeparatorChar)
+} else {
+    $repoRootNorm
+}
 
 Add-Type -AssemblyName System.Web
 
@@ -52,7 +58,7 @@ if (-not $listener) {
 }
 
 $url = "http://127.0.0.1:$activePort/"
-$urlFile = Join-Path $rootNorm 'last-server-url.txt'
+$urlFile = Join-Path $repoRootNorm 'last-server-url.txt'
 try {
     [System.IO.File]::WriteAllText($urlFile, $url.Trim())
 } catch { }

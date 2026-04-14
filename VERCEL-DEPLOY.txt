@@ -2,7 +2,7 @@
 DEPLOY THIS PORTFOLIO ON VERCEL (one public link, works on phone + desktop)
 ================================================================================
 
-This repo is static HTML/CSS/JS (no npm build). Vercel serves it as-is.
+This repo is static HTML/CSS/JS (no npm build). The live site lives under **web/** — Vercel must use that folder as the project root.
 
 STEPS
 -----
@@ -13,9 +13,12 @@ STEPS
 
 3. Configure the project:
    - Framework Preset: **Other** (or "Other" / no framework)
-   - Root Directory: **.** (leave default)
+   - Root Directory: **web** (required — site files are not at the repo root)
    - Build Command: **leave empty** (or put: `echo build skipped`)
    - Output Directory: **leave empty**
+
+   If you already imported the repo with Root Directory "." , change it under:
+   Project → Settings → General → **Root Directory** → **web** → save, then redeploy.
 
 4. Click **Deploy**. Vercel prints your live URL, e.g.:
    https://portfolio-xxx.vercel.app
