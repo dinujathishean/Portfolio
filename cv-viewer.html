@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV | Portfolio</title>
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('portfolio-theme');
+          document.documentElement.setAttribute(
+            'data-theme',
+            stored === 'light' || stored === 'dark' ? stored : 'dark'
+          );
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="style.css?v=11">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="cv-view-page">
+    <header class="cv-view-toolbar glass-panel">
+        <a href="index.html" class="btn secondary-btn">← Back to portfolio</a>
+        <h1 class="neon-text cv-view-title">Curriculum Vitae</h1>
+        <a id="cv-viewer-download" class="btn primary-btn" href="#" download>Download CV</a>
+    </header>
+    <main class="cv-view-main">
+        <iframe id="cv-pdf-frame" title="CV PDF preview"></iframe>
+        <p class="cv-fallback">
+            If the preview is blank, use <strong>Download CV</strong> above or open the PDF in a new tab from your downloads folder.
+        </p>
+    </main>
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var pdf = params.get('pdf') || 'assets/Dinuja-Thishean-CV.pdf';
+        if (!/^assets\/[^?#]+\.pdf$/i.test(pdf) || pdf.indexOf('..') !== -1) {
+          pdf = 'assets/Dinuja-Thishean-CV.pdf';
+        }
+        var name = params.get('name');
+        if (name && (name.length > 180 || /[\\/<>:"|?*\x00-\x1f]/.test(name))) {
+          name = null;
+        }
+        var frame = document.getElementById('cv-pdf-frame');
+        var dl = document.getElementById('cv-viewer-download');
+        frame.src = pdf;
+        dl.href = pdf;
+        dl.setAttribute('download', name || (pdf.split('/').pop() || 'CV.pdf'));
+      })();
+    </script>
+</body>
+</html>

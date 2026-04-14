@@ -1,0 +1,2 @@
+This is a placeholder for your Resume / CV. 
+You can replace this file with your actual PDF document named "cv.pdf" and update the "cvLink" property in "data.json".
