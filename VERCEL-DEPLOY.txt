@@ -1,33 +1,60 @@
 ================================================================================
-DEPLOY THIS PORTFOLIO ON VERCEL (one public link, works on phone + desktop)
+VERCEL — GET YOUR PORTFOLIO SHOWING (dinujathishean / Portfolio)
 ================================================================================
 
-This repo is static HTML/CSS/JS under **project/** (no npm build). Root **vercel.json** maps `/` to **/project/** when Root Directory is **`.`**.
+Your site files live in the **project/** folder. Use ONE of these setups.
 
-STEPS
------
-1. Sign in at https://vercel.com (GitHub login is fine).
+--------------------------------------------------------------------------------
+OPTION A — RECOMMENDED (simplest, fewer bugs)
+--------------------------------------------------------------------------------
+Tell Vercel to treat **project/** as the app root. No URL rewrites needed.
 
-2. Click "Add New…" → Project → Import your GitHub repository:
-   dinujathishean / Portfolio
+1. Open https://vercel.com and sign in (GitHub is fine).
 
-3. Configure the project:
-   - Framework Preset: **Other** (or "Other" / no framework)
-   - Root Directory: **.** (leave default)
-   - Build Command: **leave empty** (or put: `echo build skipped`)
-   - Output Directory: **leave empty**
+2. Open your **Portfolio** project (or **Add New → Project** and import
+   https://github.com/dinujathishean/Portfolio ).
 
-4. Click **Deploy**. Vercel prints your live URL, e.g.:
-   https://portfolio-xxx.vercel.app
-   You can rename the project under Project Settings → Domains / project name.
+3. **Project → Settings → General** (not Environment Variables).
 
-5. Every `git push` to the connected branch redeploys automatically.
+4. Find **Root Directory**:
+   - Click **Edit**
+   - Set to: **project**
+   - **Save**
 
-GITHUB ACTIONS (failed "Configure Pages")
------------------------------------------
-If you still see an old workflow "Deploy portfolio to GitHub Pages" failing:
-- Repo → **Actions** → select the workflow → **…** → **Disable workflow**
-  OR delete `.github/workflows/<that-file>.yml` from the repo (this project ships
-  without that workflow — use Vercel and/or GitHub Pages **Deploy from branch → main**).
+5. **Settings → Build & Deployment** (or redeploy from Deployments):
+   - **Framework Preset:** Other
+   - **Build Command:** leave **empty**
+   - **Output Directory:** leave **empty**
+   - **Install Command:** leave **empty** (no package.json at site root)
 
-For GitHub Pages without Actions, see SETUP-GITHUB-PAGES.txt in this repo.
+6. Go to **Deployments** → open the latest deployment → **⋯** → **Redeploy**
+   (check "Use existing Build Cache" **off** if the site still looks wrong).
+
+7. Open the **.vercel.app** URL from the project. You should see the portfolio
+   at **/** (home), not a blank page.
+
+**Note:** With Root Directory = **project**, Vercel reads **project/vercel.json**
+(headers). You do not need to change the repo root **vercel.json** for this.
+
+--------------------------------------------------------------------------------
+OPTION B — Root Directory "." (repository root)
+--------------------------------------------------------------------------------
+Keeps Root Directory at **.** (default). The repo root **vercel.json** rewrites
+**/** to **/project/index.html**. If the site is blank or 404, switch to **Option A**.
+
+--------------------------------------------------------------------------------
+IF IT STILL DOES NOT SHOW
+--------------------------------------------------------------------------------
+- Confirm **main** branch on GitHub has the **project/** folder with **index.html**
+  (Code tab on https://github.com/dinujathishean/Portfolio ).
+
+- **Redeploy** after changing Root Directory (required).
+
+- Wrong team / wrong project: make sure you opened the project connected to this
+  **Portfolio** repo, not an old empty project.
+
+- Check **Deployments →** failed build logs (red). Fix any error shown there.
+
+- Custom domain: **Settings → Domains** — ensure the domain points to this project.
+
+Live repo: https://github.com/dinujathishean/Portfolio

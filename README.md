@@ -10,7 +10,7 @@ A passionate Cyber Security undergraduate at SLIIT with hands-on experience in n
 
 ### Vercel (recommended)
 
-Import this repo in [Vercel](https://vercel.com) — see **`VERCEL-DEPLOY.txt`**. Use **Root Directory `.`**, framework **Other**, no build command. Root **`vercel.json`** routes `/` into **`project/`** where the site files live.
+Import this repo in [Vercel](https://vercel.com) — see **`VERCEL-DEPLOY.txt`**. Set **Root Directory** to **`project`**, framework **Other**, no build command. That is the most reliable setup (site loads at your `.vercel.app` URL root).
 
 ### GitHub Pages (optional)
 
