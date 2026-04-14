@@ -1,6 +1,10 @@
-# Publishes this folder as a static site on GitHub Pages.
-# After you push to GitHub: Repo → Settings → Pages → Build and deployment → Source: GitHub Actions.
-# Your public link will be: https://<username>.github.io/<repository>/
+# Deploys the repo root to the gh-pages branch (no "Configure Pages" step — avoids that failure).
+#
+# After the first successful run:
+#   Repo → Settings → Pages → Build and deployment → Source: "Deploy from a branch"
+#   Branch: gh-pages  /  Folder: / (root)
+#
+# Site URL: https://dinujathishean.github.io/Portfolio/
 
 name: Deploy portfolio to GitHub Pages
 
@@ -10,9 +14,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: pages
@@ -20,22 +22,13 @@ concurrency:
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload site files
-        uses: actions/upload-pages-artifact@v3
+      - name: Publish site to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: .
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
