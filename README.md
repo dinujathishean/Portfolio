@@ -8,7 +8,7 @@ A passionate Cyber Security undergraduate at SLIIT with hands-on experience in n
 
 ## Live site
 
-GitHub Pages must be turned on once in the repo (see **`SETUP-GITHUB-PAGES.txt`** for step‑by‑step screenshots-style instructions).
+GitHub Pages must be turned on once in the repo (see **`SETUP-GITHUB-PAGES.txt`** for step‑by‑step instructions).
 
 **Quick setup:** **Settings → Pages → Source:** *Deploy from a branch* → **Branch:** `main` → folder **`/ (root)`** → Save. Wait a minute, then open:
 
