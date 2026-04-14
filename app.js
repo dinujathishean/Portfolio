@@ -475,7 +475,6 @@ function populateExperience(experiences) {
 
 const DEFAULT_PROJECT_CATEGORIES = [
     { id: 'all', label: 'All' },
-    { id: 'portfolio', label: 'Portfolio' },
     { id: 'security', label: 'Security' },
     { id: 'web', label: 'Web' },
     { id: 'iot', label: 'IoT' }
@@ -483,7 +482,7 @@ const DEFAULT_PROJECT_CATEGORIES = [
 
 function normalizeProjectCategory(raw) {
     const c = String(raw || 'other').toLowerCase();
-    if (c === 'portfolio' || c === 'security' || c === 'web' || c === 'iot') return c;
+    if (c === 'security' || c === 'web' || c === 'iot') return c;
     return 'other';
 }
 
