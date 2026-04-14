@@ -9,7 +9,7 @@ if (Test-Path -LiteralPath $urlFile) {
     if ($u) {
         try {
             $r = Invoke-WebRequest -Uri $u -UseBasicParsing -TimeoutSec 3
-            if ($r.StatusCode -eq 200) {
+            if ($r.StatusCode -eq 200 -and ($r.Content -match 'DOCTYPE|portfolio-theme|hero-name')) {
                 Start-Process $u
                 exit 0
             }
@@ -21,7 +21,7 @@ foreach ($port in @(8765, 8766, 8767, 8080, 5500)) {
     $u = "http://127.0.0.1:$port/"
     try {
         $r = Invoke-WebRequest -Uri $u -UseBasicParsing -TimeoutSec 2
-        if ($r.StatusCode -eq 200 -and $r.RawContentLength -gt 200) {
+        if ($r.StatusCode -eq 200 -and ($r.Content -match 'DOCTYPE|portfolio-theme|hero-name')) {
             Start-Process $u
             exit 0
         }
