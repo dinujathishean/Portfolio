@@ -10,7 +10,7 @@ A passionate Cyber Security undergraduate at SLIIT with hands-on experience in n
 
 ### Vercel (recommended)
 
-Import this repo in [Vercel](https://vercel.com) — set **Root Directory** to **`web`** (see **`VERCEL-DEPLOY.txt`**). Static site, no build command. You get an `https://*.vercel.app` URL that updates on every push.
+Import this repo in [Vercel](https://vercel.com) — see **`VERCEL-DEPLOY.txt`**. You can leave **Root Directory** at **`.`** (root `vercel.json` routes traffic into **`web/`**) or set it to **`web`** for a simpler layout. Static site, no build command.
 
 ### GitHub Pages (optional)
 

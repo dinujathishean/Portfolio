@@ -4,14 +4,22 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-$repoRoot = if ($PSScriptRoot) { $PSScriptRoot } else { (Get-Location).Path }
+$repoRoot = $PSScriptRoot
+if ([string]::IsNullOrWhiteSpace($repoRoot) -and $MyInvocation.MyCommand.Path) {
+    $repoRoot = Split-Path -Parent -LiteralPath $MyInvocation.MyCommand.Path
+}
+if ([string]::IsNullOrWhiteSpace($repoRoot)) {
+    $repoRoot = (Get-Location).Path
+}
 $repoRootNorm = [System.IO.Path]::GetFullPath($repoRoot).TrimEnd([System.IO.Path]::DirectorySeparatorChar)
 $webDir = Join-Path $repoRootNorm 'web'
-$rootNorm = if (Test-Path -LiteralPath $webDir -PathType Container) {
-    [System.IO.Path]::GetFullPath($webDir).TrimEnd([System.IO.Path]::DirectorySeparatorChar)
-} else {
-    $repoRootNorm
+if (-not (Test-Path -LiteralPath $webDir -PathType Container)) {
+    Write-Host "Portfolio folder not found: $webDir" -ForegroundColor Red
+    Write-Host "Keep serve-static.ps1 in the repo root (same level as the web folder)." -ForegroundColor Yellow
+    Read-Host 'Press Enter to exit'
+    exit 1
 }
+$rootNorm = [System.IO.Path]::GetFullPath($webDir).TrimEnd([System.IO.Path]::DirectorySeparatorChar)
 
 Add-Type -AssemblyName System.Web
 
