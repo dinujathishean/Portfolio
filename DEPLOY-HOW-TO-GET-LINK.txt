@@ -7,7 +7,7 @@ they give you the URL after you publish once.
 FASTEST (about 1 minute, no Git required)
 -----------------------------------------
 1. Open https://app.netlify.com/drop in a browser (create a free account if asked).
-2. Drag your **portfolio** folder (repo root with index.html) onto the page, or connect the repo (see netlify.toml).
+2. Drag the **project** folder onto the page, or connect the repo with publish directory **project** (see netlify.toml).
 3. Netlify shows a live link like https://random-name-123.netlify.app
 4. In Netlify: Site settings → Change site name → pick something like
    dinuja-portfolio → your link becomes https://dinuja-portfolio.netlify.app
@@ -20,10 +20,10 @@ See VERCEL-DEPLOY.txt in this repo for the exact project settings.
 
 OPTION C — GitHub Pages (good if you use GitHub)
 -------------------------------------------------
-1. Push this project to your GitHub repo (main branch; **index.html** at the repo root).
+1. Push this project to your GitHub repo (main branch; site under **project/index.html**).
 2. Repository → Settings → Pages → Build and deployment.
 3. Under "Source", choose "Deploy from a branch".
-4. Branch: main — folder: **/** (root) — Save. (See SETUP-GITHUB-PAGES.txt in this repo.)
+4. Branch: main — folder: **/project** — Save. (See SETUP-GITHUB-PAGES.txt in this repo.)
 5. Wait 1–3 minutes for the first build.
 6. Your site URL is usually:
    https://YOUR_USERNAME.github.io/YOUR_REPOSITORY/

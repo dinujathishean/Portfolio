@@ -2,7 +2,7 @@
 DEPLOY THIS PORTFOLIO ON VERCEL (one public link, works on phone + desktop)
 ================================================================================
 
-This repo is static HTML/CSS/JS at the repository root (no npm build).
+This repo is static HTML/CSS/JS under **project/** (no npm build). Root **vercel.json** maps `/` to **/project/** when Root Directory is **`.`**.
 
 STEPS
 -----

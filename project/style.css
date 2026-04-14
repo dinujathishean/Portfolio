@@ -879,6 +879,10 @@ html[data-theme="light"] .project-category-tab:hover {
   gap: 2rem;
 }
 
+.project-card[hidden] {
+  display: none !important;
+}
+
 .project-card-category {
   font-size: 0.72rem;
   font-weight: 700;

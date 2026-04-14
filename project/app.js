@@ -58,29 +58,49 @@ function initThemeControls() {
     });
 }
 
-function loadPortfolioData() {
+function parsePortfolioInlineJson() {
     const inlineEl = document.getElementById('portfolio-data-inline');
-    if (inlineEl) {
-        const raw = inlineEl.textContent.trim();
-        if (raw) {
-            try {
-                return Promise.resolve(JSON.parse(raw));
-            } catch (e) {
-                console.error('Invalid portfolio JSON in page:', e);
-            }
-        }
+    if (!inlineEl) return null;
+    const raw = inlineEl.textContent.trim();
+    if (!raw) return null;
+    try {
+        return JSON.parse(raw);
+    } catch (e) {
+        console.error('Invalid portfolio JSON in page:', e);
+        return null;
+    }
+}
+
+function loadPortfolioData() {
+    const inlineData = parsePortfolioInlineJson();
+    const legacyData =
+        typeof window.PORTFOLIO_DATA !== 'undefined' && window.PORTFOLIO_DATA !== null
+            ? window.PORTFOLIO_DATA
+            : null;
+
+    const proto = window.location.protocol;
+    const useNetworkFirst = proto === 'http:' || proto === 'https:';
+
+    if (useNetworkFirst) {
+        return fetch('data.json', { cache: 'no-store' })
+            .then((response) => {
+                if (!response.ok) throw new Error('data.json not available');
+                return response.json();
+            })
+            .catch(() => {
+                if (inlineData) return Promise.resolve(inlineData);
+                if (legacyData) return Promise.resolve(legacyData);
+                return Promise.reject(new Error('No portfolio data'));
+            });
     }
 
-    const legacy = typeof window.PORTFOLIO_DATA !== 'undefined' && window.PORTFOLIO_DATA !== null;
-    if (legacy) {
-        return Promise.resolve(window.PORTFOLIO_DATA);
-    }
+    if (inlineData) return Promise.resolve(inlineData);
+    if (legacyData) return Promise.resolve(legacyData);
 
-    return fetch('data.json', { cache: 'no-store' })
-        .then((response) => {
-            if (!response.ok) throw new Error('Network response was not ok');
-            return response.json();
-        });
+    return fetch('data.json', { cache: 'no-store' }).then((response) => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.json();
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -455,6 +475,7 @@ function populateExperience(experiences) {
 
 const DEFAULT_PROJECT_CATEGORIES = [
     { id: 'all', label: 'All' },
+    { id: 'portfolio', label: 'Portfolio' },
     { id: 'security', label: 'Security' },
     { id: 'web', label: 'Web' },
     { id: 'iot', label: 'IoT' }
@@ -462,7 +483,7 @@ const DEFAULT_PROJECT_CATEGORIES = [
 
 function normalizeProjectCategory(raw) {
     const c = String(raw || 'other').toLowerCase();
-    if (c === 'security' || c === 'web' || c === 'iot') return c;
+    if (c === 'portfolio' || c === 'security' || c === 'web' || c === 'iot') return c;
     return 'other';
 }
 

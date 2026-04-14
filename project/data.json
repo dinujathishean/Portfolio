@@ -88,11 +88,18 @@
   ],
   "projectCategories": [
     { "id": "all", "label": "All" },
+    { "id": "portfolio", "label": "Portfolio" },
     { "id": "security", "label": "Security" },
     { "id": "web", "label": "Web" },
     { "id": "iot", "label": "IoT" }
   ],
   "projects": [
+    {
+      "title": "Portfolio App",
+      "category": "portfolio",
+      "description": "Personal portfolio website (HTML, CSS, JavaScript)—responsive layout, light/dark theme, skills, education, experience, and projects. Open source on GitHub.",
+      "link": "https://github.com/dinujathishean/Portfolio"
+    },
     {
       "title": "Automated Vulnerability Scanner",
       "category": "security",
