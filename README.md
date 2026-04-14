@@ -8,7 +8,7 @@ A passionate Cyber Security undergraduate at SLIIT with hands-on experience in n
 
 ## Live site
 
-GitHub Pages must be turned on once in the repo (see **`SETUP-GITHUB-PAGES.txt`** for step‑by‑step instructions).
+GitHub Pages must be turned on once in the repo (see **`SETUP-GITHUB-PAGES.txt`**). If **Deployments** shows failed **`github-pages`** runs, your Pages **Source** is probably still set to **GitHub Actions** — switch it to **Deploy from a branch** → **`main`** as described there.
 
 **Quick setup:** **Settings → Pages → Source:** *Deploy from a branch* → **Branch:** `main` → folder **`/ (root)`** → Save. Wait a minute, then open:
 
