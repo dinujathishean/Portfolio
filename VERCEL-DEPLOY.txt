@@ -17,12 +17,10 @@ STEPS
 
 3. Configure the project:
    - Framework Preset: **Other** (or "Other" / no framework)
-   - Root Directory: **web** (required — site files are not at the repo root)
+   - Root Directory: **.** (default) — root **vercel.json** rewrites `/` into **/web/** so the site works as-is.
+     OR set Root Directory to **web** if you prefer (then you can delete root **vercel.json** rewrites later).
    - Build Command: **leave empty** (or put: `echo build skipped`)
    - Output Directory: **leave empty**
-
-   If you already imported the repo with Root Directory "." , change it under:
-   Project → Settings → General → **Root Directory** → **web** → save, then redeploy.
 
 4. Click **Deploy**. Vercel prints your live URL, e.g.:
    https://portfolio-xxx.vercel.app
