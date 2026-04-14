@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0a0a0f" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f4f4f5" media="(prefers-color-scheme: light)">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Portfolio | Loading...</title>
+    <meta name="description" content="Personal Portfolio">
+    <link rel="manifest" href="manifest.json">
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('portfolio-theme');
+          document.documentElement.setAttribute(
+            'data-theme',
+            stored === 'light' || stored === 'dark' ? stored : 'dark'
+          );
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="style.css?v=21">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Built-in copy so the site works without Python or fetch(). When you change data.json, update this JSON too (or remove this block to load only from data.json over http). -->
+    <script type="application/json" id="portfolio-data-inline">{"bio":{"name":"Dinuja Thishean","title":"Undergraduate","description":"A passionate Cyber Security undergraduate at SLIIT with hands-on experience in networking, vulnerability assessment, and web application development. I enjoy solving real-world problems through projects and aim to grow as a skilled security professional."},"contact":{"email":"dinujathishean@gmail.com","phone":"0715417733","linkedin":"https://www.linkedin.com/in/dinuja-thishean-b1451427b/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B0hmPgJrzQ%2BeJ8Q7BQMf6NQ%3D%3D","github":"https://github.com/dinujathishean?tab=repositories","formAccessKey":""},"education":[{"degree":"B.Sc. (Hons) in Information Technology","institution":"Sri Lanka Institute of Information Technology","year":"2024 - 2028","details":"Specialized in Cyber Security."},{"degree":"G.C.E. Advanced Level (Commerce Stream)","institution":"Sri Dharmaloka Central College","year":"2023","details":"Index No: 6470050","subjects":[{"name":"Accounting","grade":"B"},{"name":"Economics","grade":"C"},{"name":"ICT","grade":"S"},{"name":"English","grade":"C"}]},{"degree":"G.C.E. Ordinary Level","institution":"Sri Dharmaloka Central College","year":"2020","details":"Index No: 60810211","subjects":[{"name":"Mathematics","grade":"B"},{"name":"Sinhala","grade":"B"},{"name":"Buddhism","grade":"B"},{"name":"Music","grade":"B"},{"name":"English","grade":"C"},{"name":"Science","grade":"C"},{"name":"Commerce","grade":"C"},{"name":"History","grade":"C"},{"name":"ICT","grade":"C"}]}],"extracurricular":{"categoryLabel":"Karate","intro":"National-level karate competitor with podium finishes from district and Western Province championships through the Sri Lanka National Championship—and leadership as school karate team captain.","items":[{"when":"2022–2023","text":"School karate team captain"},{"when":"2023","text":"Annual Inter-School House Meet — Karate: 1st place"},{"when":"2021","text":"Sri Lanka National Karate Championship — Under-21 & senior categories"},{"when":"2020","text":"Annual Inter-School Sports Meet — Karate: 1st place"},{"when":"2019","text":"Annual Inter-School House Sports Meet — Karate: Best Player"},{"when":"2019","text":"Annual Inter-School House Sports Meet — Karate: 1st place"},{"when":"2017","text":"Western Province Karate Championship — Under-13"},{"when":"2017","text":"Gampaha District Karate Championship — Under-13"}]},"experiences":[{"tier":"University","context":"SLIIT · IEEE committee","title":"SLIIT XStream 4.0","role":"Finance team member","tagline":"IEEE-backed flagship experience on campus","bullets":["Volunteered on the finance track for SLIIT XStream 4.0—an IEEE-driven signature event—helping secure sponsorships, follow up with partners, and keep budgets transparent while the main programme showcased innovation on stage.","Worked alongside committee leads to align sponsor deliverables with event timelines so funding, perks, and printed collateral arrived before doors opened."]},{"tier":"School","context":"Sri Dharmaloka Central College · Commerce Society","title":"Commerce Day","role":"Commerce Society member · Media & English announcer","tagline":"Society-led showcase celebrating commerce students","bullets":["Served as an active Commerce Society member for Commerce Day—conceptualising, filming, and editing short-form videos that promoted the build-up and captured the atmosphere across our channels.","Stepped on stage as the English announcer—scripting transitions, welcoming guests, and keeping the programme flowing from opening remarks to the closing thank-you."]}],"projectCategories":[{"id":"all","label":"All"},{"id":"security","label":"Security"},{"id":"web","label":"Web"},{"id":"iot","label":"IoT"}],"projects":[{"title":"Automated Vulnerability Scanner","category":"security","description":"Automated Web Vulnerability Scanner (Python, Flask)","link":"https://github.com/dinujathishean/Automated-Vulnerability-Scanner","screenshots":["assets/avs-1.png","assets/avs-2.png","assets/avs-3.png","assets/avs-4.png","assets/avs-5.png"]},{"title":"Hotel-reservation-system","category":"web","description":"Web-Based Hotel Management & Reservation System (Spring Boot).","link":"#"}],"certifications":[{"name":"Introduction to Cyber Security","date":"2026","issuer":"Cisco"},{"name":"Network Basics","date":"Reading","issuer":"Cisco"},{"name":"Python Basics","date":"2025","issuer":"University of Moratuwa"},{"name":"Certificate course in English ","date":"2025","issuer":"University of Colombo"}],"skills":{"technical":["C language","Java","Python","Web Development"],"soft":["Problem Solving","Team Collaboration","Leadership","Good Communication"]},"cvLink":"assets/Dinuja-Thishean-CV.pdf","cvDownloadFilename":"Dinuja-Thishean-CV.pdf"}</script>
+</head>
+<body>
+    <div id="app">
+        <!-- Hero Section -->
+        <header class="hero" id="hero">
+            <nav class="navbar">
+                <div class="logo" id="nav-logo">JD.</div>
+                <div class="navbar-right">
+                    <div class="theme-switch" role="group" aria-label="Site theme">
+                        <button type="button" class="theme-btn" data-set-theme="light" id="theme-btn-light" aria-pressed="false">Light</button>
+                        <button type="button" class="theme-btn" data-set-theme="dark" id="theme-btn-dark" aria-pressed="true">Dark</button>
+                    </div>
+                    <div class="menu-btn" id="menu-btn">
+                        <div class="menu-btn__burger"></div>
+                    </div>
+                </div>
+
+                <ul class="nav-links" id="nav-links">
+                    <li class="nav-theme-item">
+                        <span class="nav-theme-label">Theme</span>
+                        <div class="theme-switch theme-switch--stacked" role="group" aria-label="Site theme in navigation menu">
+                            <button type="button" class="theme-btn" data-set-theme="light" id="theme-btn-light-menu" aria-pressed="false">Light</button>
+                            <button type="button" class="theme-btn" data-set-theme="dark" id="theme-btn-dark-menu" aria-pressed="true">Dark</button>
+                        </div>
+                    </li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#educational">My Educational</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#extracurricular">Extracurricular</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Let's Connect</a></li>
+                </ul>
+            </nav>
+            <div class="hero-content">
+                <h1 class="glitch" id="hero-name" data-text="Loading...">Loading...</h1>
+                <h2 id="hero-title" class="neon-text">...</h2>
+                <p id="hero-desc">...</p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn primary-btn">View My Work</a>
+                    <a href="#" id="view-cv-btn" class="btn secondary-btn" target="_blank">View CV</a>
+                    <a href="#" id="download-cv-btn" class="btn secondary-btn" download>Download CV</a>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <span></span>
+            </div>
+        </header>
+
+        <!-- Skills (full width, above My Educational) -->
+        <section id="skills" class="section section-skills">
+            <h2 class="section-title">My <span class="neon-text">Skills</span></h2>
+            <div class="skills-section-inner glass-panel">
+                <div class="skills-tabs" role="tablist" aria-label="Skills category">
+                    <button type="button" class="skills-tab-btn is-active" id="skills-tab-tech" role="tab" aria-selected="true" aria-controls="technical-skills-panel">Technical skills</button>
+                    <button type="button" class="skills-tab-btn" id="skills-tab-soft" role="tab" aria-selected="false" aria-controls="soft-skills-panel">Soft skills</button>
+                </div>
+                <div id="technical-skills-panel" class="skills-panel" role="tabpanel" aria-labelledby="skills-tab-tech">
+                    <div class="skills-container" id="technical-skills-container">
+                        <!-- Technical Skills injected via JS -->
+                    </div>
+                </div>
+                <div id="soft-skills-panel" class="skills-panel" role="tabpanel" aria-labelledby="skills-tab-soft" hidden>
+                    <div class="skills-container" id="soft-skills-container">
+                        <!-- Soft Skills injected via JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- My Educational (qualifications) -->
+        <section id="educational" class="section">
+            <h2 class="section-title">My <span class="neon-text">Educational</span></h2>
+            <div class="timeline" id="education-timeline">
+                <!-- Injected via JS -->
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section">
+            <h2 class="section-title">My <span class="neon-text">Experience</span></h2>
+            <div class="experience-grid" id="experience-list">
+                <!-- Experience cards injected via JS -->
+            </div>
+        </section>
+
+        <!-- Extracurricular (e.g. sports) -->
+        <section id="extracurricular" class="section">
+            <h2 class="section-title">My <span class="neon-text">Extracurricular</span></h2>
+            <div id="extracurricular-root" class="extracurricular-section-root" aria-live="polite"></div>
+        </section>
+
+        <!-- Certifications -->
+        <section id="certifications" class="section">
+            <h2 class="section-title">My <span class="neon-text">Certifications</span></h2>
+            <div class="certifications-card glass-panel">
+                <ul id="cert-list" class="cert-list">
+                    <!-- Certs injected via JS -->
+                </ul>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <h2 class="section-title">Featured <span class="neon-text">Projects</span></h2>
+            <div id="projects-grid" class="projects-section-root"></div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="contact">
+            <h2 class="neon-text">Let's Connect</h2>
+            <div class="contact-bubbles" id="social-links" aria-label="Contact methods">
+                <!-- Contact bubbles injected via JS -->
+            </div>
+
+            <div class="contact-message-wrap glass-panel" id="contact-message-wrap" hidden>
+                <h3 class="contact-form-title">Send a message</h3>
+                <p class="contact-form-intro" id="contact-form-intro">Leave your name, email, and message. I will get back to you when I can.</p>
+                <form id="contact-form" class="contact-form" novalidate>
+                    <div class="contact-form-row">
+                        <label class="contact-form-label" for="contact-name">Your name</label>
+                        <input class="contact-form-input" type="text" id="contact-name" name="name" required autocomplete="name" maxlength="120" placeholder="Your full name">
+                    </div>
+                    <div class="contact-form-row">
+                        <label class="contact-form-label" for="contact-email">Your email</label>
+                        <input class="contact-form-input" type="email" id="contact-email" name="email" required autocomplete="email" maxlength="254" placeholder="you@example.com">
+                    </div>
+                    <div class="contact-form-row">
+                        <label class="contact-form-label" for="contact-message">Message</label>
+                        <textarea class="contact-form-input contact-form-textarea" id="contact-message" name="message" required rows="5" maxlength="4000" placeholder="Write your message here…"></textarea>
+                    </div>
+                    <button type="submit" class="btn primary-btn contact-form-submit" id="contact-form-submit">Send message</button>
+                    <p id="contact-form-status" class="contact-form-status" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+
+            <p>&copy; <span id="current-year"></span> All Rights Reserved.</p>
+        </footer>
+    </div>
+    
+    <!-- Modal for Project Screenshots -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content glass-panel">
+            <span class="close-modal" id="close-modal">&times;</span>
+            <h2 id="modal-title" class="neon-text">Project Details</h2>
+            <div class="modal-gallery" id="modal-gallery">
+                <!-- Images injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js?v=21"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+HOW TO GET YOUR ONE PUBLIC LINK (works on phone, tablet, PC)
+=============================================================
+
+I cannot create the link for you from here — you choose a free host and
+they give you the URL after you publish once.
+
+FASTEST (about 1 minute, no Git required)
+-----------------------------------------
+1. Open https://app.netlify.com/drop in a browser (create a free account if asked).
+2. Drag your whole "portfolio app" folder onto the page.
+3. Netlify shows a live link like https://random-name-123.netlify.app
+4. In Netlify: Site settings → Change site name → pick something like
+   dinuja-portfolio → your link becomes https://dinuja-portfolio.netlify.app
+5. Share that single HTTPS link anywhere.
+
+OPTION B — GitHub Pages (good if you use GitHub)
+------------------------------------------------
+1. Create a new repository on https://github.com/new (can be public).
+2. Upload this project (or use Git: git init, add, commit, push).
+3. Repository → Settings → Pages → Build and deployment.
+4. Under "Source", choose "GitHub Actions" (not "Deploy from branch").
+5. Push a commit to the main (or master) branch — the workflow in
+   .github/workflows/deploy-github-pages.yml will run.
+6. When the workflow finishes, Pages shows your site URL, usually:
+   https://YOUR_USERNAME.github.io/YOUR_REPOSITORY/
+
+Keep index.html and data.json in sync if you edit data.json and use
+file:// locally; on the live site, data.json is loaded over HTTPS when
+the inline block is removed or for updates — your current page already
+embeds JSON in index.html so the site works without a build step.
+
+After deployment, test the link on your phone (mobile data) to confirm.

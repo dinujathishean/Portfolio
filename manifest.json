@@ -1,0 +1,11 @@
+{
+  "name": "Portfolio",
+  "short_name": "Portfolio",
+  "description": "Personal portfolio",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#0a0a0f",
+  "lang": "en"
+}
