@@ -64,16 +64,12 @@
   ],
   "extracurricular": {
     "categoryLabel": "Karate",
-    "intro": "National-level karate competitor with podium finishes from district and Western Province championships through the Sri Lanka National Championship—and leadership as school karate team captain.",
+    "intro": "Leadership and teamwork through competitive karate, with consistent district/provincial achievements.",
     "items": [
-      { "when": "2022–2023", "text": "School karate team captain" },
-      { "when": "2023", "text": "Annual Inter-School House Meet — Karate: 1st place" },
-      { "when": "2021", "text": "Sri Lanka National Karate Championship — Under-21 & senior categories" },
-      { "when": "2020", "text": "Annual Inter-School Sports Meet — Karate: 1st place" },
-      { "when": "2019", "text": "Annual Inter-School House Sports Meet — Karate: Best Player" },
-      { "when": "2019", "text": "Annual Inter-School House Sports Meet — Karate: 1st place" },
-      { "when": "2017", "text": "Western Province Karate Championship — Under-13" },
-      { "when": "2017", "text": "Gampaha District Karate Championship — Under-13" }
+      { "when": "2022-2023", "text": "School karate team captain, mentoring juniors and coordinating practice sessions." },
+      { "when": "2023", "text": "Inter-School House Meet: 1st place in karate, representing team discipline and focus." },
+      { "when": "2021", "text": "Participated in Sri Lanka National Karate Championship in under-21 and senior categories." },
+      { "when": "2017", "text": "Recognized in Western Province and Gampaha District championships (Under-13)." }
     ]
   },
   "experiences": [

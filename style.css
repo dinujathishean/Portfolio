@@ -927,12 +927,32 @@ html[data-theme="light"] .skills-tab-btn:hover {
 
 .extracurricular-card {
   max-width: 100%;
+  padding: 1.2rem 1.2rem 1rem;
+  background: rgba(26, 26, 36, 0.45);
+}
+
+.section-extracurricular {
+  padding-top: 3.25rem;
+  padding-bottom: 3.5rem;
+}
+
+.section-title-minor {
+  font-size: 1.7rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.section-title-minor::after {
+  width: 42px !important;
+  height: 2px !important;
+  box-shadow: none !important;
+  opacity: 0.65;
 }
 
 .achievement-card {
   position: relative;
   overflow: hidden;
-  padding: 1.75rem 1.75rem 1.5rem;
+  padding: 1.2rem 1.2rem 1rem;
   text-align: left;
 }
 
@@ -944,7 +964,7 @@ html[data-theme="light"] .skills-tab-btn:hover {
   width: 4px;
   height: 100%;
   background: linear-gradient(180deg, var(--neon-accent), transparent);
-  opacity: 0.85;
+  opacity: 0.4;
 }
 
 .achievement-header {
@@ -967,8 +987,8 @@ html[data-theme="light"] .skills-tab-btn:hover {
 
 .achievement-intro {
   margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 0.88rem;
+  line-height: 1.5;
   color: var(--text-secondary);
 }
 
@@ -983,17 +1003,17 @@ html[data-theme="light"] .skills-tab-btn:hover {
 
 .achievement-item {
   display: grid;
-  grid-template-columns: 6.5rem 1fr;
+  grid-template-columns: 5.6rem 1fr;
   gap: 0.75rem 1rem;
   align-items: baseline;
-  padding: 0.65rem 0.75rem;
+  padding: 0.45rem 0.6rem;
   border-radius: 10px;
-  background: var(--skill-tag-bg);
+  background: rgba(0, 255, 204, 0.05);
   border: 1px solid var(--skill-tag-border);
-  font-size: 0.92rem;
-  line-height: 1.5;
+  font-size: 0.84rem;
+  line-height: 1.45;
   color: var(--text-primary);
-  animation: experience-fade-in 0.5s ease both;
+  animation: none;
 }
 
 .achievement-when {
@@ -1004,6 +1024,20 @@ html[data-theme="light"] .skills-tab-btn:hover {
 
 .achievement-text {
   color: var(--text-secondary);
+}
+
+.achievement-card:hover,
+.extracurricular-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+html[data-theme="light"] .extracurricular-card {
+  background: rgba(255, 255, 255, 0.62);
+}
+
+html[data-theme="light"] .achievement-item {
+  background: rgba(0, 122, 99, 0.05);
 }
 
 @media (max-width: 520px) {
