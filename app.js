@@ -758,9 +758,17 @@ function initSlidePanels() {
         extracurricular: 'Extracurricular',
         contact: 'Contact'
     };
+    const PRIMARY_SLIDES = ['about', 'skills', 'projects', 'contact'];
+    const PRIMARY_NEXT_MAP = {
+        about: 'skills',
+        skills: 'projects',
+        projects: 'contact',
+        contact: null
+    };
     const orderedPanelIds = panels.map((panel) => panel.id).filter(Boolean);
     let activePanelId = null;
     const PANEL_TRANSITION_MS = 1450;
+    let isTransitioning = false;
 
     function setActiveNav(panelId) {
         document.querySelectorAll(NAV_SELECTOR).forEach((a) => {
@@ -770,6 +778,7 @@ function initSlidePanels() {
     }
 
     function closePanels(options = {}) {
+        if (isTransitioning) return;
         const { returnHome = false } = options;
         const activePanel = activePanelId ? document.getElementById(activePanelId) : null;
         if (activePanel) {
@@ -797,6 +806,28 @@ function initSlidePanels() {
         }
     }
 
+    function getAlternatingExitDirection(panelId) {
+        const index = PRIMARY_SLIDES.indexOf(panelId);
+        if (index < 0) return 'left';
+        return index % 2 === 0 ? 'left' : 'right';
+    }
+
+    function oppositeDirection(direction) {
+        return direction === 'left' ? 'right' : 'left';
+    }
+
+    function setPanelVisible(panel, visible) {
+        if (!panel) return;
+        panel.classList.toggle('is-open', !!visible);
+        panel.setAttribute('aria-hidden', visible ? 'false' : 'true');
+    }
+
+    function clearTransitionClasses(panel) {
+        if (!panel) return;
+        panel.classList.remove('enter-from-left', 'enter-from-right');
+        panel.classList.remove('is-leaving-left', 'is-leaving-right');
+    }
+
     function getDirection(fromId, toId) {
         if (!fromId || !toId) return 'forward';
         const fromIndex = orderedPanelIds.indexOf(fromId);
@@ -806,56 +837,86 @@ function initSlidePanels() {
     }
 
     function openPanelById(id) {
+        if (isTransitioning) return;
         const target = document.getElementById(id);
         if (!target || !target.classList.contains('content-panel')) return;
+        if (activePanelId === id) return;
+
         const direction = getDirection(activePanelId, id);
+        const entryDirectionForGeneric = direction === 'backward' ? 'left' : 'right';
         const currentPanel = activePanelId ? document.getElementById(activePanelId) : null;
-        if (currentPanel && currentPanel !== target) {
-            currentPanel.classList.remove('is-leaving-left', 'is-leaving-right');
-            currentPanel.classList.add(direction === 'forward' ? 'is-leaving-left' : 'is-leaving-right');
-            setTimeout(() => {
-                currentPanel.classList.remove('is-leaving-left', 'is-leaving-right');
-            }, PANEL_TRANSITION_MS + 40);
+        let exitDirection = currentPanel ? getAlternatingExitDirection(activePanelId) : 'left';
+        let enterDirection = oppositeDirection(exitDirection);
+        if (
+            !PRIMARY_SLIDES.includes(activePanelId || '') ||
+            !PRIMARY_SLIDES.includes(id)
+        ) {
+            enterDirection = entryDirectionForGeneric;
+            exitDirection = enterDirection === 'left' ? 'right' : 'left';
         }
-        panels.forEach((panel) => {
-            const isTarget = panel === target;
-            panel.classList.toggle('is-open', isTarget);
-            panel.setAttribute('aria-hidden', isTarget ? 'false' : 'true');
-            if (!isTarget) {
-                panel.classList.remove('enter-from-left', 'enter-from-right');
-                panel.classList.remove('is-leaving-left', 'is-leaving-right');
-            }
-            panel.style.transition = '';
-            panel.style.transform = '';
-        });
-        target.classList.add(direction === 'backward' ? 'enter-from-left' : 'enter-from-right');
-        requestAnimationFrame(() => {
-            target.classList.add('is-open');
-            target.classList.remove('enter-from-left', 'enter-from-right');
-        });
+
         overlay.hidden = false;
         document.body.classList.add('panel-open');
-        setActiveNav(id);
-        activePanelId = id;
+        isTransitioning = true;
+
+        const showTarget = () => {
+            panels.forEach((panel) => {
+                if (panel !== target) {
+                    clearTransitionClasses(panel);
+                    setPanelVisible(panel, false);
+                }
+            });
+            clearTransitionClasses(target);
+            setPanelVisible(target, true);
+            target.classList.add(enterDirection === 'left' ? 'enter-from-left' : 'enter-from-right');
+            requestAnimationFrame(() => {
+                setPanelVisible(target, true);
+                target.classList.remove('enter-from-left', 'enter-from-right');
+                setTimeout(() => {
+                    clearTransitionClasses(target);
+                    isTransitioning = false;
+                }, PANEL_TRANSITION_MS + 40);
+            });
+            setActiveNav(id);
+            activePanelId = id;
+        };
+
+        if (currentPanel && currentPanel !== target) {
+            clearTransitionClasses(currentPanel);
+            currentPanel.classList.add(
+                exitDirection === 'left' ? 'is-leaving-left' : 'is-leaving-right'
+            );
+            setTimeout(() => {
+                clearTransitionClasses(currentPanel);
+                setPanelVisible(currentPanel, false);
+                showTarget();
+            }, PANEL_TRANSITION_MS + 20);
+            return;
+        }
+
+        showTarget();
     }
 
     function createPanelNextControls() {
         panels.forEach((panel, index) => {
             if (panel.querySelector('.panel-next-wrap')) return;
-            const nextId = orderedPanelIds[index + 1] || null;
+            const nextId = PRIMARY_NEXT_MAP[panel.id];
             const wrap = document.createElement('div');
             wrap.className = 'panel-next-wrap';
             const btn = document.createElement('button');
             btn.type = 'button';
             btn.className = 'btn primary-btn panel-next-btn';
+            if (typeof nextId === 'undefined') {
+                return;
+            }
             if (nextId) {
-                const nextTitle = panelTitleMap[nextId] || 'Next Section';
-                btn.textContent = `Continue to ${nextTitle}`;
+                const nextTitle = panelTitleMap[nextId] || 'Section';
+                btn.textContent = `View ${nextTitle}`;
                 btn.addEventListener('click', () => openPanelById(nextId));
             } else {
                 btn.classList.remove('primary-btn');
                 btn.classList.add('secondary-btn');
-                btn.textContent = 'Return Home';
+                btn.textContent = 'Back to Home';
                 btn.addEventListener('click', () => closePanels({ returnHome: true }));
             }
             wrap.appendChild(btn);
@@ -874,16 +935,29 @@ function initSlidePanels() {
             topbar.appendChild(title);
             panel.prepend(topbar);
         }
-        if (panel.querySelector('.panel-topbar .panel-close-btn')) return;
         const topbar = panel.querySelector('.panel-topbar');
         if (!topbar) return;
+        if (!topbar.querySelector('.panel-topbar-right')) {
+            const right = document.createElement('div');
+            right.className = 'panel-topbar-right';
+            const progressIndex = PRIMARY_SLIDES.indexOf(panel.id);
+            if (progressIndex >= 0) {
+                const progress = document.createElement('span');
+                progress.className = 'panel-progress';
+                progress.textContent = `${progressIndex + 1}/${PRIMARY_SLIDES.length}`;
+                right.appendChild(progress);
+            }
+            topbar.appendChild(right);
+        }
+        if (topbar.querySelector('.panel-close-btn')) return;
+        const rightSlot = topbar.querySelector('.panel-topbar-right') || topbar;
         const closeBtn = document.createElement('button');
         closeBtn.type = 'button';
         closeBtn.className = 'panel-close-btn';
         closeBtn.setAttribute('aria-label', 'Close panel');
         closeBtn.textContent = '×';
         closeBtn.addEventListener('click', closePanels);
-        topbar.appendChild(closeBtn);
+        rightSlot.appendChild(closeBtn);
     });
     createPanelNextControls();
 
