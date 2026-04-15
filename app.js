@@ -753,21 +753,30 @@ function initSlidePanels() {
         skills: 'Skills',
         educational: 'Education',
         experience: 'Experience',
-        certifications: 'Certifications',
+        certifications: 'Certificates',
         projects: 'Projects',
         extracurricular: 'Extracurricular',
         contact: 'Contact'
     };
-    const PRIMARY_SLIDES = ['about', 'skills', 'projects', 'contact'];
+    const PRIMARY_SLIDES = [
+        'about',
+        'skills',
+        'projects',
+        'certifications',
+        'experience',
+        'contact'
+    ];
     const PRIMARY_NEXT_MAP = {
         about: 'skills',
         skills: 'projects',
-        projects: 'contact',
+        projects: 'certifications',
+        certifications: 'experience',
+        experience: 'contact',
         contact: null
     };
     const orderedPanelIds = panels.map((panel) => panel.id).filter(Boolean);
     let activePanelId = null;
-    const PANEL_TRANSITION_MS = 1450;
+    const PANEL_TRANSITION_MS = 880;
     let isTransitioning = false;
 
     function setActiveNav(panelId) {
