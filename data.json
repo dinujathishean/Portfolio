@@ -177,19 +177,54 @@
     }
   ],
   "skills": {
-    "technical": [
-      "C",
-      "Java",
-      "Python",
-      "Web Development",
-      "Vulnerability Assessment",
-      "Networking Fundamentals"
+    "technicalCategories": [
+      {
+        "title": "Programming Languages",
+        "icon": "💻",
+        "items": ["C", "Java", "Python"]
+      },
+      {
+        "title": "Web Development",
+        "icon": "🌐",
+        "items": ["HTML", "CSS", "JavaScript"]
+      },
+      {
+        "title": "Cyber Security",
+        "icon": "🛡️",
+        "items": ["Networking Basics", "Ethical Hacking Fundamentals", "Vulnerability Assessment"]
+      },
+      {
+        "title": "Tools & Technologies",
+        "icon": "🧰",
+        "items": ["Git & GitHub", "VS Code / IntelliJ IDEA", "Linux / Ubuntu"]
+      }
     ],
     "soft": [
-      "Problem Solving",
-      "Team Collaboration",
-      "Leadership",
-      "Good Communication"
+      {
+        "title": "Problem Solving",
+        "icon": "🧩",
+        "description": "Ability to analyze complex problems, identify root causes, and develop efficient solutions in technical and real-world scenarios."
+      },
+      {
+        "title": "Team Collaboration",
+        "icon": "🤝",
+        "description": "Strong ability to work effectively in teams, share ideas, and contribute to achieving common goals."
+      },
+      {
+        "title": "Communication",
+        "icon": "💬",
+        "description": "Capable of clearly expressing ideas and technical concepts both verbally and in writing."
+      },
+      {
+        "title": "Time Management",
+        "icon": "⏱️",
+        "description": "Skilled in organizing tasks, prioritizing work, and meeting deadlines efficiently."
+      },
+      {
+        "title": "Adaptability",
+        "icon": "🔄",
+        "description": "Quick to learn new technologies and adjust to changing environments and challenges."
+      }
     ],
     "tools": [
       "Git & GitHub",

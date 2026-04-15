@@ -291,12 +291,24 @@ function populateSkills(skills) {
     const techContainer = document.getElementById('technical-skills-container');
     if (techContainer) {
         techContainer.innerHTML = '';
-        const technicalSkills = skills.technical || [];
-        technicalSkills.forEach((skill) => {
-            const span = document.createElement('span');
-            span.className = 'skill-tag';
-            span.textContent = skill;
-            techContainer.appendChild(span);
+        const technicalCategories = Array.isArray(skills.technicalCategories)
+            ? skills.technicalCategories
+            : [];
+        technicalCategories.forEach((category) => {
+            const card = document.createElement('article');
+            card.className = 'skill-category-card';
+            const title = escapeHtml(category.title || 'Technical Skills');
+            const icon = escapeHtml(category.icon || '🛠️');
+            const tags = Array.isArray(category.items)
+                ? category.items
+                      .map((item) => `<li class="skill-tag">${escapeHtml(item)}</li>`)
+                      .join('')
+                : '';
+            card.innerHTML = `
+                <h3 class="skill-category-title"><span class="skill-category-icon" aria-hidden="true">${icon}</span> ${title}</h3>
+                <ul class="skill-tag-list">${tags}</ul>
+            `;
+            techContainer.appendChild(card);
         });
     }
 
@@ -305,14 +317,23 @@ function populateSkills(skills) {
         softContainer.innerHTML = '';
         const softSkills = skills.soft || [];
         softSkills.forEach((skill) => {
-            const span = document.createElement('span');
-            span.className = 'skill-tag';
-            span.textContent = skill;
-            softContainer.appendChild(span);
+            const card = document.createElement('article');
+            card.className = 'soft-skill-card';
+            const title = typeof skill === 'string' ? skill : skill.title || '';
+            const icon = typeof skill === 'string' ? '✨' : skill.icon || '✨';
+            const description =
+                typeof skill === 'string'
+                    ? 'Professional interpersonal capability that supports strong technical execution.'
+                    : skill.description || '';
+            card.innerHTML = `
+                <h3 class="soft-skill-title"><span class="soft-skill-icon" aria-hidden="true">${escapeHtml(icon)}</span> ${escapeHtml(title)}</h3>
+                <p class="soft-skill-description">${escapeHtml(description)}</p>
+            `;
+            softContainer.appendChild(card);
         });
     }
 
-    const techCount = (skills.technical || []).length;
+    const techCount = (skills.technicalCategories || []).length;
     const softCount = (skills.soft || []).length;
     setupSkillsTabs(techCount, softCount);
     populateTools(Array.isArray(skills.tools) ? skills.tools : []);
