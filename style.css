@@ -65,6 +65,10 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+body.panel-open {
+  overflow: hidden;
+}
+
 section {
   scroll-margin-top: 6.5rem;
 }
@@ -492,6 +496,91 @@ html[data-theme="light"] .theme-btn[aria-pressed="true"] {
   padding: var(--space-6) 5%;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.content-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(920px, 100%);
+  height: 100dvh;
+  overflow-y: auto;
+  margin: 0;
+  max-width: none;
+  background: var(--bg-color);
+  border-left: 1px solid var(--glass-border);
+  z-index: 1750;
+  transform: translateX(104%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+  box-shadow: -14px 0 35px rgba(0, 0, 0, 0.28);
+  will-change: transform;
+}
+
+.content-panel.is-open {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#contact.content-panel {
+  padding-top: var(--space-5);
+}
+
+.panel-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 8, 16, 0.52);
+  backdrop-filter: blur(5px);
+  z-index: 1700;
+}
+
+.panel-close-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  background: var(--glass-bg);
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.panel-close-btn:hover {
+  border-color: var(--neon-accent);
+}
+
+.panel-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: 0.9rem 5%;
+  margin: 0 -5% var(--space-3);
+  background: color-mix(in srgb, var(--bg-color) 74%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.panel-topbar-title {
+  margin: 0;
+  font-size: 0.96rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+}
+
+.nav-links a.is-active {
+  color: var(--neon-accent);
+  text-shadow: 0 0 8px var(--neon-text-glow);
 }
 
 .about-grid {
@@ -1478,6 +1567,11 @@ html[data-theme="light"] .contact-form-status.error {
   }
   .about-grid {
     grid-template-columns: 1fr;
+  }
+  .content-panel {
+    width: 100%;
+    border-left: none;
+    box-shadow: none;
   }
 }
 

@@ -184,18 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initBackToTop();
     initNavbarScrollState();
 
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener('click', function (e) {
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-
-            e.preventDefault();
-            const target = document.querySelector(targetId);
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    });
+    initSlidePanels();
 });
 
 function populateHero(bio, cvLink, cvDownloadFilename) {
@@ -732,7 +721,9 @@ function initNavbarScrollState() {
 }
 
 function initRevealOnScroll() {
-    const targets = document.querySelectorAll('.section, .hero-content, .project-card, .experience-card');
+    const targets = document.querySelectorAll(
+        '.section:not(.content-panel), .hero-content, .project-card, .experience-card'
+    );
     if (!targets.length || !('IntersectionObserver' in window)) return;
     const obs = new IntersectionObserver(
         (entries) => {
@@ -748,6 +739,148 @@ function initRevealOnScroll() {
     targets.forEach((el) => {
         el.classList.add('reveal-up');
         obs.observe(el);
+    });
+}
+
+function initSlidePanels() {
+    const overlay = document.getElementById('panel-overlay');
+    const panelLinks = document.querySelectorAll('a[href^="#"]');
+    const panels = Array.from(document.querySelectorAll('.content-panel'));
+    if (!overlay || !panels.length) return;
+    const NAV_SELECTOR = '.nav-links a[href^="#"]';
+    const panelTitleMap = {
+        about: 'About',
+        skills: 'Skills',
+        educational: 'Education',
+        experience: 'Experience',
+        certifications: 'Certifications',
+        projects: 'Projects',
+        extracurricular: 'Extracurricular',
+        contact: 'Contact'
+    };
+
+    function setActiveNav(panelId) {
+        document.querySelectorAll(NAV_SELECTOR).forEach((a) => {
+            const active = panelId && a.getAttribute('href') === '#' + panelId;
+            a.classList.toggle('is-active', !!active);
+        });
+    }
+
+    function closePanels() {
+        panels.forEach((panel) => {
+            panel.classList.remove('is-open');
+            panel.setAttribute('aria-hidden', 'true');
+            panel.style.transition = '';
+            panel.style.transform = '';
+        });
+        overlay.hidden = true;
+        document.body.classList.remove('panel-open');
+        setActiveNav(null);
+    }
+
+    function openPanelById(id) {
+        const target = document.getElementById(id);
+        if (!target || !target.classList.contains('content-panel')) return;
+        panels.forEach((panel) => {
+            const isTarget = panel === target;
+            panel.classList.toggle('is-open', isTarget);
+            panel.setAttribute('aria-hidden', isTarget ? 'false' : 'true');
+            panel.style.transition = '';
+            panel.style.transform = '';
+        });
+        overlay.hidden = false;
+        document.body.classList.add('panel-open');
+        setActiveNav(id);
+    }
+
+    panels.forEach((panel) => {
+        if (!panel.querySelector('.panel-topbar')) {
+            const panelId = panel.id || '';
+            const topbar = document.createElement('div');
+            topbar.className = 'panel-topbar';
+            const title = document.createElement('h3');
+            title.className = 'panel-topbar-title';
+            title.textContent = panelTitleMap[panelId] || 'Section';
+            topbar.appendChild(title);
+            panel.prepend(topbar);
+        }
+        if (panel.querySelector('.panel-topbar .panel-close-btn')) return;
+        const topbar = panel.querySelector('.panel-topbar');
+        if (!topbar) return;
+        const closeBtn = document.createElement('button');
+        closeBtn.type = 'button';
+        closeBtn.className = 'panel-close-btn';
+        closeBtn.setAttribute('aria-label', 'Close panel');
+        closeBtn.textContent = '×';
+        closeBtn.addEventListener('click', closePanels);
+        topbar.appendChild(closeBtn);
+    });
+
+    panelLinks.forEach((link) => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (!href || href === '#') return;
+            const id = href.slice(1);
+            const target = document.getElementById(id);
+            if (!target || !target.classList.contains('content-panel')) return;
+            e.preventDefault();
+            openPanelById(id);
+        });
+    });
+
+    overlay.addEventListener('click', closePanels);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closePanels();
+    });
+
+    // Mobile swipe-to-close for open panels.
+    panels.forEach((panel) => {
+        let startX = 0;
+        let startY = 0;
+        let dragging = false;
+        let deltaX = 0;
+        panel.addEventListener(
+            'touchstart',
+            (e) => {
+                if (!panel.classList.contains('is-open')) return;
+                const t = e.touches[0];
+                startX = t.clientX;
+                startY = t.clientY;
+                deltaX = 0;
+                dragging = false;
+            },
+            { passive: true }
+        );
+        panel.addEventListener(
+            'touchmove',
+            (e) => {
+                if (!panel.classList.contains('is-open')) return;
+                const t = e.touches[0];
+                const dx = t.clientX - startX;
+                const dy = t.clientY - startY;
+                if (!dragging) {
+                    if (Math.abs(dx) > 12 && Math.abs(dx) > Math.abs(dy) && dx > 0) {
+                        dragging = true;
+                    } else {
+                        return;
+                    }
+                }
+                deltaX = Math.max(0, dx);
+                panel.style.transition = 'none';
+                panel.style.transform = `translateX(${deltaX}px)`;
+            },
+            { passive: true }
+        );
+        panel.addEventListener('touchend', () => {
+            if (!panel.classList.contains('is-open') || !dragging) return;
+            panel.style.transition = '';
+            panel.style.transform = '';
+            if (deltaX > 90) {
+                closePanels();
+            }
+            dragging = false;
+            deltaX = 0;
+        });
     });
 }
 

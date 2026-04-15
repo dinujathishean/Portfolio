@@ -94,7 +94,7 @@
             </div>
         </header>
 
-        <section id="about" class="section">
+        <section id="about" class="section content-panel" aria-hidden="true">
             <h2 class="section-title">About <span class="neon-text">Me</span></h2>
             <div class="about-grid">
                 <article class="about-card glass-panel">
@@ -107,7 +107,7 @@
         </section>
 
         <!-- Skills (full width, above My Educational) -->
-        <section id="skills" class="section section-skills">
+        <section id="skills" class="section section-skills content-panel" aria-hidden="true">
             <h2 class="section-title">My <span class="neon-text">Skills</span></h2>
             <div class="skills-section-inner glass-panel">
                 <div class="skills-tabs" role="tablist" aria-label="Skills category">
@@ -132,7 +132,7 @@
         </section>
 
         <!-- Education (qualifications) -->
-        <section id="educational" class="section">
+        <section id="educational" class="section content-panel" aria-hidden="true">
             <h2 class="section-title"><span class="neon-text">Education</span></h2>
             <div class="timeline" id="education-timeline">
                 <!-- Injected via JS -->
@@ -140,7 +140,7 @@
         </section>
 
         <!-- Experience Section -->
-        <section id="experience" class="section">
+        <section id="experience" class="section content-panel" aria-hidden="true">
             <h2 class="section-title"><span class="neon-text">Experience</span></h2>
             <div class="experience-grid" id="experience-list">
                 <!-- Experience cards injected via JS -->
@@ -148,7 +148,7 @@
         </section>
 
         <!-- Certifications -->
-        <section id="certifications" class="section">
+        <section id="certifications" class="section content-panel" aria-hidden="true">
             <h2 class="section-title"><span class="neon-text">Certifications</span></h2>
             <div class="certifications-card glass-panel">
                 <ul id="cert-list" class="cert-list">
@@ -158,19 +158,19 @@
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="section">
+        <section id="projects" class="section content-panel" aria-hidden="true">
             <h2 class="section-title">Featured <span class="neon-text">Projects</span></h2>
             <div id="projects-grid" class="projects-section-root"></div>
         </section>
 
         <!-- Extracurricular (supporting section) -->
-        <section id="extracurricular" class="section section-extracurricular">
+        <section id="extracurricular" class="section section-extracurricular content-panel" aria-hidden="true">
             <h2 class="section-title section-title-minor">Extracurricular Activities</h2>
             <div id="extracurricular-root" class="extracurricular-section-root" aria-live="polite"></div>
         </section>
 
         <!-- Footer -->
-        <footer id="contact">
+        <footer id="contact" class="content-panel" aria-hidden="true">
             <h2 class="neon-text">Contact</h2>
             <div class="contact-bubbles" id="social-links" aria-label="Contact methods">
                 <!-- Contact bubbles injected via JS -->
@@ -206,6 +206,7 @@
             <p class="copyright-line">&copy; <span id="current-year"></span> Dinuja Thishean. All rights reserved.</p>
         </footer>
     </div>
+    <div id="panel-overlay" class="panel-overlay" hidden></div>
     
     <!-- Modal for Project Screenshots -->
     <div id="project-modal" class="modal">
