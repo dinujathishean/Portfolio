@@ -684,6 +684,16 @@ html[data-theme="light"] .theme-btn[aria-pressed="true"] {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 0.32s ease, transform 0.32s ease;
+}
+
+.panel-next-wrap.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .panel-next-btn {

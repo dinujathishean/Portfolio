@@ -780,6 +780,7 @@ function initSlidePanels() {
     let activePanelId = null;
     const PANEL_TRANSITION_MS = 880;
     let isTransitioning = false;
+    const PANEL_NEXT_REVEAL_PX = 120;
 
     function setActiveNav(panelId) {
         document.querySelectorAll(NAV_SELECTOR).forEach((a) => {
@@ -839,6 +840,25 @@ function initSlidePanels() {
         panel.classList.remove('is-leaving-left', 'is-leaving-right');
     }
 
+    function isNearPanelBottom(panel) {
+        if (!panel) return false;
+        const remaining = panel.scrollHeight - (panel.scrollTop + panel.clientHeight);
+        return remaining <= PANEL_NEXT_REVEAL_PX;
+    }
+
+    function updatePanelNextVisibility(panel) {
+        if (!panel) return;
+        const nextWrap = panel.querySelector('.panel-next-wrap');
+        if (!nextWrap) return;
+        nextWrap.classList.toggle('is-visible', isNearPanelBottom(panel));
+    }
+
+    function bindPanelNextRevealOnScroll(panel) {
+        if (!panel || panel.dataset.nextRevealBound === 'true') return;
+        panel.dataset.nextRevealBound = 'true';
+        panel.addEventListener('scroll', () => updatePanelNextVisibility(panel), { passive: true });
+    }
+
     function getDirection(fromId, toId) {
         if (!fromId || !toId) return 'forward';
         const fromIndex = orderedPanelIds.indexOf(fromId);
@@ -879,10 +899,12 @@ function initSlidePanels() {
             });
             clearTransitionClasses(target);
             setPanelVisible(target, true);
+            target.scrollTop = 0;
             target.classList.add(enterDirection === 'left' ? 'enter-from-left' : 'enter-from-right');
             requestAnimationFrame(() => {
                 setPanelVisible(target, true);
                 target.classList.remove('enter-from-left', 'enter-from-right');
+                updatePanelNextVisibility(target);
                 setTimeout(() => {
                     clearTransitionClasses(target);
                     isTransitioning = false;
@@ -909,7 +931,8 @@ function initSlidePanels() {
     }
 
     function createPanelNextControls() {
-        panels.forEach((panel, index) => {
+        panels.forEach((panel) => {
+            bindPanelNextRevealOnScroll(panel);
             if (panel.querySelector('.panel-next-wrap')) return;
             const nextId = PRIMARY_NEXT_MAP[panel.id];
             const wrap = document.createElement('div');
@@ -932,6 +955,7 @@ function initSlidePanels() {
             }
             wrap.appendChild(btn);
             panel.appendChild(wrap);
+            requestAnimationFrame(() => updatePanelNextVisibility(panel));
         });
     }
 
