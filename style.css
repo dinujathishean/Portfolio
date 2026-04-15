@@ -552,27 +552,49 @@ html[data-theme="light"] .theme-btn[aria-pressed="true"] {
 .content-panel {
   position: fixed;
   top: 0;
+  left: 0;
   right: 0;
-  width: min(920px, 100%);
+  width: 100%;
   height: 100dvh;
   overflow-y: auto;
   margin: 0;
   max-width: none;
   background: var(--bg-color);
-  border-left: 1px solid var(--glass-border);
+  border-left: none;
   z-index: 1750;
-  transform: translateX(104%);
+  transform: translateX(106%) scale(0.985);
+  transform-origin: center;
   opacity: 0;
   pointer-events: none;
-  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
-  box-shadow: -14px 0 35px rgba(0, 0, 0, 0.28);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.34);
   will-change: transform;
 }
 
 .content-panel.is-open {
-  transform: translateX(0);
+  transform: translateX(0) scale(1);
   opacity: 1;
   pointer-events: auto;
+}
+
+.content-panel.enter-from-left {
+  transform: translateX(-40%) scale(0.985);
+}
+
+.content-panel.enter-from-right {
+  transform: translateX(106%) scale(0.985);
+}
+
+.content-panel.is-leaving-left {
+  transform: translateX(-16%) scale(0.98);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.content-panel.is-leaving-right {
+  transform: translateX(16%) scale(0.98);
+  opacity: 0;
+  pointer-events: none;
 }
 
 #contact.content-panel {
@@ -627,6 +649,20 @@ html[data-theme="light"] .theme-btn[aria-pressed="true"] {
   font-weight: 700;
   letter-spacing: 0.02em;
   color: var(--text-primary);
+}
+
+.panel-next-wrap {
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--glass-border);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.panel-next-btn {
+  min-width: 12.5rem;
+  text-align: center;
 }
 
 .nav-links a.is-active {
@@ -1632,8 +1668,14 @@ html[data-theme="light"] .contact-form-status.error {
   }
   .content-panel {
     width: 100%;
-    border-left: none;
     box-shadow: none;
+  }
+  .panel-next-wrap {
+    justify-content: stretch;
+  }
+  .panel-next-btn {
+    width: 100%;
+    min-width: 0;
   }
 }
 

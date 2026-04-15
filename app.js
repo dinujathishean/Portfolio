@@ -758,6 +758,8 @@ function initSlidePanels() {
         extracurricular: 'Extracurricular',
         contact: 'Contact'
     };
+    const orderedPanelIds = panels.map((panel) => panel.id).filter(Boolean);
+    let activePanelId = null;
 
     function setActiveNav(panelId) {
         document.querySelectorAll(NAV_SELECTOR).forEach((a) => {
@@ -766,9 +768,16 @@ function initSlidePanels() {
         });
     }
 
-    function closePanels() {
+    function closePanels(options = {}) {
+        const { returnHome = false } = options;
+        const activePanel = activePanelId ? document.getElementById(activePanelId) : null;
+        if (activePanel) {
+            activePanel.classList.add('is-leaving-right');
+        }
         panels.forEach((panel) => {
             panel.classList.remove('is-open');
+            panel.classList.remove('enter-from-left', 'enter-from-right');
+            panel.classList.remove('is-leaving-left', 'is-leaving-right');
             panel.setAttribute('aria-hidden', 'true');
             panel.style.transition = '';
             panel.style.transform = '';
@@ -776,21 +785,81 @@ function initSlidePanels() {
         overlay.hidden = true;
         document.body.classList.remove('panel-open');
         setActiveNav(null);
+        activePanelId = null;
+        if (returnHome) {
+            const hero = document.getElementById('hero');
+            if (hero) {
+                hero.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+    }
+
+    function getDirection(fromId, toId) {
+        if (!fromId || !toId) return 'forward';
+        const fromIndex = orderedPanelIds.indexOf(fromId);
+        const toIndex = orderedPanelIds.indexOf(toId);
+        if (fromIndex < 0 || toIndex < 0) return 'forward';
+        return toIndex >= fromIndex ? 'forward' : 'backward';
     }
 
     function openPanelById(id) {
         const target = document.getElementById(id);
         if (!target || !target.classList.contains('content-panel')) return;
+        const direction = getDirection(activePanelId, id);
+        const currentPanel = activePanelId ? document.getElementById(activePanelId) : null;
+        if (currentPanel && currentPanel !== target) {
+            currentPanel.classList.remove('is-leaving-left', 'is-leaving-right');
+            currentPanel.classList.add(direction === 'forward' ? 'is-leaving-left' : 'is-leaving-right');
+            setTimeout(() => {
+                currentPanel.classList.remove('is-leaving-left', 'is-leaving-right');
+            }, 520);
+        }
         panels.forEach((panel) => {
             const isTarget = panel === target;
             panel.classList.toggle('is-open', isTarget);
             panel.setAttribute('aria-hidden', isTarget ? 'false' : 'true');
+            if (!isTarget) {
+                panel.classList.remove('enter-from-left', 'enter-from-right');
+                panel.classList.remove('is-leaving-left', 'is-leaving-right');
+            }
             panel.style.transition = '';
             panel.style.transform = '';
+        });
+        target.classList.add(direction === 'backward' ? 'enter-from-left' : 'enter-from-right');
+        requestAnimationFrame(() => {
+            target.classList.add('is-open');
+            target.classList.remove('enter-from-left', 'enter-from-right');
         });
         overlay.hidden = false;
         document.body.classList.add('panel-open');
         setActiveNav(id);
+        activePanelId = id;
+    }
+
+    function createPanelNextControls() {
+        panels.forEach((panel, index) => {
+            if (panel.querySelector('.panel-next-wrap')) return;
+            const nextId = orderedPanelIds[index + 1] || null;
+            const wrap = document.createElement('div');
+            wrap.className = 'panel-next-wrap';
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'btn primary-btn panel-next-btn';
+            if (nextId) {
+                const nextTitle = panelTitleMap[nextId] || 'Next Section';
+                btn.textContent = `Continue to ${nextTitle}`;
+                btn.addEventListener('click', () => openPanelById(nextId));
+            } else {
+                btn.classList.remove('primary-btn');
+                btn.classList.add('secondary-btn');
+                btn.textContent = 'Return Home';
+                btn.addEventListener('click', () => closePanels({ returnHome: true }));
+            }
+            wrap.appendChild(btn);
+            panel.appendChild(wrap);
+        });
     }
 
     panels.forEach((panel) => {
@@ -815,6 +884,7 @@ function initSlidePanels() {
         closeBtn.addEventListener('click', closePanels);
         topbar.appendChild(closeBtn);
     });
+    createPanelNextControls();
 
     panelLinks.forEach((link) => {
         link.addEventListener('click', (e) => {
