@@ -760,6 +760,7 @@ function initSlidePanels() {
     };
     const orderedPanelIds = panels.map((panel) => panel.id).filter(Boolean);
     let activePanelId = null;
+    const PANEL_TRANSITION_MS = 780;
 
     function setActiveNav(panelId) {
         document.querySelectorAll(NAV_SELECTOR).forEach((a) => {
@@ -814,7 +815,7 @@ function initSlidePanels() {
             currentPanel.classList.add(direction === 'forward' ? 'is-leaving-left' : 'is-leaving-right');
             setTimeout(() => {
                 currentPanel.classList.remove('is-leaving-left', 'is-leaving-right');
-            }, 520);
+            }, PANEL_TRANSITION_MS + 40);
         }
         panels.forEach((panel) => {
             const isTarget = panel === target;

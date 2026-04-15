@@ -562,11 +562,13 @@ html[data-theme="light"] .theme-btn[aria-pressed="true"] {
   background: var(--bg-color);
   border-left: none;
   z-index: 1750;
-  transform: translateX(106%) scale(0.985);
+  transform: translateX(112%) scale(0.982);
   transform-origin: center;
   opacity: 0;
   pointer-events: none;
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease;
+  transition:
+    transform 0.78s cubic-bezier(0.25, 0.1, 0.25, 1),
+    opacity 0.72s cubic-bezier(0.25, 0.1, 0.25, 1);
   box-shadow: 0 20px 48px rgba(0, 0, 0, 0.34);
   will-change: transform;
 }
@@ -578,21 +580,21 @@ html[data-theme="light"] .theme-btn[aria-pressed="true"] {
 }
 
 .content-panel.enter-from-left {
-  transform: translateX(-40%) scale(0.985);
+  transform: translateX(-52%) scale(0.982);
 }
 
 .content-panel.enter-from-right {
-  transform: translateX(106%) scale(0.985);
+  transform: translateX(112%) scale(0.982);
 }
 
 .content-panel.is-leaving-left {
-  transform: translateX(-16%) scale(0.98);
+  transform: translateX(-22%) scale(0.978);
   opacity: 0;
   pointer-events: none;
 }
 
 .content-panel.is-leaving-right {
-  transform: translateX(16%) scale(0.98);
+  transform: translateX(22%) scale(0.978);
   opacity: 0;
   pointer-events: none;
 }
