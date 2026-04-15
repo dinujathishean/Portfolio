@@ -1,4 +1,12 @@
 const THEME_STORAGE_KEY = 'portfolio-theme';
+const DEFAULT_PORTFOLIO_DATA = {
+    bio: {
+        name: 'Dinuja Thishean',
+        title: 'Cyber Security Undergraduate | SLIIT',
+        description:
+            'Cyber Security undergraduate building practical and secure digital solutions through real-world projects and continuous learning.'
+    }
+};
 
 function escapeHtml(value) {
     if (value == null) return '';
@@ -90,7 +98,7 @@ function loadPortfolioData() {
             .catch(() => {
                 if (inlineData) return Promise.resolve(inlineData);
                 if (legacyData) return Promise.resolve(legacyData);
-                return Promise.reject(new Error('No portfolio data'));
+                return Promise.resolve(DEFAULT_PORTFOLIO_DATA);
             });
     }
 
@@ -100,7 +108,7 @@ function loadPortfolioData() {
     return fetch('data.json', { cache: 'no-store' }).then((response) => {
         if (!response.ok) throw new Error('Network response was not ok');
         return response.json();
-    });
+    }).catch(() => Promise.resolve(DEFAULT_PORTFOLIO_DATA));
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -113,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then((data) => {
             if (!data || typeof data !== 'object') throw new Error('Invalid portfolio data');
             populateHero(data.bio, data.cvLink, data.cvDownloadFilename);
+            populateAbout(data.about || {});
             populateSkills(data.skills || { technical: [], soft: [] });
             populateCertifications(Array.isArray(data.certifications) ? data.certifications : []);
             populateEducation(Array.isArray(data.education) ? data.education : []);
@@ -123,36 +132,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 data.projectCategories
             );
             populateContact(data.contact || {});
+            initRevealOnScroll();
         })
         .catch((error) => {
             console.error('Error loading data:', error);
             const heroName = document.getElementById('hero-name');
-            if (heroName) heroName.textContent = 'Error loading data.';
+            if (heroName) heroName.textContent = 'Dinuja Thishean';
         });
 
     const menuBtn = document.getElementById('menu-btn');
     const navLinks = document.getElementById('nav-links');
     if (menuBtn && navLinks) {
-        menuBtn.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter' || event.key === ' ') {
-                event.preventDefault();
-                menuBtn.click();
-            }
-        });
         menuBtn.addEventListener('click', () => {
             menuBtn.classList.toggle('open');
             navLinks.classList.toggle('active');
+            menuBtn.setAttribute('aria-expanded', navLinks.classList.contains('active') ? 'true' : 'false');
         });
 
         document.querySelectorAll('.nav-links a').forEach((link) => {
             link.addEventListener('click', () => {
                 menuBtn.classList.remove('open');
                 navLinks.classList.remove('active');
+                menuBtn.setAttribute('aria-expanded', 'false');
             });
         });
     }
 
     initBackToTop();
+    initNavbarScrollState();
 
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener('click', function (e) {
@@ -172,7 +179,7 @@ function populateHero(bio, cvLink, cvDownloadFilename) {
     if (!bio || typeof bio !== 'object') return;
 
     const name = bio.name || 'Portfolio';
-    document.title = `Portfolio | ${name}`;
+    document.title = `${name} | Cyber Security Portfolio`;
 
     const nameEl = document.getElementById('hero-name');
     if (nameEl) {
@@ -192,7 +199,6 @@ function populateHero(bio, cvLink, cvDownloadFilename) {
 
     const rawCv = cvLink ? String(cvLink).trim() : '';
     const safeCv = rawCv ? safeExternalHref(rawCv) : '';
-    const viewCvBtn = document.getElementById('view-cv-btn');
     const downloadCvBtn = document.getElementById('download-cv-btn');
     if (safeCv && safeCv !== '#') {
         const isPdf = /\.pdf($|\?|#)/i.test(safeCv);
@@ -205,33 +211,12 @@ function populateHero(bio, cvLink, cvDownloadFilename) {
                     return 'CV.pdf';
                 }
             })();
-
-        const isLocalPdf =
-            isPdf &&
-            rawCv &&
-            !/^https?:\/\//i.test(rawCv) &&
-            /^assets\/[^?#]+\.pdf$/i.test(rawCv) &&
-            !rawCv.includes('..');
-
-        if (viewCvBtn) {
-            if (isLocalPdf) {
-                const vParams = new URLSearchParams();
-                vParams.set('pdf', rawCv);
-                vParams.set('name', downloadName);
-                viewCvBtn.href = 'cv-viewer.html?' + vParams.toString();
-            } else {
-                viewCvBtn.href = safeCv;
-            }
-            viewCvBtn.target = '_blank';
-            viewCvBtn.rel = 'noopener noreferrer';
-            viewCvBtn.removeAttribute('download');
-            viewCvBtn.style.display = '';
-        }
         if (downloadCvBtn) {
             downloadCvBtn.href = safeCv;
-            downloadCvBtn.removeAttribute('target');
             if (isPdf) {
                 downloadCvBtn.setAttribute('download', downloadName);
+                downloadCvBtn.removeAttribute('target');
+                downloadCvBtn.removeAttribute('rel');
             } else {
                 downloadCvBtn.removeAttribute('download');
                 downloadCvBtn.target = '_blank';
@@ -240,8 +225,46 @@ function populateHero(bio, cvLink, cvDownloadFilename) {
             downloadCvBtn.style.display = '';
         }
     } else {
-        if (viewCvBtn) viewCvBtn.style.display = 'none';
         if (downloadCvBtn) downloadCvBtn.style.display = 'none';
+    }
+}
+
+function populateAbout(about) {
+    const headline = document.getElementById('about-headline');
+    const summary = document.getElementById('about-summary');
+    const highlights = document.getElementById('about-highlights');
+    const stats = document.getElementById('about-stats');
+
+    if (headline) {
+        headline.textContent =
+            about.headline || 'Building secure, reliable, and user-focused digital solutions.';
+    }
+    if (summary) {
+        summary.textContent =
+            about.summary ||
+            'I combine cyber security fundamentals with hands-on web development to create projects that are both functional and resilient.';
+    }
+    if (highlights) {
+        highlights.innerHTML = '';
+        const rows = Array.isArray(about.highlights) ? about.highlights : [];
+        rows.forEach((text) => {
+            const li = document.createElement('li');
+            li.textContent = text;
+            highlights.appendChild(li);
+        });
+    }
+    if (stats) {
+        stats.innerHTML = '';
+        const rows = Array.isArray(about.stats) ? about.stats : [];
+        rows.forEach((row) => {
+            const card = document.createElement('div');
+            card.className = 'about-stat';
+            card.innerHTML = `
+                <span class="about-stat-label">${escapeHtml(row.label || '')}</span>
+                <span class="about-stat-value">${escapeHtml(row.value || '')}</span>
+            `;
+            stats.appendChild(card);
+        });
     }
 }
 
@@ -292,6 +315,19 @@ function populateSkills(skills) {
     const techCount = (skills.technical || []).length;
     const softCount = (skills.soft || []).length;
     setupSkillsTabs(techCount, softCount);
+    populateTools(Array.isArray(skills.tools) ? skills.tools : []);
+}
+
+function populateTools(tools) {
+    const container = document.getElementById('tools-container');
+    if (!container) return;
+    container.innerHTML = '';
+    tools.forEach((tool) => {
+        const tag = document.createElement('span');
+        tag.className = 'tool-chip';
+        tag.textContent = tool;
+        container.appendChild(tag);
+    });
 }
 
 function setupSkillsTabs(techCount, softCount) {
@@ -589,10 +625,23 @@ function populateProjects(projects, projectCategoryConfig) {
         }
 
         const catLabel = escapeHtml(categoryLabel(cat, tabsDef));
+        const techList = Array.isArray(project.tech)
+            ? `<ul class="project-tech-list">${project.tech
+                  .map((tech) => `<li>${escapeHtml(tech)}</li>`)
+                  .join('')}</ul>`
+            : '';
+        const outcomes = Array.isArray(project.outcomes)
+            ? `<ul class="project-outcomes">${project.outcomes
+                  .map((outcome) => `<li>${escapeHtml(outcome)}</li>`)
+                  .join('')}</ul>`
+            : '';
         card.innerHTML = `
             <p class="project-card-category">${catLabel}</p>
             <h3>${escapeHtml(project.title)}</h3>
+            <p class="project-card-role">${escapeHtml(project.role || '')}</p>
             <p class="project-card-desc">${escapeHtml(project.description)}</p>
+            ${techList}
+            ${outcomes}
         `;
         const repoLink = document.createElement('a');
         repoLink.href = href;
@@ -625,6 +674,34 @@ function initBackToTop() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
     toggleVisibility();
+}
+
+function initNavbarScrollState() {
+    const nav = document.querySelector('.navbar');
+    if (!nav) return;
+    const apply = () => nav.classList.toggle('is-scrolled', window.scrollY > 12);
+    window.addEventListener('scroll', apply, { passive: true });
+    apply();
+}
+
+function initRevealOnScroll() {
+    const targets = document.querySelectorAll('.section, .hero-content, .project-card, .experience-card');
+    if (!targets.length || !('IntersectionObserver' in window)) return;
+    const obs = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-up', 'is-visible');
+                    obs.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.14 }
+    );
+    targets.forEach((el) => {
+        el.classList.add('reveal-up');
+        obs.observe(el);
+    });
 }
 
 window.openModal = function (projectIndex) {

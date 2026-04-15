@@ -1,46 +1,59 @@
-# Portfolio - Dinuja Thishean
+# Dinuja Thishean - Cyber Security Portfolio
 
-Professional personal portfolio focused on cyber security, education, leadership experience, certifications, and technical projects.
+A premium, recruiter-ready personal portfolio focused on cyber security, secure development, and practical technical projects.
 
-## About
+## Project overview
 
-This portfolio presents my profile as a Cyber Security undergraduate at SLIIT, including practical project work, technical skills, academic background, extracurricular leadership, and verified certifications.
-
-## Live site
-
-### Vercel (recommended)
-
-Import this repo in [Vercel](https://vercel.com) — see **`VERCEL-DEPLOY.txt`**. Use **Root Directory `.`** (default), framework **Other**, no build command. The site files are at the **repository root** (`index.html`, `app.js`, etc.) so Vercel serves them with no extra configuration.
-
-### GitHub Pages (optional)
-
-See **`SETUP-GITHUB-PAGES.txt`**. Use **Deploy from a branch** → **`main`** → **`/`** (root) — not **GitHub Actions**.
-
-**https://dinujathishean.github.io/Portfolio/** (after Pages is enabled as above.)
+This repository contains a static portfolio website built with HTML, CSS, and vanilla JavaScript.  
+It highlights education, hands-on experience, certifications, extracurricular leadership, and project outcomes tailored for internship and employer review.
 
 ## Features
 
-- Responsive modern UI with dark/light theme
-- Data-driven sections powered by `data.json`
-- Project filtering and screenshot gallery modal
-- Contact panel with email, phone, and social links
-- CV view/download support with static hosting compatibility
+- Modern hero section with strong personal branding and clear call-to-actions
+- Responsive design optimized for desktop, tablet, and mobile
+- Dark/light theme toggle with persistent theme preference
+- Professional sections: About, Skills, Tech Stack, Education, Experience, Projects, and Contact
+- Project cards with category filters, tech tags, role details, and outcomes
+- Accessible navigation, keyboard-friendly interactions, and improved contrast
+- SEO-ready metadata (title, description, Open Graph, Twitter cards)
 
 ## Tech stack
 
-- Static HTML, CSS, and JavaScript (no framework build step)
-- Responsive layout, light/dark theme
-- Content driven by `data.json` (with an embedded copy in `index.html` for local `file://` use)
+- HTML5
+- CSS3
+- JavaScript (ES6+)
+- JSON-driven content via `data.json`
+- Vercel static hosting
 
-## Run locally
+## Local development
 
-- Open **`index.html`** in a browser, or  
-- Use **`start.bat`** / **`serve-static.ps1`** (serves the repo root over HTTP).
+1. Clone the repository:
+   - `git clone https://github.com/dinujathishean/Portfolio.git`
+2. Enter the project:
+   - `cd Portfolio`
+3. Run locally (choose one):
+   - Open `index.html` directly in a browser, or
+   - Use `start.bat` / `serve-static.ps1` to serve the root folder over HTTP.
 
-## GitHub repository description (optional)
+## Deployment (Vercel)
 
-To set the short description under the repository name on GitHub: **Settings → General → Description**, and paste:
+This project is static and deploys with minimal configuration.
 
-`Cyber Security undergraduate portfolio — SLIIT | HTML/CSS/JS static site`
+1. Import the GitHub repository into [Vercel](https://vercel.com).
+2. Keep:
+   - Framework preset: `Other`
+   - Root directory: `.`
+   - Build command: empty
+   - Output directory: empty
+3. Deploy.
+4. Future pushes to `main` will auto-trigger redeploys if Git integration is enabled.
 
-You can shorten or edit that line to fit the character limit.
+## Deployment (GitHub Pages - optional)
+
+You can also publish via GitHub Pages by selecting:
+- Branch: `main`
+- Folder: `/` (root)
+
+## Suggested repository description
+
+`Cyber Security undergraduate portfolio - SLIIT | Secure development and project showcase`

@@ -1,8 +1,22 @@
 {
   "bio": {
     "name": "Dinuja Thishean",
-    "title": "Undergraduate",
-    "description": "A passionate Cyber Security undergraduate at SLIIT with hands-on experience in networking, vulnerability assessment, and web application development. I enjoy solving real-world problems through projects and aim to grow as a skilled security professional."
+    "title": "Cyber Security Undergraduate | SLIIT",
+    "description": "I am a Cyber Security undergraduate focused on secure software, vulnerability analysis, and practical web security. I build real-world projects and continuously strengthen both defensive and development skills."
+  },
+  "about": {
+    "headline": "Building secure, reliable, and user-focused digital solutions.",
+    "summary": "I combine cyber security fundamentals with hands-on web development to create projects that are both functional and resilient. My interests include secure coding, vulnerability assessment, and continuous learning through practical implementation.",
+    "highlights": [
+      "Focused on cyber security and secure application development",
+      "Hands-on project experience with Python, Flask, Java, and web technologies",
+      "Strong collaboration and communication through academic and committee work"
+    ],
+    "stats": [
+      { "label": "Academic Program", "value": "B.Sc. IT (Hons)" },
+      { "label": "Specialization", "value": "Cyber Security" },
+      { "label": "Current Focus", "value": "Internship Ready" }
+    ]
   },
   "contact": {
     "email": "dinujathishean@gmail.com",
@@ -94,15 +108,29 @@
   ],
   "projects": [
     {
-      "title": "Portfolio App",
+      "title": "Portfolio Website",
       "category": "web",
-      "description": "Personal portfolio website (HTML, CSS, JavaScript)—responsive layout, light/dark theme, skills, education, experience, and projects. Open source on GitHub.",
+      "description": "A modern, responsive portfolio with polished UI, dark/light theme support, and structured project storytelling for recruiter visibility.",
+      "role": "Frontend Developer",
+      "tech": ["HTML5", "CSS3", "JavaScript", "Vercel"],
+      "outcomes": [
+        "Designed a professional recruiter-friendly personal brand website",
+        "Implemented responsive layout and accessible navigation patterns",
+        "Deployed as a static site for fast loading and low maintenance"
+      ],
       "link": "https://github.com/dinujathishean/Portfolio"
     },
     {
       "title": "Automated Vulnerability Scanner",
       "category": "security",
-      "description": "Automated Web Vulnerability Scanner (Python, Flask)",
+      "description": "A Python and Flask-based scanner to identify common web vulnerabilities through automated test workflows.",
+      "role": "Security Project Developer",
+      "tech": ["Python", "Flask", "Security Testing"],
+      "outcomes": [
+        "Automated repetitive web vulnerability checks for faster assessment",
+        "Improved readability of scan output for clearer issue triaging",
+        "Documented practical security workflows with project screenshots"
+      ],
       "link": "https://github.com/dinujathishean/Automated-Vulnerability-Scanner",
       "screenshots": [
         "assets/avs-1.png",
@@ -113,9 +141,16 @@
       ]
     },
     {
-      "title": "Hotel-reservation-system",
+      "title": "Hotel Reservation System",
       "category": "web",
-      "description": "Web-Based Hotel Management & Reservation System (Spring Boot).",
+      "description": "A web-based hotel booking and management platform with structured reservation flows and backend service integration.",
+      "role": "Full Stack Developer (Academic Project)",
+      "tech": ["Spring Boot", "Java", "REST APIs", "MySQL"],
+      "outcomes": [
+        "Built reservation and room management workflows end-to-end",
+        "Integrated backend modules for practical CRUD operations",
+        "Strengthened understanding of scalable Java web application design"
+      ],
       "link": "#"
     }
   ],
@@ -127,7 +162,7 @@
     },
     {
       "name": "Network Basics",
-      "date": "Reading",
+      "date": "In Progress",
       "issuer": "Cisco"
     },
     {
@@ -136,23 +171,33 @@
       "issuer": "University of Moratuwa"
     },
     {
-      "name": "Certificate course in English ",
+      "name": "Certificate Course in English",
       "date": "2025",
       "issuer": "University of Colombo"
     }
   ],
   "skills": {
     "technical": [
-      "C language",
+      "C",
       "Java",
       "Python",
-      "Web Development"
+      "Web Development",
+      "Vulnerability Assessment",
+      "Networking Fundamentals"
     ],
     "soft": [
       "Problem Solving",
       "Team Collaboration",
       "Leadership",
       "Good Communication"
+    ],
+    "tools": [
+      "Git & GitHub",
+      "VS Code",
+      "Linux Basics",
+      "Wireshark",
+      "Postman",
+      "Vercel"
     ]
   },
   "cvLink": "assets/Dinuja-Thishean-CV.pdf",
