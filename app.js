@@ -780,7 +780,6 @@ function initSlidePanels() {
     let activePanelId = null;
     const PANEL_TRANSITION_MS = 880;
     let isTransitioning = false;
-    const PANEL_NEXT_REVEAL_PX = 120;
 
     function setActiveNav(panelId) {
         document.querySelectorAll(NAV_SELECTOR).forEach((a) => {
@@ -840,10 +839,16 @@ function initSlidePanels() {
         panel.classList.remove('is-leaving-left', 'is-leaving-right');
     }
 
+    function getPanelNextRevealThreshold(panel) {
+        if (!panel) return 120;
+        // Adaptive threshold: scales with viewport height while staying bounded.
+        return Math.max(72, Math.min(220, Math.round(panel.clientHeight * 0.18)));
+    }
+
     function isNearPanelBottom(panel) {
         if (!panel) return false;
         const remaining = panel.scrollHeight - (panel.scrollTop + panel.clientHeight);
-        return remaining <= PANEL_NEXT_REVEAL_PX;
+        return remaining <= getPanelNextRevealThreshold(panel);
     }
 
     function updatePanelNextVisibility(panel) {
@@ -1011,6 +1016,10 @@ function initSlidePanels() {
     overlay.addEventListener('click', closePanels);
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closePanels();
+    });
+    window.addEventListener('resize', () => {
+        const activePanel = activePanelId ? document.getElementById(activePanelId) : null;
+        updatePanelNextVisibility(activePanel);
     });
 
     // Mobile swipe-to-close for open panels.
