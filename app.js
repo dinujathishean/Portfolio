@@ -33,6 +33,29 @@ function safeExternalHref(url) {
     return '#';
 }
 
+async function forceDownloadFile(fileUrl, filename) {
+    try {
+        const response = await fetch(fileUrl, { cache: 'no-store' });
+        if (!response.ok) throw new Error('Download request failed');
+        const blob = await response.blob();
+        const blobUrl = URL.createObjectURL(blob);
+        const tempLink = document.createElement('a');
+        tempLink.href = blobUrl;
+        tempLink.download = filename || 'download.pdf';
+        document.body.appendChild(tempLink);
+        tempLink.click();
+        tempLink.remove();
+        URL.revokeObjectURL(blobUrl);
+    } catch (err) {
+        const fallbackLink = document.createElement('a');
+        fallbackLink.href = fileUrl;
+        fallbackLink.download = filename || 'download.pdf';
+        document.body.appendChild(fallbackLink);
+        fallbackLink.click();
+        fallbackLink.remove();
+    }
+}
+
 function getTheme() {
     const t = document.documentElement.getAttribute('data-theme');
     return t === 'light' || t === 'dark' ? t : 'dark';
@@ -213,14 +236,17 @@ function populateHero(bio, cvLink, cvDownloadFilename) {
             })();
         if (downloadCvBtn) {
             downloadCvBtn.href = safeCv;
+            downloadCvBtn.removeAttribute('target');
+            downloadCvBtn.removeAttribute('rel');
             if (isPdf) {
                 downloadCvBtn.setAttribute('download', downloadName);
-                downloadCvBtn.removeAttribute('target');
-                downloadCvBtn.removeAttribute('rel');
+                downloadCvBtn.onclick = (event) => {
+                    event.preventDefault();
+                    forceDownloadFile(safeCv, downloadName);
+                };
             } else {
-                downloadCvBtn.removeAttribute('download');
-                downloadCvBtn.target = '_blank';
-                downloadCvBtn.rel = 'noopener noreferrer';
+                downloadCvBtn.setAttribute('download', downloadName);
+                downloadCvBtn.onclick = null;
             }
             downloadCvBtn.style.display = '';
         }
