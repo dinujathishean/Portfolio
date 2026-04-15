@@ -764,6 +764,7 @@ function initSlidePanels() {
         'projects',
         'certifications',
         'experience',
+        'extracurricular',
         'contact'
     ];
     const PRIMARY_NEXT_MAP = {
@@ -771,7 +772,8 @@ function initSlidePanels() {
         skills: 'projects',
         projects: 'certifications',
         certifications: 'experience',
-        experience: 'contact',
+        experience: 'extracurricular',
+        extracurricular: 'contact',
         contact: null
     };
     const orderedPanelIds = panels.map((panel) => panel.id).filter(Boolean);
