@@ -133,6 +133,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuBtn = document.getElementById('menu-btn');
     const navLinks = document.getElementById('nav-links');
     if (menuBtn && navLinks) {
+        menuBtn.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                menuBtn.click();
+            }
+        });
         menuBtn.addEventListener('click', () => {
             menuBtn.classList.toggle('open');
             navLinks.classList.toggle('active');
@@ -145,6 +151,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    initBackToTop();
 
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener('click', function (e) {
@@ -180,6 +188,7 @@ function populateHero(bio, cvLink, cvDownloadFilename) {
 
     const heroDesc = document.getElementById('hero-desc');
     if (heroDesc) heroDesc.textContent = bio.description || '';
+    populateHeroHighlights(bio);
 
     const rawCv = cvLink ? String(cvLink).trim() : '';
     const safeCv = rawCv ? safeExternalHref(rawCv) : '';
@@ -234,6 +243,23 @@ function populateHero(bio, cvLink, cvDownloadFilename) {
         if (viewCvBtn) viewCvBtn.style.display = 'none';
         if (downloadCvBtn) downloadCvBtn.style.display = 'none';
     }
+}
+
+function populateHeroHighlights(bio) {
+    const row = document.getElementById('hero-pill-row');
+    if (!row) return;
+    row.innerHTML = '';
+    const pills = [];
+    if (bio && bio.title) pills.push(String(bio.title).trim());
+    pills.push('Cyber Security');
+    pills.push('Open to Internship Opportunities');
+    pills.forEach((item) => {
+        if (!item) return;
+        const span = document.createElement('span');
+        span.className = 'hero-pill';
+        span.textContent = item;
+        row.appendChild(span);
+    });
 }
 
 let skillsTabListenersBound = false;
@@ -570,7 +596,7 @@ function populateProjects(projects, projectCategoryConfig) {
         `;
         const repoLink = document.createElement('a');
         repoLink.href = href;
-        repoLink.textContent = 'GitHub Link';
+        repoLink.textContent = href === '#' ? 'Project Details' : 'View Repository';
         repoLink.addEventListener('click', (e) => e.stopPropagation());
         if (href.startsWith('http')) {
             repoLink.target = '_blank';
@@ -585,6 +611,20 @@ function populateProjects(projects, projectCategoryConfig) {
     root.appendChild(emptyMsg);
 
     applyFilter('all');
+}
+
+function initBackToTop() {
+    const button = document.getElementById('back-to-top');
+    if (!button) return;
+    const toggleVisibility = () => {
+        const show = window.scrollY > 420;
+        button.classList.toggle('is-visible', show);
+    };
+    window.addEventListener('scroll', toggleVisibility, { passive: true });
+    button.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    toggleVisibility();
 }
 
 window.openModal = function (projectIndex) {

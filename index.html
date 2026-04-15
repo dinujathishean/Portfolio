@@ -45,7 +45,7 @@
                         <button type="button" class="theme-btn" data-set-theme="light" id="theme-btn-light" aria-pressed="false">Light</button>
                         <button type="button" class="theme-btn" data-set-theme="dark" id="theme-btn-dark" aria-pressed="true">Dark</button>
                     </div>
-                    <div class="menu-btn" id="menu-btn">
+                    <div class="menu-btn" id="menu-btn" aria-label="Toggle navigation menu" role="button" tabindex="0">
                         <div class="menu-btn__burger"></div>
                     </div>
                 </div>
@@ -59,20 +59,21 @@
                         </div>
                     </li>
                     <li><a href="#skills">Skills</a></li>
-                    <li><a href="#educational">My Educational</a></li>
+                    <li><a href="#educational">Education</a></li>
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#extracurricular">Extracurricular</a></li>
                     <li><a href="#certifications">Certifications</a></li>
                     <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Let's Connect</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
             <div class="hero-content">
                 <h1 class="glitch" id="hero-name" data-text="Loading...">Loading...</h1>
                 <h2 id="hero-title" class="neon-text">...</h2>
                 <p id="hero-desc">...</p>
+                <div class="hero-pill-row" id="hero-pill-row" aria-label="Profile highlights"></div>
                 <div class="hero-actions">
-                    <a href="#projects" class="btn primary-btn">View My Work</a>
+                    <a href="#projects" class="btn primary-btn">View Projects</a>
                     <a href="#" id="view-cv-btn" class="btn secondary-btn" target="_blank">View CV</a>
                     <a href="#" id="download-cv-btn" class="btn secondary-btn" download>Download CV</a>
                 </div>
@@ -103,9 +104,9 @@
             </div>
         </section>
 
-        <!-- My Educational (qualifications) -->
+        <!-- Education (qualifications) -->
         <section id="educational" class="section">
-            <h2 class="section-title">My <span class="neon-text">Educational</span></h2>
+            <h2 class="section-title"><span class="neon-text">Education</span></h2>
             <div class="timeline" id="education-timeline">
                 <!-- Injected via JS -->
             </div>
@@ -113,7 +114,7 @@
 
         <!-- Experience Section -->
         <section id="experience" class="section">
-            <h2 class="section-title">My <span class="neon-text">Experience</span></h2>
+            <h2 class="section-title"><span class="neon-text">Experience</span></h2>
             <div class="experience-grid" id="experience-list">
                 <!-- Experience cards injected via JS -->
             </div>
@@ -121,13 +122,13 @@
 
         <!-- Extracurricular (e.g. sports) -->
         <section id="extracurricular" class="section">
-            <h2 class="section-title">My <span class="neon-text">Extracurricular</span></h2>
+            <h2 class="section-title"><span class="neon-text">Extracurricular</span></h2>
             <div id="extracurricular-root" class="extracurricular-section-root" aria-live="polite"></div>
         </section>
 
         <!-- Certifications -->
         <section id="certifications" class="section">
-            <h2 class="section-title">My <span class="neon-text">Certifications</span></h2>
+            <h2 class="section-title"><span class="neon-text">Certifications</span></h2>
             <div class="certifications-card glass-panel">
                 <ul id="cert-list" class="cert-list">
                     <!-- Certs injected via JS -->
@@ -143,7 +144,7 @@
 
         <!-- Footer -->
         <footer id="contact">
-            <h2 class="neon-text">Let's Connect</h2>
+            <h2 class="neon-text">Contact</h2>
             <div class="contact-bubbles" id="social-links" aria-label="Contact methods">
                 <!-- Contact bubbles injected via JS -->
             </div>
@@ -183,6 +184,7 @@
             </div>
         </div>
     </div>
+    <button type="button" class="back-to-top" id="back-to-top" aria-label="Scroll back to top">Top</button>
 
     <script src="app.js?v=33"></script>
 </body>

@@ -284,6 +284,11 @@ html[data-theme="light"] .theme-btn[aria-pressed="true"] {
   cursor: pointer;
   z-index: 2000;
 }
+.menu-btn:focus-visible {
+  outline: 2px solid var(--neon-accent);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
 .menu-btn__burger {
   width: 25px;
   height: 3px;
@@ -380,8 +385,28 @@ html[data-theme="light"] .theme-btn[aria-pressed="true"] {
   font-size: 1.1rem;
   margin: 1.5rem 0 2.5rem;
 }
+.hero-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: -0.75rem 0 1.7rem;
+}
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--skill-tag-border);
+  background: var(--skill-tag-bg);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
 .hero-actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
 }
@@ -915,6 +940,13 @@ html[data-theme="light"] .project-category-tab:hover {
   content: '→';
   margin-left: 5px;
 }
+.project-card {
+  display: flex;
+  flex-direction: column;
+}
+.project-card a {
+  margin-top: auto;
+}
 
 /* Footer */
 footer {
@@ -1104,9 +1136,56 @@ html[data-theme="light"] .contact-form-status.error {
   color: #b91c1c;
 }
 
+.back-to-top {
+  position: fixed;
+  right: 1.1rem;
+  bottom: 1.1rem;
+  z-index: 1800;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  color: var(--text-primary);
+  border-radius: 999px;
+  min-width: 3rem;
+  min-height: 3rem;
+  padding: 0 0.95rem;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  border-color: var(--neon-accent);
+}
+
+.back-to-top:focus-visible {
+  outline: 2px solid var(--neon-accent);
+  outline-offset: 3px;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .hero-content h1 { font-size: 3rem; }
+  .hero-actions .btn {
+    width: 100%;
+    max-width: 18rem;
+  }
+  .hero-content p {
+    margin-bottom: 1.8rem;
+  }
 }
 
 /* Glitch Effect */

@@ -1,10 +1,10 @@
-# Portfolio — Dinuja Thishean
+# Portfolio - Dinuja Thishean
 
-Personal portfolio site: skills, education, experience, extracurricular achievements, certifications, and projects.
+Professional personal portfolio focused on cyber security, education, leadership experience, certifications, and technical projects.
 
 ## About
 
-A passionate Cyber Security undergraduate at SLIIT with hands-on experience in networking, vulnerability assessment, and web application development. I enjoy solving real-world problems through projects and aim to grow as a skilled security professional.
+This portfolio presents my profile as a Cyber Security undergraduate at SLIIT, including practical project work, technical skills, academic background, extracurricular leadership, and verified certifications.
 
 ## Live site
 
@@ -17,6 +17,14 @@ Import this repo in [Vercel](https://vercel.com) — see **`VERCEL-DEPLOY.txt`**
 See **`SETUP-GITHUB-PAGES.txt`**. Use **Deploy from a branch** → **`main`** → **`/`** (root) — not **GitHub Actions**.
 
 **https://dinujathishean.github.io/Portfolio/** (after Pages is enabled as above.)
+
+## Features
+
+- Responsive modern UI with dark/light theme
+- Data-driven sections powered by `data.json`
+- Project filtering and screenshot gallery modal
+- Contact panel with email, phone, and social links
+- CV view/download support with static hosting compatibility
 
 ## Tech stack
 
