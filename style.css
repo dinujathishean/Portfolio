@@ -928,7 +928,8 @@ html[data-theme="light"] .skills-tab-btn:hover {
 .extracurricular-card {
   max-width: 100%;
   padding: 1.2rem 1.2rem 1rem;
-  background: rgba(26, 26, 36, 0.45);
+  background: rgba(26, 26, 36, 0.34);
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 .section-extracurricular {
@@ -963,8 +964,8 @@ html[data-theme="light"] .skills-tab-btn:hover {
   left: 0;
   width: 4px;
   height: 100%;
-  background: linear-gradient(180deg, var(--neon-accent), transparent);
-  opacity: 0.4;
+  background: linear-gradient(180deg, rgba(148, 163, 184, 0.45), transparent);
+  opacity: 0.2;
 }
 
 .achievement-header {
@@ -977,11 +978,11 @@ html[data-theme="light"] .skills-tab-btn:hover {
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--neon-accent);
+  color: var(--text-secondary);
   padding: 0.2rem 0.55rem;
   border-radius: 6px;
-  border: 1px solid var(--skill-tag-border);
-  background: var(--skill-tag-bg);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
   margin-bottom: 0.75rem;
 }
 
@@ -1008,8 +1009,8 @@ html[data-theme="light"] .skills-tab-btn:hover {
   align-items: baseline;
   padding: 0.45rem 0.6rem;
   border-radius: 10px;
-  background: rgba(0, 255, 204, 0.05);
-  border: 1px solid var(--skill-tag-border);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.09);
   font-size: 0.84rem;
   line-height: 1.45;
   color: var(--text-primary);
@@ -1018,7 +1019,7 @@ html[data-theme="light"] .skills-tab-btn:hover {
 
 .achievement-when {
   font-weight: 600;
-  color: var(--neon-accent);
+  color: var(--text-secondary);
   font-variant-numeric: tabular-nums;
 }
 
@@ -1030,14 +1031,23 @@ html[data-theme="light"] .skills-tab-btn:hover {
 .extracurricular-card:hover {
   transform: none;
   box-shadow: none;
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 html[data-theme="light"] .extracurricular-card {
-  background: rgba(255, 255, 255, 0.62);
+  background: rgba(255, 255, 255, 0.68);
+  border-color: rgba(15, 23, 42, 0.1);
 }
 
 html[data-theme="light"] .achievement-item {
-  background: rgba(0, 122, 99, 0.05);
+  background: rgba(15, 23, 42, 0.03);
+  border-color: rgba(15, 23, 42, 0.12);
+}
+
+html[data-theme="light"] .achievement-badge {
+  color: var(--text-secondary);
+  border-color: rgba(15, 23, 42, 0.14);
+  background: rgba(15, 23, 42, 0.03);
 }
 
 @media (max-width: 520px) {
