@@ -760,7 +760,7 @@ function initSlidePanels() {
     };
     const orderedPanelIds = panels.map((panel) => panel.id).filter(Boolean);
     let activePanelId = null;
-    const PANEL_TRANSITION_MS = 780;
+    const PANEL_TRANSITION_MS = 1450;
 
     function setActiveNav(panelId) {
         document.querySelectorAll(NAV_SELECTOR).forEach((a) => {

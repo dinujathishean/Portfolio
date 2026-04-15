@@ -562,13 +562,13 @@ html[data-theme="light"] .theme-btn[aria-pressed="true"] {
   background: var(--bg-color);
   border-left: none;
   z-index: 1750;
-  transform: translateX(112%) scale(0.982);
+  transform: translateX(116%) scale(0.978);
   transform-origin: center;
   opacity: 0;
   pointer-events: none;
   transition:
-    transform 0.78s cubic-bezier(0.25, 0.1, 0.25, 1),
-    opacity 0.72s cubic-bezier(0.25, 0.1, 0.25, 1);
+    transform 1.45s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 1.25s cubic-bezier(0.22, 1, 0.36, 1) 0.06s;
   box-shadow: 0 20px 48px rgba(0, 0, 0, 0.34);
   will-change: transform;
 }
@@ -580,21 +580,21 @@ html[data-theme="light"] .theme-btn[aria-pressed="true"] {
 }
 
 .content-panel.enter-from-left {
-  transform: translateX(-52%) scale(0.982);
+  transform: translateX(-58%) scale(0.978);
 }
 
 .content-panel.enter-from-right {
-  transform: translateX(112%) scale(0.982);
+  transform: translateX(116%) scale(0.978);
 }
 
 .content-panel.is-leaving-left {
-  transform: translateX(-22%) scale(0.978);
+  transform: translateX(-26%) scale(0.972);
   opacity: 0;
   pointer-events: none;
 }
 
 .content-panel.is-leaving-right {
-  transform: translateX(22%) scale(0.978);
+  transform: translateX(26%) scale(0.972);
   opacity: 0;
   pointer-events: none;
 }
