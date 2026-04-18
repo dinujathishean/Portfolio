@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="SOC dashboard placeholder  incidents &amp; IPs">
+  <defs>
+    <linearGradient id="bg4" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#172033"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg4)"/>
+  <text x="48" y="58" fill="#e2e8f0" font-family="system-ui,sans-serif" font-size="22" font-weight="700">Incidents · suspicious IPs</text>
+  <rect x="48" y="88" width="520" height="520" rx="16" fill="rgba(15,23,42,0.8)" stroke="rgba(148,163,184,0.2)"/>
+  <text x="72" y="130" fill="#94a3b8" font-family="monospace" font-size="13">192.0.2.10 · failed logins · brute-force pattern</text>
+  <text x="72" y="168" fill="#94a3b8" font-family="monospace" font-size="13">198.51.100.2 · geo anomaly · review</text>
+  <rect x="600" y="88" width="552" height="240" rx="16" fill="rgba(34,211,238,0.06)" stroke="rgba(34,211,238,0.22)"/>
+  <text x="624" y="140" fill="#cbd5e1" font-family="system-ui,sans-serif" font-size="15" font-weight="600">Incident workflow</text>
+  <rect x="600" y="352" width="552" height="256" rx="16" fill="rgba(99,102,241,0.08)" stroke="rgba(99,102,241,0.22)"/>
+  <text x="72" y="640" fill="#64748b" font-family="system-ui,sans-serif" font-size="14">Placeholder  replace with real screenshot (incidents)</text>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="SOC dashboard placeholder  charts">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0c1220"/>
+      <stop offset="100%" style="stop-color:#1a1428"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg3)"/>
+  <text x="48" y="64" fill="#a5b4fc" font-family="system-ui,sans-serif" font-size="22" font-weight="700">Threat trends · charts</text>
+  <polyline points="80,420 200,320 360,380 520,240 700,300 880,200 1040,260" fill="none" stroke="#22d3ee" stroke-width="3" opacity="0.85"/>
+  <rect x="48" y="480" width="200" height="140" rx="12" fill="rgba(99,102,241,0.15)" stroke="rgba(99,102,241,0.35)"/>
+  <rect x="280" y="480" width="200" height="140" rx="12" fill="rgba(34,211,238,0.12)" stroke="rgba(34,211,238,0.3)"/>
+  <rect x="512" y="480" width="200" height="140" rx="12" fill="rgba(52,211,153,0.1)" stroke="rgba(52,211,153,0.28)"/>
+  <text x="72" y="640" fill="#64748b" font-family="system-ui,sans-serif" font-size="14">Placeholder  replace with real screenshot (Recharts)</text>
+</svg>

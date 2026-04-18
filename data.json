@@ -108,6 +108,50 @@
   ],
   "projects": [
     {
+      "featured": true,
+      "title": "SOC Dashboard — Security Operations Center",
+      "category": "security",
+      "description": "A full-stack SOC-style dashboard that simulates how analysts monitor alerts, triage incidents, review suspicious IPs, and read trends from live-style metrics and charts—built to mirror real security operations workflows.",
+      "role": "Full-stack developer · Cyber security & web application focus",
+      "tech": [
+        "React",
+        "Vite",
+        "Tailwind CSS",
+        "Node.js",
+        "Express",
+        "Prisma",
+        "SQLite / PostgreSQL",
+        "Recharts"
+      ],
+      "outcomes": [
+        "Delivers an end-to-end analyst-style workflow from alert noise to incident context—not just static pages",
+        "Surfaces severity, brute-force patterns, and IP context in a layout recruiters and hiring managers recognize from real SOCs",
+        "Demonstrates comfort with modern front-end dashboards plus API and data-layer design for security use cases"
+      ],
+      "github": "https://github.com/dinujathishean/SOC-Dashboard",
+      "screenshots": [
+        "assets/soc-dashboard-1.svg",
+        "assets/soc-dashboard-2.svg",
+        "assets/soc-dashboard-3.svg",
+        "assets/soc-dashboard-4.svg"
+      ],
+      "modalDetails": {
+        "problem": "Security operations teams need a single place to see what is noisy versus what is urgent—alerts, user activity, suspicious endpoints, and trends—without drowning in raw logs.",
+        "whatItDoes": "This project is a Security Operations Center–inspired dashboard: it organizes alerts by severity, tracks incidents through a practical workflow, highlights suspicious IP behaviour, surfaces failed-login and brute-force style patterns, and visualizes attack trends and severity mix with charts—similar to what you would explain in an internship or junior SOC interview.",
+        "keyFeatures": [
+          "Security alerts with severity levels and quick triage cues",
+          "Incident management flow from open to contained (workflow-oriented UI)",
+          "Suspicious IP tracking and context for review",
+          "Failed login / brute-force style detection narrative tied to activity feeds",
+          "Live-style activity feed plus KPI-style metric cards",
+          "Cyber security themed UI tuned for dark environments and long sessions",
+          "Charts for attack trends and severity distribution (Recharts or equivalent)"
+        ],
+        "techSummary": "Front end: React with Vite and Tailwind CSS for a fast, component-driven UI. Back end: Node.js and Express with Prisma for structured data access. Database: SQLite or PostgreSQL depending on deployment. Visualization: Recharts (or a similar chart library) for trend and severity views.",
+        "impact": "It shows you can translate SOC concepts into software: monitoring, triage, and communication—not only coursework, but something you can walk through with recruiters or technical interviewers in cyber security and IT security roles."
+      }
+    },
+    {
       "title": "Portfolio Website",
       "category": "web",
       "description": "A modern, responsive portfolio with polished UI, dark/light theme support, and structured project storytelling for recruiter visibility.",

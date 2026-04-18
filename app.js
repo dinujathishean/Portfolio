@@ -17,6 +17,38 @@ function escapeHtml(value) {
         .replace(/"/g, '&quot;');
 }
 
+function buildModalDetailsHtml(details) {
+    if (!details || typeof details !== 'object') return '';
+    const blocks = [];
+    if (details.problem) {
+        blocks.push(
+            `<div class="modal-detail-block"><h3>Problem</h3><p>${escapeHtml(details.problem)}</p></div>`
+        );
+    }
+    if (details.whatItDoes) {
+        blocks.push(
+            `<div class="modal-detail-block"><h3>What it does</h3><p>${escapeHtml(details.whatItDoes)}</p></div>`
+        );
+    }
+    if (Array.isArray(details.keyFeatures) && details.keyFeatures.length) {
+        const lis = details.keyFeatures.map((t) => `<li>${escapeHtml(t)}</li>`).join('');
+        blocks.push(
+            `<div class="modal-detail-block"><h3>Key capabilities</h3><ul class="modal-detail-list">${lis}</ul></div>`
+        );
+    }
+    if (details.techSummary) {
+        blocks.push(
+            `<div class="modal-detail-block"><h3>Technologies</h3><p>${escapeHtml(details.techSummary)}</p></div>`
+        );
+    }
+    if (details.impact) {
+        blocks.push(
+            `<div class="modal-detail-block"><h3>Why it matters</h3><p>${escapeHtml(details.impact)}</p></div>`
+        );
+    }
+    return blocks.join('');
+}
+
 function safeExternalHref(url) {
     const u = (url || '').trim();
     if (!u || u === '#') return '#';
@@ -649,14 +681,18 @@ function populateProjects(projects, projectCategoryConfig) {
 
     projects.forEach((project, index) => {
         const card = document.createElement('div');
-        card.className = 'project-card glass-panel';
+        card.className =
+            'project-card glass-panel' + (project.featured ? ' project-card--featured' : '');
         const cat = normalizeProjectCategory(project.category);
         card.dataset.projectCategory = cat;
 
-        const href = safeExternalHref(project.link);
-        if (project.screenshots && project.screenshots.length > 0) {
+        const hasScreens = project.screenshots && project.screenshots.length > 0;
+        if (hasScreens) {
             card.style.cursor = 'pointer';
-            card.onclick = () => window.openModal(index);
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('a')) return;
+                window.openModal(index);
+            });
         }
 
         const catLabel = escapeHtml(categoryLabel(cat, tabsDef));
@@ -670,7 +706,11 @@ function populateProjects(projects, projectCategoryConfig) {
                   .map((outcome) => `<li>${escapeHtml(outcome)}</li>`)
                   .join('')}</ul>`
             : '';
+        const badge = project.featured
+            ? '<p class="project-card-badge"><span>Featured</span></p>'
+            : '';
         card.innerHTML = `
+            ${badge}
             <p class="project-card-category">${catLabel}</p>
             <h3>${escapeHtml(project.title)}</h3>
             <p class="project-card-role">${escapeHtml(project.role || '')}</p>
@@ -678,15 +718,49 @@ function populateProjects(projects, projectCategoryConfig) {
             ${techList}
             ${outcomes}
         `;
-        const repoLink = document.createElement('a');
-        repoLink.href = href;
-        repoLink.textContent = href === '#' ? 'Project Details' : 'View Repository';
-        repoLink.addEventListener('click', (e) => e.stopPropagation());
-        if (href.startsWith('http')) {
-            repoLink.target = '_blank';
-            repoLink.rel = 'noopener noreferrer';
+
+        const actionsWrap = document.createElement('div');
+        actionsWrap.className = 'project-card-actions';
+
+        function appendProjectLink(href, label, variant) {
+            const a = document.createElement('a');
+            const safe = safeExternalHref(href);
+            a.href = safe;
+            a.className =
+                (variant === 'primary' ? 'btn primary-btn' : 'btn secondary-btn') +
+                ' project-card-action';
+            a.textContent = label;
+            a.addEventListener('click', (e) => e.stopPropagation());
+            if (safe.startsWith('http')) {
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+            }
+            if (safe === '#') {
+                a.setAttribute(
+                    'title',
+                    'Placeholder — set github or demo URL in data.json for this project'
+                );
+                a.classList.add('project-card-action--placeholder');
+            }
+            actionsWrap.appendChild(a);
         }
-        card.appendChild(repoLink);
+
+        const hasGithubKey = Object.prototype.hasOwnProperty.call(project, 'github');
+        const hasDemoKey = Object.prototype.hasOwnProperty.call(project, 'demo');
+
+        if (hasGithubKey || hasDemoKey) {
+            if (hasGithubKey) appendProjectLink(project.github, 'GitHub', 'secondary');
+            if (hasDemoKey) appendProjectLink(project.demo, 'Live demo', 'primary');
+        } else {
+            const href = safeExternalHref(project.link);
+            appendProjectLink(
+                project.link,
+                href === '#' ? 'Project details' : 'View repository',
+                href === '#' ? 'secondary' : 'primary'
+            );
+        }
+
+        card.appendChild(actionsWrap);
         innerGrid.appendChild(card);
     });
 
@@ -783,10 +857,22 @@ window.openModal = function (projectIndex) {
     const modalTitle = document.getElementById('modal-title');
     const gallery = document.getElementById('modal-gallery');
     const modal = document.getElementById('project-modal');
+    const bodyEl = document.getElementById('modal-project-body');
     if (!modalTitle || !gallery || !modal) return;
 
     modalTitle.textContent = project.title || 'Project';
     gallery.innerHTML = '';
+
+    const detailsHtml = buildModalDetailsHtml(project.modalDetails);
+    if (bodyEl) {
+        if (detailsHtml) {
+            bodyEl.innerHTML = detailsHtml;
+            bodyEl.hidden = false;
+        } else {
+            bodyEl.innerHTML = '';
+            bodyEl.hidden = true;
+        }
+    }
 
     project.screenshots.forEach((src) => {
         const img = document.createElement('img');
