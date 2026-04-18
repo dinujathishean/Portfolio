@@ -108,7 +108,6 @@
   ],
   "projects": [
     {
-      "featured": true,
       "title": "SOC Dashboard — Security Operations Center",
       "category": "security",
       "description": "A full-stack SOC-style dashboard that simulates how analysts monitor alerts, triage incidents, review suspicious IPs, and read trends from live-style metrics and charts—built to mirror real security operations workflows.",
