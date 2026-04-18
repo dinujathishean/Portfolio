@@ -154,48 +154,97 @@
     {
       "title": "Portfolio Website",
       "category": "web",
-      "description": "A modern, responsive portfolio with polished UI, dark/light theme support, and structured project storytelling for recruiter visibility.",
-      "role": "Frontend Developer",
-      "tech": ["HTML5", "CSS3", "JavaScript", "Vercel"],
+      "description": "A recruiter-ready static portfolio with a polished dark/light UI, JSON-driven content, project storytelling, and smooth navigation—built to load fast and stay easy to update.",
+      "role": "Owner & developer · HTML, CSS, JavaScript, static hosting",
+      "tech": ["HTML5", "CSS3", "JavaScript", "JSON", "Vercel"],
       "outcomes": [
-        "Designed a professional recruiter-friendly personal brand website",
-        "Implemented responsive layout and accessible navigation patterns",
-        "Deployed as a static site for fast loading and low maintenance"
+        "Shipped a single-page experience with structured sections for skills, education, projects, and contact",
+        "Shipped theme persistence and responsive layout patterns that work from mobile to desktop",
+        "Deployed as a static site so updates are simple: edit data, push, and the site reflects the change"
       ],
-      "link": "https://github.com/dinujathishean/Portfolio"
+      "github": "https://github.com/dinujathishean/Portfolio",
+      "demo": "https://dinuja-portfolio.vercel.app",
+      "screenshots": [
+        "assets/portfolio-site-1.svg",
+        "assets/portfolio-site-2.svg"
+      ],
+      "modalDetails": {
+        "problem": "Recruiters skim quickly—you need a clear story, strong projects, and contact paths without a heavy framework or slow load times.",
+        "whatItDoes": "This site is a static portfolio: it presents your profile, skills, certifications, experience, and projects in one scrollable flow. Content is driven from JSON so you can update copy and links without rebuilding a whole app, and the UI supports light and dark themes for long reading sessions.",
+        "keyFeatures": [
+          "Single-page layout with anchor navigation and scroll-friendly sections",
+          "JSON-driven project and profile content for quick edits",
+          "Project filters, screenshot galleries in a modal, and CV download support",
+          "Dark/light theme with persisted preference",
+          "Responsive layout tuned for phones, tablets, and desktops",
+          "Deployed as static files for speed and straightforward hosting"
+        ],
+        "techSummary": "Plain HTML, CSS, and JavaScript—no build step required for visitors. Content loads from data.json; styling uses CSS variables for theming. Hosted on Vercel (or similar) as a static deployment.",
+        "impact": "It is the storefront for your work: internships and hiring managers see your projects, stack, and contact details in one place—professional, fast, and easy to keep current."
+      }
     },
     {
       "title": "Automated Vulnerability Scanner",
       "category": "security",
-      "description": "A Python and Flask-based scanner to identify common web vulnerabilities through automated test workflows.",
-      "role": "Security Project Developer",
-      "tech": ["Python", "Flask", "Security Testing"],
+      "description": "A Flask-powered security tool that automates common web vulnerability checks and presents results in a way that supports triage—built to practice offensive-style testing workflows responsibly.",
+      "role": "Security project developer · Python & Flask",
+      "tech": ["Python", "Flask", "HTTP security testing", "HTML reporting"],
       "outcomes": [
-        "Automated repetitive web vulnerability checks for faster assessment",
-        "Improved readability of scan output for clearer issue triaging",
-        "Documented practical security workflows with project screenshots"
+        "Reduced repetitive manual checks by encoding repeatable tests in a small web workflow",
+        "Improved scan readability so findings are easier to prioritize and discuss",
+        "Captured practical security workflows with screenshots for portfolio and review"
       ],
-      "link": "https://github.com/dinujathishean/Automated-Vulnerability-Scanner",
+      "github": "https://github.com/dinujathishean/Automated-Vulnerability-Scanner",
+      "demo": "#",
       "screenshots": [
         "assets/avs-1.png",
         "assets/avs-2.png",
         "assets/avs-3.png",
         "assets/avs-4.png",
         "assets/avs-5.png"
-      ]
+      ],
+      "modalDetails": {
+        "problem": "Manual probing is slow and inconsistent when you are learning web security—you need a structured way to run baseline checks and compare results over time.",
+        "whatItDoes": "This project wraps common vulnerability testing ideas in a Flask application: you trigger scans through a web-style workflow and review output that is organized for triage. It is a learning and demonstration tool for responsible security practice—not a replacement for enterprise scanning.",
+        "keyFeatures": [
+          "Automated test flows for common web weakness patterns",
+          "Web-oriented interface for running scans and reading output",
+          "Output formatted to support quick review and follow-up",
+          "Screenshot-friendly views for documentation and portfolio use"
+        ],
+        "techSummary": "Python with Flask for routing and server-side logic, plus HTML-oriented reporting surfaces. The focus is on clarity of workflow and results rather than a large distributed architecture.",
+        "impact": "Shows you can connect security concepts to working code: how tests are triggered, how results are presented, and how a reviewer would actually use the tool—valuable signal for security-minded internships and junior roles."
+      }
     },
     {
       "title": "Hotel Reservation System",
       "category": "web",
-      "description": "A web-based hotel booking and management platform with structured reservation flows and backend service integration.",
-      "role": "Full Stack Developer (Academic Project)",
+      "description": "A full-stack academic hotel booking platform with Spring Boot services, REST-style APIs, and MySQL persistence—focused on clean reservation flows and maintainable Java structure.",
+      "role": "Full-stack developer · academic team / individual project",
       "tech": ["Spring Boot", "Java", "REST APIs", "MySQL"],
       "outcomes": [
-        "Built reservation and room management workflows end-to-end",
-        "Integrated backend modules for practical CRUD operations",
-        "Strengthened understanding of scalable Java web application design"
+        "Implemented reservation and room management flows across UI and service layers",
+        "Practiced layered Spring Boot design with practical CRUD operations",
+        "Strengthened database modeling and API thinking for real-world booking scenarios"
       ],
-      "link": "#"
+      "github": "#",
+      "demo": "#",
+      "screenshots": [
+        "assets/hotel-1.svg",
+        "assets/hotel-2.svg"
+      ],
+      "modalDetails": {
+        "problem": "Booking systems need consistent rules: room availability, guest data, and updates must stay in sync across the UI and database—academic projects often oversimplify that story.",
+        "whatItDoes": "This project models a hotel reservation domain with Spring Boot on the server side and MySQL for persistence. The focus is on structured REST interactions, sensible layering, and CRUD paths that mirror how a small property might manage rooms and reservations.",
+        "keyFeatures": [
+          "Reservation and room management workflows",
+          "REST API surface for core operations",
+          "MySQL-backed persistence and practical schema thinking",
+          "Java/Spring Boot structure suitable for extension and testing"
+        ],
+        "techSummary": "Java with Spring Boot for application services, REST endpoints for client interaction, and MySQL as the relational store. The stack reflects common enterprise-style web service patterns.",
+        "impact": "Demonstrates backend fundamentals that transfer beyond hospitality: transactional thinking, API design, and data modeling—useful when interviewers ask for examples beyond front-end work."
+      }
     }
   ],
   "certifications": [

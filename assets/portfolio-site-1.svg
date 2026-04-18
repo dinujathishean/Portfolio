@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="Portfolio placeholder  hero">
+  <defs>
+    <linearGradient id="pg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0f18"/>
+      <stop offset="100%" style="stop-color:#121c2e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#pg1)"/>
+  <rect x="48" y="40" width="1104" height="56" rx="10" fill="rgba(123,212,255,0.08)" stroke="rgba(148,163,184,0.2)"/>
+  <text x="72" y="76" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="16" font-weight="600">Portfolio · navigation · theme</text>
+  <text x="80" y="220" fill="#f1f5f9" font-family="system-ui,sans-serif" font-size="36" font-weight="800">Your name · headline</text>
+  <text x="80" y="280" fill="#64748b" font-family="system-ui,sans-serif" font-size="18">Placeholder  replace with real screenshot</text>
+  <rect x="80" y="340" width="200" height="48" rx="999" fill="rgba(34,211,238,0.2)" stroke="rgba(34,211,238,0.45)"/>
+</svg>
