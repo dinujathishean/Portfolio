@@ -163,7 +163,6 @@
         "Deployed as a static site so updates are simple: edit data, push, and the site reflects the change"
       ],
       "github": "https://github.com/dinujathishean/Portfolio",
-      "demo": "https://dinuja-portfolio.vercel.app",
       "screenshots": [
         "assets/portfolio-site-1.svg",
         "assets/portfolio-site-2.svg"
@@ -195,7 +194,6 @@
         "Captured practical security workflows with screenshots for portfolio and review"
       ],
       "github": "https://github.com/dinujathishean/Automated-Vulnerability-Scanner",
-      "demo": "#",
       "screenshots": [
         "assets/avs-1.png",
         "assets/avs-2.png",
@@ -228,7 +226,6 @@
         "Strengthened database modeling and API thinking for real-world booking scenarios"
       ],
       "github": "#",
-      "demo": "#",
       "screenshots": [
         "assets/hotel-1.svg",
         "assets/hotel-2.svg"

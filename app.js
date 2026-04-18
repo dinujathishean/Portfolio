@@ -738,7 +738,7 @@ function populateProjects(projects, projectCategoryConfig) {
             if (safe === '#') {
                 a.setAttribute(
                     'title',
-                    'Placeholder — set github or demo URL in data.json for this project'
+                    'Placeholder — set the GitHub URL in data.json for this project'
                 );
                 a.classList.add('project-card-action--placeholder');
             }
@@ -746,11 +746,9 @@ function populateProjects(projects, projectCategoryConfig) {
         }
 
         const hasGithubKey = Object.prototype.hasOwnProperty.call(project, 'github');
-        const hasDemoKey = Object.prototype.hasOwnProperty.call(project, 'demo');
 
-        if (hasGithubKey || hasDemoKey) {
-            if (hasGithubKey) appendProjectLink(project.github, 'GitHub', 'secondary');
-            if (hasDemoKey) appendProjectLink(project.demo, 'Live demo', 'primary');
+        if (hasGithubKey) {
+            appendProjectLink(project.github, 'GitHub', 'secondary');
         } else {
             const href = safeExternalHref(project.link);
             appendProjectLink(
