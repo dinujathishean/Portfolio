@@ -39,7 +39,7 @@
         }
       })();
     </script>
-    <link rel="stylesheet" href="style.css?v=39">
+    <link rel="stylesheet" href="style.css?v=40">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -97,9 +97,9 @@
         <section class="section home-overview reveal-up" aria-label="Quick portfolio overview">
             <div class="home-overview-card glass-panel">
                 <p class="home-overview-kicker">Quick Overview</p>
-                <h2 class="home-overview-title">Focused homepage, detailed side panels.</h2>
+                <h2 class="home-overview-title">One page, full story.</h2>
                 <p class="home-overview-text">
-                    Explore key areas from a clean first screen, then open full details in smooth side-slide panels for About, Skills, Projects, and Contact.
+                    Scroll through everything in order—about, skills, education, experience, projects, and contact—without leaving the page.
                 </p>
                 <div class="home-overview-actions">
                     <a href="#about" class="btn primary-btn">About</a>
@@ -107,7 +107,7 @@
             </div>
         </section>
 
-        <section id="about" class="section content-panel" aria-hidden="true">
+        <section id="about" class="section">
             <h2 class="section-title">About <span class="neon-text">Me</span></h2>
             <div class="about-grid">
                 <article class="about-card glass-panel">
@@ -120,7 +120,7 @@
         </section>
 
         <!-- Skills (full width, above My Educational) -->
-        <section id="skills" class="section section-skills content-panel" aria-hidden="true">
+        <section id="skills" class="section section-skills">
             <h2 class="section-title">My <span class="neon-text">Skills</span></h2>
             <div class="skills-section-inner glass-panel">
                 <div class="skills-tabs" role="tablist" aria-label="Skills category">
@@ -145,7 +145,7 @@
         </section>
 
         <!-- Education (qualifications) -->
-        <section id="educational" class="section content-panel" aria-hidden="true">
+        <section id="educational" class="section">
             <h2 class="section-title"><span class="neon-text">Education</span></h2>
             <div class="timeline" id="education-timeline">
                 <!-- Injected via JS -->
@@ -153,7 +153,7 @@
         </section>
 
         <!-- Experience Section -->
-        <section id="experience" class="section content-panel" aria-hidden="true">
+        <section id="experience" class="section">
             <h2 class="section-title"><span class="neon-text">Experience</span></h2>
             <div class="experience-grid" id="experience-list">
                 <!-- Experience cards injected via JS -->
@@ -161,7 +161,7 @@
         </section>
 
         <!-- Certifications -->
-        <section id="certifications" class="section content-panel" aria-hidden="true">
+        <section id="certifications" class="section">
             <h2 class="section-title"><span class="neon-text">Certifications</span></h2>
             <div class="certifications-card glass-panel">
                 <ul id="cert-list" class="cert-list">
@@ -171,19 +171,19 @@
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="section content-panel" aria-hidden="true">
+        <section id="projects" class="section">
             <h2 class="section-title">Featured <span class="neon-text">Projects</span></h2>
             <div id="projects-grid" class="projects-section-root"></div>
         </section>
 
         <!-- Extracurricular (supporting section) -->
-        <section id="extracurricular" class="section section-extracurricular content-panel" aria-hidden="true">
+        <section id="extracurricular" class="section section-extracurricular">
             <h2 class="section-title section-title-minor">Extracurricular Activities</h2>
             <div id="extracurricular-root" class="extracurricular-section-root" aria-live="polite"></div>
         </section>
 
         <!-- Footer -->
-        <footer id="contact" class="content-panel" aria-hidden="true">
+        <footer id="contact">
             <h2 class="neon-text">Contact</h2>
             <div class="contact-bubbles" id="social-links" aria-label="Contact methods">
                 <!-- Contact bubbles injected via JS -->
@@ -219,7 +219,6 @@
             <p class="copyright-line">&copy; <span id="current-year"></span> Dinuja Thishean. All rights reserved.</p>
         </footer>
     </div>
-    <div id="panel-overlay" class="panel-overlay" hidden></div>
     
     <!-- Modal for Project Screenshots -->
     <div id="project-modal" class="modal">
@@ -233,6 +232,6 @@
     </div>
     <button type="button" class="back-to-top" id="back-to-top" aria-label="Scroll back to top">Top</button>
 
-    <script src="app.js?v=42"></script>
+    <script src="app.js?v=43"></script>
 </body>
 </html>

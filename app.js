@@ -183,8 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initBackToTop();
     initNavbarScrollState();
-
-    initSlidePanels();
+    initNavScrollSpy();
 });
 
 function populateHero(bio, cvLink, cvDownloadFilename) {
@@ -722,7 +721,7 @@ function initNavbarScrollState() {
 
 function initRevealOnScroll() {
     const targets = document.querySelectorAll(
-        '.section:not(.content-panel), .hero-content, .project-card, .experience-card'
+        '.section, footer#contact, .hero-content, .project-card, .experience-card'
     );
     if (!targets.length || !('IntersectionObserver' in window)) return;
     const obs = new IntersectionObserver(
@@ -742,335 +741,39 @@ function initRevealOnScroll() {
     });
 }
 
-function initSlidePanels() {
-    const overlay = document.getElementById('panel-overlay');
-    const panelLinks = document.querySelectorAll('a[href^="#"]');
-    const panels = Array.from(document.querySelectorAll('.content-panel'));
-    if (!overlay || !panels.length) return;
-    const NAV_SELECTOR = '.nav-links a[href^="#"]';
-    const panelTitleMap = {
-        about: 'About',
-        skills: 'Skills',
-        educational: 'Education',
-        experience: 'Experience',
-        certifications: 'Certificates',
-        projects: 'Projects',
-        extracurricular: 'Extracurricular',
-        contact: 'Contact'
-    };
-    const PRIMARY_SLIDES = [
+function initNavScrollSpy() {
+    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+    const sectionIds = [
         'about',
         'skills',
-        'projects',
-        'certifications',
+        'educational',
         'experience',
+        'certifications',
+        'projects',
         'extracurricular',
         'contact'
     ];
-    const PRIMARY_NEXT_MAP = {
-        about: 'skills',
-        skills: 'projects',
-        projects: 'certifications',
-        certifications: 'experience',
-        experience: 'extracurricular',
-        extracurricular: 'contact',
-        contact: null
-    };
-    const orderedPanelIds = panels.map((panel) => panel.id).filter(Boolean);
-    let activePanelId = null;
-    const PANEL_TRANSITION_MS = 880;
-    let isTransitioning = false;
+    const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean);
+    if (!sections.length || !navLinks.length) return;
 
-    function setActiveNav(panelId) {
-        document.querySelectorAll(NAV_SELECTOR).forEach((a) => {
-            const active = panelId && a.getAttribute('href') === '#' + panelId;
-            a.classList.toggle('is-active', !!active);
+    function updateActiveLink() {
+        const nav = document.querySelector('.navbar');
+        const offset = nav ? nav.getBoundingClientRect().height + 28 : 120;
+        let currentId = '';
+        sections.forEach((el) => {
+            if (el.hidden) return;
+            const top = el.getBoundingClientRect().top;
+            if (top <= offset) currentId = el.id;
+        });
+        navLinks.forEach((a) => {
+            const href = a.getAttribute('href');
+            const match = currentId && href === '#' + currentId;
+            a.classList.toggle('is-active', !!match);
         });
     }
 
-    function closePanels(options = {}) {
-        if (isTransitioning) return;
-        const { returnHome = false } = options;
-        const activePanel = activePanelId ? document.getElementById(activePanelId) : null;
-        if (activePanel) {
-            activePanel.classList.add('is-leaving-right');
-        }
-        panels.forEach((panel) => {
-            panel.classList.remove('is-open');
-            panel.classList.remove('enter-from-left', 'enter-from-right');
-            panel.classList.remove('is-leaving-left', 'is-leaving-right');
-            panel.setAttribute('aria-hidden', 'true');
-            panel.style.transition = '';
-            panel.style.transform = '';
-        });
-        overlay.hidden = true;
-        document.body.classList.remove('panel-open');
-        setActiveNav(null);
-        activePanelId = null;
-        if (returnHome) {
-            const hero = document.getElementById('hero');
-            if (hero) {
-                hero.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            } else {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        }
-    }
-
-    function getAlternatingExitDirection(panelId) {
-        const index = PRIMARY_SLIDES.indexOf(panelId);
-        if (index < 0) return 'left';
-        return index % 2 === 0 ? 'left' : 'right';
-    }
-
-    function oppositeDirection(direction) {
-        return direction === 'left' ? 'right' : 'left';
-    }
-
-    function setPanelVisible(panel, visible) {
-        if (!panel) return;
-        panel.classList.toggle('is-open', !!visible);
-        panel.setAttribute('aria-hidden', visible ? 'false' : 'true');
-    }
-
-    function clearTransitionClasses(panel) {
-        if (!panel) return;
-        panel.classList.remove('enter-from-left', 'enter-from-right');
-        panel.classList.remove('is-leaving-left', 'is-leaving-right');
-    }
-
-    function getPanelNextRevealThreshold(panel) {
-        if (!panel) return 120;
-        // Adaptive threshold: scales with viewport height while staying bounded.
-        return Math.max(72, Math.min(220, Math.round(panel.clientHeight * 0.18)));
-    }
-
-    function isNearPanelBottom(panel) {
-        if (!panel) return false;
-        const remaining = panel.scrollHeight - (panel.scrollTop + panel.clientHeight);
-        return remaining <= getPanelNextRevealThreshold(panel);
-    }
-
-    function updatePanelNextVisibility(panel) {
-        if (!panel) return;
-        const nextWrap = panel.querySelector('.panel-next-wrap');
-        if (!nextWrap) return;
-        nextWrap.classList.toggle('is-visible', isNearPanelBottom(panel));
-    }
-
-    function bindPanelNextRevealOnScroll(panel) {
-        if (!panel || panel.dataset.nextRevealBound === 'true') return;
-        panel.dataset.nextRevealBound = 'true';
-        panel.addEventListener('scroll', () => updatePanelNextVisibility(panel), { passive: true });
-    }
-
-    function getDirection(fromId, toId) {
-        if (!fromId || !toId) return 'forward';
-        const fromIndex = orderedPanelIds.indexOf(fromId);
-        const toIndex = orderedPanelIds.indexOf(toId);
-        if (fromIndex < 0 || toIndex < 0) return 'forward';
-        return toIndex >= fromIndex ? 'forward' : 'backward';
-    }
-
-    function openPanelById(id) {
-        if (isTransitioning) return;
-        const target = document.getElementById(id);
-        if (!target || !target.classList.contains('content-panel')) return;
-        if (activePanelId === id) return;
-
-        const direction = getDirection(activePanelId, id);
-        const entryDirectionForGeneric = direction === 'backward' ? 'left' : 'right';
-        const currentPanel = activePanelId ? document.getElementById(activePanelId) : null;
-        let exitDirection = currentPanel ? getAlternatingExitDirection(activePanelId) : 'left';
-        let enterDirection = oppositeDirection(exitDirection);
-        if (
-            !PRIMARY_SLIDES.includes(activePanelId || '') ||
-            !PRIMARY_SLIDES.includes(id)
-        ) {
-            enterDirection = entryDirectionForGeneric;
-            exitDirection = enterDirection === 'left' ? 'right' : 'left';
-        }
-
-        overlay.hidden = false;
-        document.body.classList.add('panel-open');
-        isTransitioning = true;
-
-        const showTarget = () => {
-            panels.forEach((panel) => {
-                if (panel !== target) {
-                    clearTransitionClasses(panel);
-                    setPanelVisible(panel, false);
-                }
-            });
-            clearTransitionClasses(target);
-            setPanelVisible(target, true);
-            target.scrollTop = 0;
-            target.classList.add(enterDirection === 'left' ? 'enter-from-left' : 'enter-from-right');
-            requestAnimationFrame(() => {
-                setPanelVisible(target, true);
-                target.classList.remove('enter-from-left', 'enter-from-right');
-                updatePanelNextVisibility(target);
-                setTimeout(() => {
-                    clearTransitionClasses(target);
-                    isTransitioning = false;
-                }, PANEL_TRANSITION_MS + 40);
-            });
-            setActiveNav(id);
-            activePanelId = id;
-        };
-
-        if (currentPanel && currentPanel !== target) {
-            clearTransitionClasses(currentPanel);
-            currentPanel.classList.add(
-                exitDirection === 'left' ? 'is-leaving-left' : 'is-leaving-right'
-            );
-            setTimeout(() => {
-                clearTransitionClasses(currentPanel);
-                setPanelVisible(currentPanel, false);
-                showTarget();
-            }, PANEL_TRANSITION_MS + 20);
-            return;
-        }
-
-        showTarget();
-    }
-
-    function createPanelNextControls() {
-        panels.forEach((panel) => {
-            bindPanelNextRevealOnScroll(panel);
-            if (panel.querySelector('.panel-next-wrap')) return;
-            const nextId = PRIMARY_NEXT_MAP[panel.id];
-            const wrap = document.createElement('div');
-            wrap.className = 'panel-next-wrap';
-            const btn = document.createElement('button');
-            btn.type = 'button';
-            btn.className = 'btn primary-btn panel-next-btn';
-            if (typeof nextId === 'undefined') {
-                return;
-            }
-            if (nextId) {
-                const nextTitle = panelTitleMap[nextId] || 'Section';
-                btn.textContent = `View ${nextTitle}`;
-                btn.addEventListener('click', () => openPanelById(nextId));
-            } else {
-                btn.classList.remove('primary-btn');
-                btn.classList.add('secondary-btn');
-                btn.textContent = 'Back to Home';
-                btn.addEventListener('click', () => closePanels({ returnHome: true }));
-            }
-            wrap.appendChild(btn);
-            panel.appendChild(wrap);
-            requestAnimationFrame(() => updatePanelNextVisibility(panel));
-        });
-    }
-
-    panels.forEach((panel) => {
-        if (!panel.querySelector('.panel-topbar')) {
-            const panelId = panel.id || '';
-            const topbar = document.createElement('div');
-            topbar.className = 'panel-topbar';
-            const title = document.createElement('h3');
-            title.className = 'panel-topbar-title';
-            title.textContent = panelTitleMap[panelId] || 'Section';
-            topbar.appendChild(title);
-            panel.prepend(topbar);
-        }
-        const topbar = panel.querySelector('.panel-topbar');
-        if (!topbar) return;
-        if (!topbar.querySelector('.panel-topbar-right')) {
-            const right = document.createElement('div');
-            right.className = 'panel-topbar-right';
-            const progressIndex = PRIMARY_SLIDES.indexOf(panel.id);
-            if (progressIndex >= 0) {
-                const progress = document.createElement('span');
-                progress.className = 'panel-progress';
-                progress.textContent = `${progressIndex + 1}/${PRIMARY_SLIDES.length}`;
-                right.appendChild(progress);
-            }
-            topbar.appendChild(right);
-        }
-        if (topbar.querySelector('.panel-close-btn')) return;
-        const rightSlot = topbar.querySelector('.panel-topbar-right') || topbar;
-        const closeBtn = document.createElement('button');
-        closeBtn.type = 'button';
-        closeBtn.className = 'panel-close-btn';
-        closeBtn.setAttribute('aria-label', 'Close panel');
-        closeBtn.textContent = '×';
-        closeBtn.addEventListener('click', closePanels);
-        rightSlot.appendChild(closeBtn);
-    });
-    createPanelNextControls();
-
-    panelLinks.forEach((link) => {
-        link.addEventListener('click', (e) => {
-            const href = link.getAttribute('href');
-            if (!href || href === '#') return;
-            const id = href.slice(1);
-            const target = document.getElementById(id);
-            if (!target || !target.classList.contains('content-panel')) return;
-            e.preventDefault();
-            openPanelById(id);
-        });
-    });
-
-    overlay.addEventListener('click', closePanels);
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closePanels();
-    });
-    window.addEventListener('resize', () => {
-        const activePanel = activePanelId ? document.getElementById(activePanelId) : null;
-        updatePanelNextVisibility(activePanel);
-    });
-
-    // Mobile swipe-to-close for open panels.
-    panels.forEach((panel) => {
-        let startX = 0;
-        let startY = 0;
-        let dragging = false;
-        let deltaX = 0;
-        panel.addEventListener(
-            'touchstart',
-            (e) => {
-                if (!panel.classList.contains('is-open')) return;
-                const t = e.touches[0];
-                startX = t.clientX;
-                startY = t.clientY;
-                deltaX = 0;
-                dragging = false;
-            },
-            { passive: true }
-        );
-        panel.addEventListener(
-            'touchmove',
-            (e) => {
-                if (!panel.classList.contains('is-open')) return;
-                const t = e.touches[0];
-                const dx = t.clientX - startX;
-                const dy = t.clientY - startY;
-                if (!dragging) {
-                    if (Math.abs(dx) > 12 && Math.abs(dx) > Math.abs(dy) && dx > 0) {
-                        dragging = true;
-                    } else {
-                        return;
-                    }
-                }
-                deltaX = Math.max(0, dx);
-                panel.style.transition = 'none';
-                panel.style.transform = `translateX(${deltaX}px)`;
-            },
-            { passive: true }
-        );
-        panel.addEventListener('touchend', () => {
-            if (!panel.classList.contains('is-open') || !dragging) return;
-            panel.style.transition = '';
-            panel.style.transform = '';
-            if (deltaX > 90) {
-                closePanels();
-            }
-            dragging = false;
-            deltaX = 0;
-        });
-    });
+    window.addEventListener('scroll', updateActiveLink, { passive: true });
+    updateActiveLink();
 }
 
 window.openModal = function (projectIndex) {
@@ -1106,6 +809,14 @@ if (closeModalEl) {
 window.addEventListener('click', (e) => {
     const modal = document.getElementById('project-modal');
     if (modal && e.target === modal) {
+        modal.classList.remove('show');
+    }
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    const modal = document.getElementById('project-modal');
+    if (modal && modal.classList.contains('show')) {
         modal.classList.remove('show');
     }
 });

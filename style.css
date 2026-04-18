@@ -52,6 +52,16 @@ html[data-theme="light"] {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   font-family: 'Manrope', 'Inter', sans-serif;
   background-color: var(--bg-color);
@@ -63,10 +73,6 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-body.panel-open {
-  overflow: hidden;
 }
 
 section {
@@ -546,158 +552,6 @@ html[data-theme="light"] .theme-btn[aria-pressed="true"] {
 
 .home-overview-actions .btn {
   min-width: 9.4rem;
-  text-align: center;
-}
-
-.content-panel {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100dvh;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  margin: 0;
-  max-width: none;
-  padding-bottom: max(var(--space-5), env(safe-area-inset-bottom));
-  background: var(--bg-color);
-  border-left: none;
-  z-index: 1750;
-  transform: translateX(116%) scale(0.978);
-  transform-origin: center;
-  opacity: 0;
-  pointer-events: none;
-  transition:
-    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.82s cubic-bezier(0.22, 1, 0.36, 1) 0.04s;
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.34);
-  will-change: transform;
-}
-
-.content-panel.is-open {
-  transform: translateX(0) scale(1);
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.content-panel.enter-from-left {
-  transform: translateX(-58%) scale(0.978);
-}
-
-.content-panel.enter-from-right {
-  transform: translateX(116%) scale(0.978);
-}
-
-.content-panel.is-leaving-left {
-  transform: translateX(-26%) scale(0.972);
-  opacity: 0;
-  pointer-events: none;
-}
-
-.content-panel.is-leaving-right {
-  transform: translateX(26%) scale(0.972);
-  opacity: 0;
-  pointer-events: none;
-}
-
-#contact.content-panel {
-  padding-top: var(--space-5);
-}
-
-.panel-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(4, 8, 16, 0.52);
-  backdrop-filter: blur(5px);
-  z-index: 1700;
-}
-
-.panel-close-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.4rem;
-  height: 2.4rem;
-  border: 1px solid var(--glass-border);
-  border-radius: 999px;
-  background: var(--glass-bg);
-  color: var(--text-primary);
-  font-size: 1.1rem;
-  cursor: pointer;
-  z-index: 2;
-}
-
-.panel-close-btn:hover {
-  border-color: var(--neon-accent);
-}
-
-.panel-topbar {
-  position: sticky;
-  top: 0;
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-2);
-  padding: 0.9rem 5%;
-  margin: 0 -5% var(--space-3);
-  background: color-mix(in srgb, var(--bg-color) 74%, transparent);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--glass-border);
-}
-
-.panel-topbar-title {
-  margin: 0;
-  font-size: 0.96rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: var(--text-primary);
-}
-
-.panel-topbar-right {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-}
-
-.panel-progress {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 2.3rem;
-  height: 1.45rem;
-  border-radius: 999px;
-  border: 1px solid var(--glass-border);
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--text-secondary);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  line-height: 1;
-}
-
-.panel-next-wrap {
-  margin-top: var(--space-4);
-  padding-top: var(--space-3);
-  border-top: 1px solid var(--glass-border);
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  opacity: 0;
-  transform: translateY(10px);
-  pointer-events: none;
-  transition: opacity 0.32s ease, transform 0.32s ease;
-}
-
-.panel-next-wrap.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.panel-next-btn {
-  min-width: 12.5rem;
   text-align: center;
 }
 
@@ -1701,22 +1555,6 @@ html[data-theme="light"] .contact-form-status.error {
   }
   .about-grid {
     grid-template-columns: 1fr;
-  }
-  .content-panel {
-    width: 100%;
-    box-shadow: none;
-  }
-  .panel-next-wrap {
-    justify-content: stretch;
-  }
-  .panel-next-btn {
-    width: 100%;
-    min-width: 0;
-  }
-  .panel-progress {
-    min-width: 2.1rem;
-    height: 1.35rem;
-    font-size: 0.68rem;
   }
 }
 
