@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900" role="img" aria-label="Profile placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#eff6ff" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#93c5fd" />
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="900" height="900" fill="url(#bg)" />
+
+  <circle cx="450" cy="370" r="140" fill="none" stroke="url(#accent)" stroke-width="16" opacity="0.9" />
+  <path
+    d="M 260 760 C 290 640 360 580 450 580 C 540 580 610 640 640 760"
+    fill="none"
+    stroke="url(#accent)"
+    stroke-width="16"
+    stroke-linecap="round"
+    opacity="0.9"
+  />
+
+  <text x="450" y="130" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600" fill="#475569">
+    Add your photo
+  </text>
+  <text x="450" y="165" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="16" fill="#94a3b8">
+    assets/img/profile.jpg
+  </text>
+</svg>

@@ -1,238 +1,556 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="color-scheme" content="dark light">
-    <meta name="theme-color" content="#0a0a0f" media="(prefers-color-scheme: dark)">
-    <meta name="theme-color" content="#f4f4f5" media="(prefers-color-scheme: light)">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Portfolio">
-    <meta name="android-mobile-web-app-capable" content="yes">
-    <title>Dinuja Thishean | Cyber Security Undergraduate Portfolio</title>
-    <meta name="description" content="Cyber Security undergraduate portfolio of Dinuja Thishean featuring secure development projects, technical skills, education, and contact details.">
-    <meta name="keywords" content="Dinuja Thishean, Cyber Security, SLIIT, Portfolio, Information Security, Web Security, Developer">
-    <meta name="author" content="Dinuja Thishean">
-    <meta property="og:title" content="Dinuja Thishean | Cyber Security Portfolio">
-    <meta property="og:description" content="Recruiter-ready cyber security portfolio with projects, skills, certifications, and experience.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://dinuja-portfolio.vercel.app">
-    <meta property="og:image" content="icon.svg">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Dinuja Thishean | Cyber Security Portfolio">
-    <meta name="twitter:description" content="Cyber Security undergraduate portfolio featuring practical projects and experience.">
-    <link rel="icon" href="icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="icon.svg">
-    <link rel="manifest" href="manifest.json">
-    <script>
-      (function () {
-        try {
-          var stored = localStorage.getItem('portfolio-theme');
-          document.documentElement.setAttribute(
-            'data-theme',
-            stored === 'light' || stored === 'dark' ? stored : 'dark'
-          );
-        } catch (e) {
-          document.documentElement.setAttribute('data-theme', 'dark');
-        }
-      })();
-    </script>
-    <link rel="stylesheet" href="style.css?v=42">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div id="app">
-        <!-- Hero Section -->
-        <header class="hero" id="hero">
-            <nav class="navbar">
-                <div class="logo" id="nav-logo">JD.</div>
-                <div class="navbar-right">
-                    <div class="theme-switch" role="group" aria-label="Site theme">
-                        <button type="button" class="theme-btn" data-set-theme="light" id="theme-btn-light" aria-pressed="false">Light</button>
-                        <button type="button" class="theme-btn" data-set-theme="dark" id="theme-btn-dark" aria-pressed="true">Dark</button>
-                    </div>
-                    <button type="button" class="menu-btn" id="menu-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
-                        <div class="menu-btn__burger"></div>
-                    </button>
-                </div>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dinuja Thishean — Cyber Security Portfolio</title>
+    <meta
+      name="description"
+      content="Cyber Security undergraduate portfolio of Dinuja Thishean — secure development, vulnerability analysis, and practical projects."
+    />
+    <meta name="author" content="Dinuja Thishean" />
+    <meta property="og:title" content="Dinuja Thishean | Cyber Security Portfolio" />
+    <meta property="og:description" content="Recruiter-ready cyber security portfolio with projects, skills, certifications, and experience." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dinuja-portfolio.vercel.app" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
 
-                <ul class="nav-links" id="nav-links">
-                    <li class="nav-theme-item">
-                        <span class="nav-theme-label">Theme</span>
-                        <div class="theme-switch theme-switch--stacked" role="group" aria-label="Site theme in navigation menu">
-                            <button type="button" class="theme-btn" data-set-theme="light" id="theme-btn-light-menu" aria-pressed="false">Light</button>
-                            <button type="button" class="theme-btn" data-set-theme="dark" id="theme-btn-dark-menu" aria-pressed="true">Dark</button>
-                        </div>
-                    </li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#educational">Education</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#certifications">Certifications</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#extracurricular">Extracurricular</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="hero-content">
-                <h1 class="glitch" id="hero-name" data-text="Dinuja Thishean">Dinuja Thishean</h1>
-                <h2 id="hero-title" class="neon-text">Cyber Security Undergraduate | SLIIT</h2>
-                <p id="hero-desc">Cyber Security undergraduate building practical and secure digital solutions through real-world projects and continuous learning.</p>
-                <div class="hero-pill-row" id="hero-pill-row" aria-label="Profile highlights"></div>
-                <div class="hero-actions">
-                    <a href="#projects" class="btn primary-btn">View Projects</a>
-                    <a href="#" id="download-cv-btn" class="btn secondary-btn" download="Dinuja-Thishean-CV.pdf" aria-label="Download CV PDF">
-                        <span aria-hidden="true">&#8595;</span>
-                        <span>Download CV</span>
-                    </a>
-                </div>
-            </div>
-            <div class="scroll-indicator">
-                <span></span>
-            </div>
-        </header>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-        <section class="section home-overview reveal-up" aria-label="Quick portfolio overview">
-            <div class="home-overview-card glass-panel">
-                <p class="home-overview-kicker">Quick Overview</p>
-                <h2 class="home-overview-title">One page, full story.</h2>
-                <p class="home-overview-text">
-                    Scroll through everything in order—about, skills, education, experience, projects, and contact—without leaving the page.
-                </p>
-                <div class="home-overview-actions">
-                    <a href="#about" class="btn primary-btn">About</a>
-                </div>
-            </div>
-        </section>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-        <section id="about" class="section">
-            <h2 class="section-title">About <span class="neon-text">Me</span></h2>
-            <div class="about-grid">
-                <article class="about-card glass-panel">
-                    <h3 id="about-headline">Building secure, reliable, and user-focused digital solutions.</h3>
-                    <p id="about-summary">I combine cyber security fundamentals with hands-on web development to create projects that are both functional and resilient.</p>
-                    <ul id="about-highlights" class="about-highlights"></ul>
-                </article>
-                <aside id="about-stats" class="about-stats glass-panel" aria-label="Profile highlights"></aside>
-            </div>
-        </section>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-        <!-- Skills (full width, above My Educational) -->
-        <section id="skills" class="section section-skills">
-            <h2 class="section-title">My <span class="neon-text">Skills</span></h2>
-            <div class="skills-section-inner glass-panel">
-                <div class="skills-tabs" role="tablist" aria-label="Skills category">
-                    <button type="button" class="skills-tab-btn is-active" id="skills-tab-tech" role="tab" aria-selected="true" aria-controls="technical-skills-panel">Technical skills</button>
-                    <button type="button" class="skills-tab-btn" id="skills-tab-soft" role="tab" aria-selected="false" aria-controls="soft-skills-panel">Soft skills</button>
-                </div>
-                <div id="technical-skills-panel" class="skills-panel" role="tabpanel" aria-labelledby="skills-tab-tech">
-                    <div class="skills-container" id="technical-skills-container">
-                        <!-- Technical Skills injected via JS -->
-                    </div>
-                </div>
-                <div id="soft-skills-panel" class="skills-panel" role="tabpanel" aria-labelledby="skills-tab-soft" hidden>
-                    <div class="skills-container" id="soft-skills-container">
-                        <!-- Soft Skills injected via JS -->
-                    </div>
-                </div>
-                <div class="tools-block">
-                    <h3>Tech Stack & Tools</h3>
-                    <div id="tools-container" class="tools-container"></div>
-                </div>
-            </div>
-        </section>
+    <header class="header" id="top">
+      <nav class="nav container" aria-label="Primary">
+        <a class="brand" href="#top" aria-label="Go to top">
+          <span class="brand-dot" aria-hidden="true"></span>
+          <span class="brand-text">Dinuja</span>
+        </a>
 
-        <!-- Education (qualifications) -->
-        <section id="educational" class="section">
-            <h2 class="section-title"><span class="neon-text">Education</span></h2>
-            <div class="timeline" id="education-timeline">
-                <!-- Injected via JS -->
-            </div>
-        </section>
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <span class="nav-toggle-bars" aria-hidden="true"></span>
+        </button>
 
-        <!-- Experience Section -->
-        <section id="experience" class="section">
-            <h2 class="section-title"><span class="neon-text">Experience</span></h2>
-            <div class="experience-grid" id="experience-list">
-                <!-- Experience cards injected via JS -->
-            </div>
-        </section>
-
-        <!-- Certifications -->
-        <section id="certifications" class="section">
-            <h2 class="section-title"><span class="neon-text">Certifications</span></h2>
-            <div class="certifications-card glass-panel">
-                <ul id="cert-list" class="cert-list">
-                    <!-- Certs injected via JS -->
-                </ul>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="section">
-            <h2 class="section-title">Featured <span class="neon-text">Projects</span></h2>
-            <div id="projects-grid" class="projects-section-root"></div>
-        </section>
-
-        <!-- Extracurricular (supporting section) -->
-        <section id="extracurricular" class="section section-extracurricular">
-            <h2 class="section-title section-title-minor">Extracurricular Activities</h2>
-            <div id="extracurricular-root" class="extracurricular-section-root" aria-live="polite"></div>
-        </section>
-
-        <!-- Footer -->
-        <footer id="contact">
-            <h2 class="neon-text">Contact</h2>
-            <div class="contact-bubbles" id="social-links" aria-label="Contact methods">
-                <!-- Contact bubbles injected via JS -->
-            </div>
-
-            <div class="contact-message-wrap glass-panel" id="contact-message-wrap" hidden>
-                <h3 class="contact-form-title">Send a message</h3>
-                <p class="contact-form-intro" id="contact-form-intro">Leave your name, email, and message. I will get back to you when I can.</p>
-                <form id="contact-form" class="contact-form" novalidate>
-                    <div class="contact-form-row">
-                        <label class="contact-form-label" for="contact-name">Your name</label>
-                        <input class="contact-form-input" type="text" id="contact-name" name="name" required autocomplete="name" maxlength="120" placeholder="Your full name">
-                    </div>
-                    <div class="contact-form-row">
-                        <label class="contact-form-label" for="contact-email">Your email</label>
-                        <input class="contact-form-input" type="email" id="contact-email" name="email" required autocomplete="email" maxlength="254" placeholder="you@example.com">
-                    </div>
-                    <div class="contact-form-row">
-                        <label class="contact-form-label" for="contact-message">Message</label>
-                        <textarea class="contact-form-input contact-form-textarea" id="contact-message" name="message" required rows="5" maxlength="4000" placeholder="Write your message here…"></textarea>
-                    </div>
-                    <button type="submit" class="btn primary-btn contact-form-submit" id="contact-form-submit">Send message</button>
-                    <p id="contact-form-status" class="contact-form-status" role="status" aria-live="polite"></p>
-                </form>
-            </div>
-
-            <ul class="footer-links" aria-label="Quick links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <p class="copyright-line">&copy; <span id="current-year"></span> Dinuja Thishean. All rights reserved.</p>
-        </footer>
-    </div>
-    
-    <!-- Modal for Project Screenshots -->
-    <div id="project-modal" class="modal">
-        <div class="modal-content glass-panel">
-            <span class="close-modal" id="close-modal">&times;</span>
-            <h2 id="modal-title" class="neon-text">Project Details</h2>
-            <div id="modal-project-body" class="modal-project-body" hidden></div>
-            <div class="modal-gallery" id="modal-gallery">
-                <!-- Images injected via JS -->
-            </div>
+        <div class="nav-links" id="navLinks">
+          <a class="nav-link" href="#home">Home</a>
+          <a class="nav-link" href="#about">About</a>
+          <a class="nav-link" href="#skills">Skills</a>
+          <a class="nav-link" href="#projects">Projects</a>
+          <a class="nav-link" href="#education">Education</a>
+          <a class="nav-link" href="#experience">Experience</a>
+          <a class="nav-link" href="#certifications">Certifications</a>
+          <a class="nav-link" href="#contact">Contact</a>
         </div>
-    </div>
-    <button type="button" class="back-to-top" id="back-to-top" aria-label="Scroll back to top">Top</button>
+      </nav>
+    </header>
 
-    <script src="app.js?v=46"></script>
-</body>
+    <main id="main">
+      <section class="section hero" id="home" aria-label="Hero">
+        <div class="container hero-grid">
+          <div class="hero-copy reveal">
+            <p class="eyebrow">Open to internships</p>
+            <h1 class="hero-title">
+              Hi, I'm <span class="accent">Dinuja Thishean</span>
+            </h1>
+            <p class="hero-subtitle">
+              B.Sc. IT (Hons) Cyber Security — <span class="muted">SLIIT</span>
+            </p>
+            <p class="hero-tagline">
+              I build secure, reliable software focused on vulnerability analysis, secure coding, and practical cyber security projects.
+            </p>
+
+            <div class="hero-cta">
+              <a class="btn" href="#projects">
+                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                <span>View Projects</span>
+              </a>
+              <a class="btn btn-secondary" href="Dinuja_Thishean_CV.pdf" download>
+                <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i>
+                <span>Download CV</span>
+              </a>
+            </div>
+
+            <div class="hero-social">
+              <a class="icon-link" href="https://github.com/dinujathishean" target="_blank" rel="noopener" aria-label="GitHub">
+                <i class="fa-brands fa-github" aria-hidden="true"></i>
+              </a>
+              <a class="icon-link" href="https://www.linkedin.com/in/dinuja-thishean-b1451427b/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+              </a>
+              <a class="icon-link" href="mailto:dinujathishean@gmail.com" aria-label="Email">
+                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              </a>
+            </div>
+
+            <div class="hero-stats" aria-label="Quick highlights">
+              <div class="hero-stat">
+                <span class="hero-stat-value">B.Sc.</span>
+                <span class="hero-stat-label">IT (Hons)</span>
+              </div>
+              <div class="hero-stat">
+                <span class="hero-stat-value">Cyber</span>
+                <span class="hero-stat-label">Security</span>
+              </div>
+              <div class="hero-stat">
+                <span class="hero-stat-value">2028</span>
+                <span class="hero-stat-label">Graduation</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-card reveal" aria-label="Profile card">
+            <div class="profile-card">
+              <div class="profile-img-wrap">
+                <img
+                  class="profile-img"
+                  src="assets/img/profile-placeholder.svg"
+                  alt="Dinuja Thishean — profile photo"
+                  width="320"
+                  height="320"
+                />
+              </div>
+              <div class="profile-meta">
+                <div class="profile-name">Dinuja Thishean</div>
+                <div class="profile-role">Cyber Security Undergraduate · SLIIT</div>
+                <div class="profile-badges" aria-label="Highlights">
+                  <span class="badge">Internship ready</span>
+                  <span class="badge">Secure development</span>
+                  <span class="badge">Full-stack</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="about" aria-label="About me">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="section-label">About</p>
+            <h2 class="section-title">Who I am</h2>
+            <p class="section-subtitle">Building secure, reliable, and user-focused digital solutions.</p>
+          </div>
+
+          <div class="about-grid">
+            <div class="card reveal">
+              <div class="about-icon" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div>
+              <h3 class="card-title">Introduction</h3>
+              <p class="card-text">
+                I combine cyber security fundamentals with hands-on web development to create projects that are both
+                functional and resilient. My interests include secure coding, vulnerability assessment, and continuous
+                learning through practical implementation.
+              </p>
+            </div>
+
+            <div class="card reveal">
+              <div class="about-icon" aria-hidden="true"><i class="fa-solid fa-graduation-cap"></i></div>
+              <h3 class="card-title">Academic Focus</h3>
+              <p class="card-text">
+                Pursuing a B.Sc. (Hons) in Information Technology at <strong>SLIIT</strong>, specialized in Cyber
+                Security — blending theory with real-world secure development practice.
+              </p>
+            </div>
+
+            <div class="card reveal">
+              <div class="about-icon" aria-hidden="true"><i class="fa-solid fa-rocket"></i></div>
+              <h3 class="card-title">Career Goals</h3>
+              <p class="card-text">
+                Seeking internship opportunities in cyber security and secure software development where I can contribute
+                to real products, strengthen defensive skills, and grow alongside experienced engineers.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="skills" aria-label="Skills">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="section-label">Skills</p>
+            <h2 class="section-title">What I work with</h2>
+            <p class="section-subtitle">Technical depth in security and development, plus strong collaboration habits.</p>
+          </div>
+
+          <div class="skills-grid">
+            <div class="card reveal">
+              <h3 class="card-title">Technical</h3>
+
+              <div class="skill">
+                <div class="skill-top">
+                  <span>Python</span><span class="skill-level" aria-hidden="true">85%</span>
+                </div>
+                <div class="skill-bar" role="progressbar" aria-label="Python" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-fill" data-level="85"></div>
+                </div>
+              </div>
+
+              <div class="skill">
+                <div class="skill-top"><span>JavaScript</span><span class="skill-level" aria-hidden="true">80%</span></div>
+                <div class="skill-bar" role="progressbar" aria-label="JavaScript" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-fill" data-level="80"></div>
+                </div>
+              </div>
+
+              <div class="skill">
+                <div class="skill-top"><span>Java</span><span class="skill-level" aria-hidden="true">75%</span></div>
+                <div class="skill-bar" role="progressbar" aria-label="Java" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-fill" data-level="75"></div>
+                </div>
+              </div>
+
+              <div class="skill">
+                <div class="skill-top"><span>HTML &amp; CSS</span><span class="skill-level" aria-hidden="true">88%</span></div>
+                <div class="skill-bar" role="progressbar" aria-label="HTML and CSS" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100">
+                  <div class="skill-fill" data-level="88"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card reveal">
+              <h3 class="card-title">Cyber Security &amp; Tools</h3>
+              <div class="pill-grid" aria-label="Security and tools">
+                <span class="pill">Networking Basics</span>
+                <span class="pill">Ethical Hacking</span>
+                <span class="pill">Vulnerability Assessment</span>
+                <span class="pill">Git &amp; GitHub</span>
+                <span class="pill">Wireshark</span>
+                <span class="pill">Postman</span>
+                <span class="pill">Linux / Ubuntu</span>
+                <span class="pill">VS Code</span>
+              </div>
+            </div>
+
+            <div class="card reveal">
+              <h3 class="card-title">Soft Skills</h3>
+              <div class="pill-grid" aria-label="Soft skills">
+                <span class="pill pill-soft">Problem-solving</span>
+                <span class="pill pill-soft">Team collaboration</span>
+                <span class="pill pill-soft">Communication</span>
+                <span class="pill pill-soft">Time management</span>
+                <span class="pill pill-soft">Adaptability</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="projects" aria-label="Projects">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="section-label">Work</p>
+            <h2 class="section-title">Selected projects</h2>
+            <p class="section-subtitle">Security and development projects with real-world workflows and outcomes.</p>
+          </div>
+
+          <div class="projects-grid">
+            <article class="project card reveal">
+              <span class="project-num">01</span>
+              <h3 class="project-title">SOC Dashboard</h3>
+              <div class="project-tags">
+                <span class="tag">React</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">Security</span>
+              </div>
+              <p class="project-desc">
+                Full-stack SOC-style dashboard for monitoring alerts, triaging incidents, and visualizing attack trends — mirroring real security operations workflows.
+              </p>
+              <div class="project-links">
+                <a class="link" href="https://github.com/dinujathishean/SOC-Dashboard" target="_blank" rel="noopener">
+                  <i class="fa-brands fa-github" aria-hidden="true"></i>
+                  <span>Code</span>
+                </a>
+              </div>
+            </article>
+
+            <article class="project card reveal">
+              <span class="project-num">02</span>
+              <h3 class="project-title">Automated Vulnerability Scanner</h3>
+              <div class="project-tags">
+                <span class="tag">Python</span>
+                <span class="tag">Flask</span>
+                <span class="tag">Security</span>
+              </div>
+              <p class="project-desc">
+                Flask-powered security tool that automates common web vulnerability checks and presents results for efficient triage and review.
+              </p>
+              <div class="project-links">
+                <a class="link" href="https://github.com/dinujathishean/Automated-Vulnerability-Scanner" target="_blank" rel="noopener">
+                  <i class="fa-brands fa-github" aria-hidden="true"></i>
+                  <span>Code</span>
+                </a>
+              </div>
+            </article>
+
+            <article class="project card reveal">
+              <span class="project-num">03</span>
+              <h3 class="project-title">Hotel Reservation System</h3>
+              <div class="project-tags">
+                <span class="tag">Spring Boot</span>
+                <span class="tag">Java</span>
+                <span class="tag">MySQL</span>
+              </div>
+              <p class="project-desc">
+                Full-stack hotel booking platform with Spring Boot services, REST APIs, and MySQL — focused on clean reservation flows and maintainable structure.
+              </p>
+              <div class="project-links">
+                <a class="link" href="https://github.com/dinujathishean" target="_blank" rel="noopener">
+                  <i class="fa-brands fa-github" aria-hidden="true"></i>
+                  <span>GitHub</span>
+                </a>
+              </div>
+            </article>
+
+            <article class="project card reveal">
+              <span class="project-num">04</span>
+              <h3 class="project-title">Portfolio Website</h3>
+              <div class="project-tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+              </div>
+              <p class="project-desc">
+                Recruiter-ready static portfolio with a clean UI, structured sections, and fast static hosting on Vercel.
+              </p>
+              <div class="project-links">
+                <a class="link" href="https://github.com/dinujathishean/Portfolio" target="_blank" rel="noopener">
+                  <i class="fa-brands fa-github" aria-hidden="true"></i>
+                  <span>Code</span>
+                </a>
+                <a class="link" href="https://dinuja-portfolio.vercel.app" target="_blank" rel="noopener">
+                  <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                  <span>Live</span>
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="education" aria-label="Education">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="section-label">Education</p>
+            <h2 class="section-title">Academic background</h2>
+            <p class="section-subtitle">University studies and school qualifications.</p>
+          </div>
+
+          <div class="timeline">
+            <div class="timeline-item card reveal">
+              <div class="timeline-top">
+                <h3 class="timeline-title">Sri Lanka Institute of Information Technology</h3>
+                <span class="timeline-meta">B.Sc. IT (Hons) · 2024–2028</span>
+              </div>
+              <p class="card-text">Specialized in Cyber Security.</p>
+            </div>
+
+            <div class="timeline-item card reveal">
+              <div class="timeline-top">
+                <h3 class="timeline-title">Sri Dharmaloka Central College</h3>
+                <span class="timeline-meta">G.C.E. Advanced Level · 2023</span>
+              </div>
+              <p class="card-text">Commerce Stream — Accounting (B), Economics (C), ICT (S), English (C).</p>
+            </div>
+
+            <div class="timeline-item card reveal">
+              <div class="timeline-top">
+                <h3 class="timeline-title">Sri Dharmaloka Central College</h3>
+                <span class="timeline-meta">G.C.E. Ordinary Level · 2020</span>
+              </div>
+              <p class="card-text">9 subjects including Mathematics (B), ICT (C), and English (C).</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="experience" aria-label="Experience">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="section-label">Experience</p>
+            <h2 class="section-title">Where I've contributed</h2>
+            <p class="section-subtitle">University committees and school leadership roles.</p>
+          </div>
+
+          <div class="experience-grid">
+            <div class="card reveal">
+              <h3 class="card-title">SLIIT XStream 4.0 — Finance Team</h3>
+              <p class="card-meta">SLIIT · IEEE Committee</p>
+              <ul class="list">
+                <li>Volunteered on the finance track for SLIIT XStream 4.0, securing sponsorships and managing budgets.</li>
+                <li>Aligned sponsor deliverables with event timelines for smooth programme execution.</li>
+              </ul>
+            </div>
+
+            <div class="card reveal">
+              <h3 class="card-title">Commerce Day — Media &amp; Announcer</h3>
+              <p class="card-meta">Sri Dharmaloka Central College · Commerce Society</p>
+              <ul class="list">
+                <li>Created and edited promotional videos for Commerce Day build-up and event coverage.</li>
+                <li>Served as English announcer, scripting transitions and keeping the programme flowing.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="certifications" aria-label="Certifications">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="section-label">Certifications</p>
+            <h2 class="section-title">Continuous learning</h2>
+            <p class="section-subtitle">Industry and academic certifications.</p>
+          </div>
+
+          <div class="about-grid">
+            <div class="card reveal">
+              <h3 class="card-title">Introduction to Cyber Security</h3>
+              <p class="card-meta">Cisco · 2026</p>
+            </div>
+            <div class="card reveal">
+              <h3 class="card-title">Network Basics</h3>
+              <p class="card-meta">Cisco · In Progress</p>
+            </div>
+            <div class="card reveal">
+              <h3 class="card-title">Python Basics</h3>
+              <p class="card-meta">University of Moratuwa · 2025</p>
+            </div>
+            <div class="card reveal">
+              <h3 class="card-title">Certificate Course in English</h3>
+              <p class="card-meta">University of Colombo · 2025</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact" aria-label="Contact">
+        <div class="container">
+          <div class="section-head reveal">
+            <p class="section-label">Contact</p>
+            <h2 class="section-title">Let's connect</h2>
+            <p class="section-subtitle">Open to internships, collaborations, and cyber security opportunities.</p>
+          </div>
+
+          <div class="contact-grid">
+            <div class="card reveal">
+              <h3 class="card-title">Reach me directly</h3>
+              <div class="contact-info">
+                <div class="contact-item">
+                  <div class="contact-icon" aria-hidden="true"><i class="fa-solid fa-envelope"></i></div>
+                  <div>
+                    <div class="contact-item-label">Email</div>
+                    <div class="contact-item-value">
+                      <a href="mailto:dinujathishean@gmail.com">dinujathishean@gmail.com</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="contact-item">
+                  <div class="contact-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i></div>
+                  <div>
+                    <div class="contact-item-label">Phone</div>
+                    <div class="contact-item-value">071 541 7733</div>
+                  </div>
+                </div>
+                <div class="contact-item">
+                  <div class="contact-icon" aria-hidden="true"><i class="fa-brands fa-github"></i></div>
+                  <div>
+                    <div class="contact-item-label">GitHub</div>
+                    <div class="contact-item-value">
+                      <a href="https://github.com/dinujathishean" target="_blank" rel="noopener">github.com/dinujathishean</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="contact-item">
+                  <div class="contact-icon" aria-hidden="true"><i class="fa-brands fa-linkedin"></i></div>
+                  <div>
+                    <div class="contact-item-label">LinkedIn</div>
+                    <div class="contact-item-value">
+                      <a href="https://www.linkedin.com/in/dinuja-thishean-b1451427b/" target="_blank" rel="noopener">linkedin.com/in/dinuja-thishean</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card reveal">
+              <form class="contact-form" id="contactForm" novalidate>
+                <div class="field">
+                  <label class="label" for="contactName">Name</label>
+                  <input class="input" id="contactName" name="name" type="text" placeholder="Your name" required />
+                  <p class="error" id="errName" aria-live="polite"></p>
+                </div>
+
+                <div class="field">
+                  <label class="label" for="contactEmail">Email</label>
+                  <input
+                    class="input"
+                    id="contactEmail"
+                    name="email"
+                    type="email"
+                    placeholder="you@example.com"
+                    required
+                  />
+                  <p class="error" id="errEmail" aria-live="polite"></p>
+                </div>
+
+                <div class="field">
+                  <label class="label" for="contactMessage">Message</label>
+                  <textarea
+                    class="textarea"
+                    id="contactMessage"
+                    name="message"
+                    rows="5"
+                    placeholder="Tell me about your opportunity..."
+                    required
+                  ></textarea>
+                  <p class="error" id="errMessage" aria-live="polite"></p>
+                </div>
+
+                <button class="btn" type="submit">
+                  <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+                  <span>Send Message</span>
+                </button>
+
+                <p class="form-success" id="formSuccess" hidden>
+                  Message looks good! Connect a backend service to actually deliver it.
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <p class="footer-text">© <span id="year"></span> Dinuja Thishean. Built with HTML, CSS &amp; JavaScript.</p>
+        <div class="footer-icons" aria-label="Social links">
+          <a class="icon-link" href="https://github.com/dinujathishean" target="_blank" rel="noopener" aria-label="GitHub">
+            <i class="fa-brands fa-github" aria-hidden="true"></i>
+          </a>
+          <a class="icon-link" href="https://www.linkedin.com/in/dinuja-thishean-b1451427b/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <button class="to-top" id="toTop" type="button" aria-label="Back to top">
+      <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <script src="assets/js/main.js"></script>
+  </body>
 </html>
