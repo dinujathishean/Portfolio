@@ -1,21 +1,21 @@
 {
   "bio": {
     "name": "Dinuja Thishean",
-    "title": "Cyber Security Undergraduate | SLIIT",
-    "description": "I am a Cyber Security undergraduate focused on secure software, vulnerability analysis, and practical web security. I build real-world projects and continuously strengthen both defensive and development skills."
+    "title": "Network Engineer Intern | Hayleys Fentons IT",
+    "description": "Network Engineer Intern at Hayleys Fentons IT and Cyber Security undergraduate at SLIIT. I combine hands-on networking experience with secure software development, vulnerability analysis, and practical security projects."
   },
   "about": {
     "headline": "Building secure, reliable, and user-focused digital solutions.",
     "summary": "I combine cyber security fundamentals with hands-on web development to create projects that are both functional and resilient. My interests include secure coding, vulnerability assessment, and continuous learning through practical implementation.",
     "highlights": [
+      "Network Engineer Intern at Hayleys Fentons IT since September 2026",
       "Focused on cyber security and secure application development",
-      "Hands-on project experience with Python, Flask, Java, and web technologies",
-      "Strong collaboration and communication through academic and committee work"
+      "Hands-on project experience with Python, Flask, Java, and web technologies"
     ],
     "stats": [
-      { "label": "Academic Program", "value": "B.Sc. IT (Hons)" },
-      { "label": "Specialization", "value": "Cyber Security" },
-      { "label": "Current Focus", "value": "Internship Ready" }
+      { "label": "Current Role", "value": "Network Engineer Intern" },
+      { "label": "Company", "value": "Hayleys Fentons IT" },
+      { "label": "Specialization", "value": "Cyber Security" }
     ]
   },
   "contact": {
@@ -77,6 +77,19 @@
     ]
   },
   "experiences": [
+    {
+      "tier": "Professional",
+      "context": "Hayleys Fentons IT",
+      "title": "Network Engineer Intern",
+      "role": "Network Engineer Intern",
+      "tagline": "Hands-on networking and IT infrastructure experience",
+      "bullets": [
+        "Support network infrastructure monitoring, troubleshooting, and day-to-day IT operations.",
+        "Assist with LAN/WAN configuration, connectivity issues, and network documentation.",
+        "Collaborate with the IT team on network security practices and system maintenance."
+      ],
+      "period": "Sep 25, 2026 – Present"
+    },
     {
       "tier": "University",
       "context": "SLIIT · IEEE committee",
