@@ -258,6 +258,13 @@
   ],
   "certifications": [
     {
+      "name": "NSE 1 — Network Security Expert",
+      "date": "June 2026",
+      "issuer": "Fortinet",
+      "details": "Introduction to the Threat Landscape 3.0",
+      "certificateUrl": "assets/certificates/NSE-1-certificate.pdf"
+    },
+    {
       "name": "Introduction to Cyber Security",
       "date": "2026",
       "issuer": "Cisco"
