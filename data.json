@@ -275,9 +275,11 @@
       "issuer": "Cisco"
     },
     {
-      "name": "Python Basics",
-      "date": "2025",
-      "issuer": "University of Moratuwa"
+      "name": "Python for Beginners",
+      "date": "June 2025",
+      "issuer": "University of Moratuwa",
+      "certificateUrl": "assets/certificates/Python-for-Beginners-certificate.pdf",
+      "verifyUrl": "https://open.uom.lk/verify"
     },
     {
       "name": "Certificate Course in English",
