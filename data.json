@@ -265,9 +265,11 @@
       "certificateUrl": "assets/certificates/NSE-1-certificate.pdf"
     },
     {
-      "name": "Introduction to Cyber Security",
-      "date": "2026",
-      "issuer": "Cisco"
+      "name": "Introduction to Cybersecurity",
+      "date": "March 2026",
+      "issuer": "Cisco Networking Academy",
+      "certificateUrl": "assets/certificates/Introduction-to-Cybersecurity-certificate.pdf",
+      "certId": "666dfa4d-0354-4d9f-a80a-f4bd3ebf90e8"
     },
     {
       "name": "Network Basics",
