@@ -1,12 +1,10 @@
-/**
- * Portfolio interactions
- */
-
 (() => {
-  const $ = (sel, root = document) => root.querySelector(sel);
-  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 
   const navToggle = $("#navToggle");
+  const sidebar = $("#sidebar");
+  const backdrop = $("#sidebarBackdrop");
   const navLinks = $("#navLinks");
   const navLinkEls = $$(".nav-link");
   const toTop = $("#toTop");
@@ -23,151 +21,110 @@
 
   if (year) year.textContent = String(new Date().getFullYear());
 
-  function setMenu(open) {
-    if (!navToggle || !navLinks) return;
-    navToggle.setAttribute("aria-expanded", String(open));
-    navLinks.classList.toggle("is-open", open);
+  function setSidebar(open) {
+    sidebar?.classList.toggle("is-open", open);
+    navToggle?.setAttribute("aria-expanded", String(open));
+    if (backdrop) backdrop.hidden = !open;
+    document.body.style.overflow = open ? "hidden" : "";
   }
 
   navToggle?.addEventListener("click", () => {
-    const open = navLinks?.classList.contains("is-open");
-    setMenu(!open);
-    navToggle.setAttribute("aria-label", open ? "Open menu" : "Close menu");
+    setSidebar(!sidebar?.classList.contains("is-open"));
   });
+
+  backdrop?.addEventListener("click", () => setSidebar(false));
 
   navLinks?.addEventListener("click", (e) => {
     const a = e.target instanceof Element ? e.target.closest("a") : null;
     if (!a) return;
-    setMenu(false);
-    navToggle?.setAttribute("aria-label", "Open menu");
+    setSidebar(false);
   });
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      setMenu(false);
-      navToggle?.setAttribute("aria-label", "Open menu");
-    }
+    if (e.key === "Escape") setSidebar(false);
   });
 
-  document.addEventListener("click", (e) => {
-    if (!navLinks?.classList.contains("is-open")) return;
-    const target = e.target instanceof Element ? e.target : null;
-    if (!target || target.closest(".nav")) return;
-    setMenu(false);
-    navToggle?.setAttribute("aria-label", "Open menu");
-  });
-
-  toTop?.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
+  toTop?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
   function updateToTop() {
-    if (!toTop) return;
-    toTop.classList.toggle("is-visible", window.scrollY > 600);
+    toTop?.classList.toggle("is-visible", window.scrollY > 500);
   }
 
   window.addEventListener("scroll", updateToTop, { passive: true });
   updateToTop();
 
-  const revealEls = $$(".reveal");
-  const skillFills = $$(".skill-fill");
-
   const io = new IntersectionObserver(
     (entries) => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        entry.target.classList.add("is-visible");
-        io.unobserve(entry.target);
-      }
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add("is-visible");
+        io.unobserve(e.target);
+      });
     },
-    { threshold: 0.12 }
+    { threshold: 0.1 }
   );
 
-  revealEls.forEach((el) => io.observe(el));
+  $$(".reveal").forEach((el) => io.observe(el));
 
   const skillsSection = $("#skills");
+  const skillFills = $$(".skill-fill");
   if (skillsSection && skillFills.length) {
     const skillIo = new IntersectionObserver(
       (entries) => {
         if (!entries.some((e) => e.isIntersecting)) return;
-        skillFills.forEach((fill) => {
-          const level = Number(fill.getAttribute("data-level") || "0");
-          fill.style.width = `${Math.max(0, Math.min(100, level))}%`;
+        skillFills.forEach((f) => {
+          f.style.width = `${Math.min(100, Number(f.dataset.level || 0))}%`;
         });
         skillIo.disconnect();
       },
-      { threshold: 0.25 }
+      { threshold: 0.2 }
     );
     skillIo.observe(skillsSection);
   }
 
-  const sectionIds = navLinkEls
-    .map((a) => a.getAttribute("href"))
-    .filter(Boolean)
-    .map((h) => h.replace("#", ""))
-    .filter((id) => Boolean(document.getElementById(id)));
+  const sections = navLinkEls
+    .map((a) => a.getAttribute("href")?.replace("#", ""))
+    .filter((id) => id && document.getElementById(id))
+    .map((id) => document.getElementById(id));
 
-  const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean);
-
-  function setActiveLink(id) {
-    navLinkEls.forEach((a) => {
-      const href = a.getAttribute("href") || "";
-      a.classList.toggle("active", href === `#${id}`);
-    });
-  }
-
-  function updateActiveLink() {
+  function updateActive() {
     if (!sections.length) return;
-    const scrollPos = window.scrollY + 110;
-    let currentId = sections[0].id;
-    for (const sec of sections) {
-      if (sec.offsetTop <= scrollPos) currentId = sec.id;
-    }
-    setActiveLink(currentId);
+    const pos = window.scrollY + 120;
+    let current = sections[0].id;
+    sections.forEach((s) => { if (s.offsetTop <= pos) current = s.id; });
+    navLinkEls.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === `#${current}`));
   }
 
-  window.addEventListener("scroll", updateActiveLink, { passive: true });
-  updateActiveLink();
+  window.addEventListener("scroll", updateActive, { passive: true });
+  updateActive();
 
   const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  function setError(el, msg) {
-    if (!el) return;
-    el.textContent = msg;
-  }
-
-  function clearSuccess() {
-    if (formSuccess) formSuccess.hidden = true;
-  }
-
   function validate() {
-    clearSuccess();
-    const name = String(contactName?.value || "").trim();
-    const email = String(contactEmail?.value || "").trim();
-    const message = String(contactMessage?.value || "").trim();
+    if (formSuccess) formSuccess.hidden = true;
+    const name = (contactName?.value || "").trim();
+    const email = (contactEmail?.value || "").trim();
+    const message = (contactMessage?.value || "").trim();
     let ok = true;
 
-    if (!name) { setError(errName, "Please enter your name."); ok = false; }
-    else setError(errName, "");
+    errName.textContent = name ? "" : "Please enter your name.";
+    if (!name) ok = false;
 
-    if (!email) { setError(errEmail, "Please enter your email."); ok = false; }
-    else if (!emailRe.test(email)) { setError(errEmail, "Please enter a valid email address."); ok = false; }
-    else setError(errEmail, "");
+    if (!email) { errEmail.textContent = "Please enter your email."; ok = false; }
+    else if (!emailRe.test(email)) { errEmail.textContent = "Invalid email."; ok = false; }
+    else errEmail.textContent = "";
 
-    if (!message) { setError(errMessage, "Please enter a message."); ok = false; }
-    else if (message.length < 10) { setError(errMessage, "Please write at least 10 characters."); ok = false; }
-    else setError(errMessage, "");
+    if (!message) { errMessage.textContent = "Please enter a message."; ok = false; }
+    else if (message.length < 10) { errMessage.textContent = "At least 10 characters."; ok = false; }
+    else errMessage.textContent = "";
 
     return ok;
   }
 
   contactForm?.addEventListener("submit", (e) => {
     e.preventDefault();
-    if (!validate()) return;
-    if (formSuccess) formSuccess.hidden = false;
+    if (validate() && formSuccess) formSuccess.hidden = false;
   });
 
-  [contactName, contactEmail, contactMessage].forEach((el) => {
-    el?.addEventListener("input", validate);
-  });
+  [contactName, contactEmail, contactMessage].forEach((el) => el?.addEventListener("input", validate));
 })();
