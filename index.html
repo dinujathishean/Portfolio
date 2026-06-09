@@ -4,335 +4,258 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light" />
-    <meta name="theme-color" content="#f0eeea" />
-    <title>Dinuja Thishean — Cyber Security Portfolio</title>
-    <meta name="description" content="Professional security dossier portfolio of Dinuja Thishean — Network Engineer Intern, Cyber Security undergraduate at SLIIT." />
+    <meta name="theme-color" content="#ffffff" />
+    <title>Dinuja Thishean — Portfolio</title>
+    <meta name="description" content="Portfolio of Dinuja Thishean — Network Engineer Intern and Cyber Security student at SLIIT." />
     <meta name="author" content="Dinuja Thishean" />
-    <meta property="og:title" content="Dinuja Thishean | Security Dossier Portfolio" />
-    <meta property="og:description" content="Network Engineer Intern & Cyber Security student — projects, certifications, and experience." />
+    <meta property="og:title" content="Dinuja Thishean | Portfolio" />
     <meta property="og:url" content="https://dinuja-portfolio.vercel.app" />
     <link rel="icon" href="icon.svg" type="image/svg+xml" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&display=swap" rel="stylesheet" />
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <div class="layout" id="top">
-      <!-- Fixed identity panel — unique dossier sidebar -->
-      <aside class="sidebar" id="sidebar" aria-label="Profile and navigation">
-        <div class="sidebar-inner">
-          <div class="dossier-mark" aria-hidden="true">
-            <span class="dossier-mark__ring"></span>
-            <i class="fa-solid fa-shield-halved"></i>
+    <header class="header" id="top">
+      <nav class="nav container" aria-label="Primary">
+        <a class="logo" href="#top">Dinuja Thishean</a>
+        <button class="menu-btn" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links" id="navLinks">
+          <a class="nav-link" href="#about">About</a>
+          <a class="nav-link" href="#skills">Skills</a>
+          <a class="nav-link" href="#projects">Projects</a>
+          <a class="nav-link" href="#experience">Experience</a>
+          <a class="nav-link" href="#certifications">Certifications</a>
+          <a class="nav-link" href="#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="home">
+        <div class="container hero-inner">
+          <div class="hero-text reveal">
+            <p class="tag">Network Engineer Intern · Hayleys Fentons IT</p>
+            <h1>Hi, I'm <span class="highlight">Dinuja Thishean</span></h1>
+            <p class="lead">Cyber Security undergraduate at SLIIT. I build secure software and work with real network infrastructure every day.</p>
+            <div class="hero-btns">
+              <a class="btn btn-primary" href="#projects">View Projects</a>
+              <a class="btn btn-outline" href="Dinuja_Thishean_CV.pdf" download>Download CV</a>
+            </div>
+            <div class="hero-social">
+              <a href="https://github.com/dinujathishean" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+              <a href="https://www.linkedin.com/in/dinuja-thishean-b1451427b/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="mailto:dinujathishean@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+            </div>
           </div>
-
-          <div class="sidebar-profile">
-            <div class="sidebar-photo">
-              <img src="assets/img/profile-placeholder.svg" alt="Dinuja Thishean" width="160" height="160" />
-            </div>
-            <h1 class="sidebar-name">Dinuja Thishean</h1>
-            <p class="sidebar-role">Network Engineer Intern</p>
-            <p class="sidebar-org">Hayleys Fentons IT</p>
-          </div>
-
-          <div class="dossier-meta">
-            <div class="dossier-meta__row">
-              <span class="dossier-meta__key">Dossier ID</span>
-              <span class="dossier-meta__val">DT-2024-CS</span>
-            </div>
-            <div class="dossier-meta__row">
-              <span class="dossier-meta__key">Status</span>
-              <span class="dossier-meta__val dossier-meta__val--live"><span class="live-dot"></span> Active</span>
-            </div>
-            <div class="dossier-meta__row">
-              <span class="dossier-meta__key">Focus</span>
-              <span class="dossier-meta__val">Cyber Security</span>
-            </div>
-          </div>
-
-          <nav class="sidebar-nav" id="navLinks" aria-label="Primary">
-            <a class="nav-link" href="#home"><span class="nav-num">00</span> Overview</a>
-            <a class="nav-link" href="#about"><span class="nav-num">01</span> About</a>
-            <a class="nav-link" href="#skills"><span class="nav-num">02</span> Skills</a>
-            <a class="nav-link" href="#projects"><span class="nav-num">03</span> Projects</a>
-            <a class="nav-link" href="#education"><span class="nav-num">04</span> Education</a>
-            <a class="nav-link" href="#experience"><span class="nav-num">05</span> Experience</a>
-            <a class="nav-link" href="#certifications"><span class="nav-num">06</span> Credentials</a>
-            <a class="nav-link" href="#contact"><span class="nav-num">07</span> Contact</a>
-          </nav>
-
-          <a class="btn btn-block" href="Dinuja_Thishean_CV.pdf" download>
-            <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i>
-            Download CV
-          </a>
-
-          <div class="sidebar-social">
-            <a class="icon-link" href="https://github.com/dinujathishean" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-            <a class="icon-link" href="https://www.linkedin.com/in/dinuja-thishean-b1451427b/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-            <a class="icon-link" href="mailto:dinujathishean@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+          <div class="hero-photo reveal">
+            <img src="assets/img/profile-placeholder.svg" alt="Dinuja Thishean" width="360" height="360" />
           </div>
         </div>
-      </aside>
+      </section>
 
-      <button class="sidebar-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false">
-        <span class="sidebar-toggle__bars"></span>
-      </button>
-      <div class="sidebar-backdrop" id="sidebarBackdrop" hidden></div>
+      <section class="section" id="about">
+        <div class="container">
+          <h2 class="section-title reveal">About Me</h2>
+          <p class="section-desc reveal">Focused on secure development, networking, and practical problem-solving.</p>
+          <div class="grid-3">
+            <div class="card reveal">
+              <i class="card-icon fa-solid fa-shield-halved"></i>
+              <h3>Who I Am</h3>
+              <p>I combine cyber security fundamentals with hands-on development to build projects that are functional, secure, and well-tested.</p>
+            </div>
+            <div class="card reveal">
+              <i class="card-icon fa-solid fa-graduation-cap"></i>
+              <h3>Education</h3>
+              <p>B.Sc. (Hons) IT at <strong>SLIIT</strong>, specialized in Cyber Security — blending theory with real-world practice.</p>
+            </div>
+            <div class="card reveal">
+              <i class="card-icon fa-solid fa-briefcase"></i>
+              <h3>Current Role</h3>
+              <p>Network Engineer Intern at <strong>Hayleys Fentons IT</strong> since Sep 25, 2026 — networking, IT ops, and infrastructure.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <!-- Main dossier chapters -->
-      <div class="main-wrap">
-        <main id="main">
-          <section class="chapter" id="home">
-            <header class="chapter-head reveal">
-              <span class="chapter-num" aria-hidden="true">00</span>
-              <div>
-                <p class="chapter-label">Security Dossier</p>
-                <h2 class="chapter-title">Professional Overview</h2>
-              </div>
-            </header>
-
-            <div class="overview reveal">
-              <p class="overview-lead">
-                Cyber Security undergraduate at <strong>SLIIT</strong> and <strong>Network Engineer Intern</strong> at Hayleys Fentons IT — building secure systems with hands-on networking and development experience.
-              </p>
-              <div class="overview-stats">
-                <div class="ostat"><span class="ostat__n">3+</span><span class="ostat__l">Security Projects</span></div>
-                <div class="ostat"><span class="ostat__n">5</span><span class="ostat__l">Certifications</span></div>
-                <div class="ostat"><span class="ostat__n">NSE 1</span><span class="ostat__l">Fortinet Certified</span></div>
-                <div class="ostat"><span class="ostat__n">2028</span><span class="ostat__l">Graduation</span></div>
-              </div>
-              <div class="overview-actions">
-                <a class="btn" href="#projects">Explore Projects</a>
-                <a class="btn btn-ghost" href="#contact">Get in Touch</a>
+      <section class="section section-gray" id="skills">
+        <div class="container">
+          <h2 class="section-title reveal">Skills</h2>
+          <div class="grid-3">
+            <div class="card reveal">
+              <h3>Technical</h3>
+              <div class="skill"><div class="skill-row"><span>Python</span><span>85%</span></div><div class="bar"><div class="fill" data-level="85"></div></div></div>
+              <div class="skill"><div class="skill-row"><span>JavaScript</span><span>80%</span></div><div class="bar"><div class="fill" data-level="80"></div></div></div>
+              <div class="skill"><div class="skill-row"><span>Java</span><span>75%</span></div><div class="bar"><div class="fill" data-level="75"></div></div></div>
+              <div class="skill"><div class="skill-row"><span>HTML &amp; CSS</span><span>88%</span></div><div class="bar"><div class="fill" data-level="88"></div></div></div>
+            </div>
+            <div class="card reveal">
+              <h3>Security &amp; Tools</h3>
+              <div class="tags">
+                <span>Fortinet NSE 1</span><span>Networking</span><span>Ethical Hacking</span>
+                <span>Vulnerability Assessment</span><span>Wireshark</span><span>Git</span><span>Linux</span>
               </div>
             </div>
-          </section>
-
-          <section class="chapter" id="about">
-            <header class="chapter-head reveal">
-              <span class="chapter-num">01</span>
-              <div>
-                <p class="chapter-label">Chapter One</p>
-                <h2 class="chapter-title">About Me</h2>
-                <p class="chapter-desc">Building secure, reliable, and user-focused digital solutions.</p>
+            <div class="card reveal">
+              <h3>Soft Skills</h3>
+              <div class="tags tags-blue">
+                <span>Problem-solving</span><span>Teamwork</span><span>Communication</span>
+                <span>Time management</span><span>Adaptability</span>
               </div>
-            </header>
-            <div class="card-grid cols-3">
-              <article class="card reveal">
-                <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                <h3>Introduction</h3>
-                <p>I combine cyber security fundamentals with hands-on web development to create projects that are functional and resilient — secure coding, vulnerability assessment, and continuous learning.</p>
-              </article>
-              <article class="card reveal">
-                <div class="card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                <h3>Academic Focus</h3>
-                <p>B.Sc. (Hons) in Information Technology at <strong>SLIIT</strong>, specialized in Cyber Security — blending theory with real-world secure development.</p>
-              </article>
-              <article class="card reveal">
-                <div class="card-icon"><i class="fa-solid fa-network-wired"></i></div>
-                <h3>Current Role</h3>
-                <p>Network Engineer Intern at <strong>Hayleys Fentons IT</strong> since Sep 25, 2026 — networking, IT operations, and infrastructure alongside cyber security studies.</p>
-              </article>
             </div>
-          </section>
+          </div>
+        </div>
+      </section>
 
-          <section class="chapter chapter--alt" id="skills">
-            <header class="chapter-head reveal">
-              <span class="chapter-num">02</span>
-              <div>
-                <p class="chapter-label">Chapter Two</p>
-                <h2 class="chapter-title">Skills &amp; Toolkit</h2>
-                <p class="chapter-desc">Technical depth in security and development.</p>
-              </div>
-            </header>
-            <div class="card-grid cols-skills">
-              <article class="card reveal">
-                <h3>Core Competencies</h3>
-                <div class="skill"><div class="skill-top"><span>Python</span><span>85%</span></div><div class="skill-bar"><div class="skill-fill" data-level="85"></div></div></div>
-                <div class="skill"><div class="skill-top"><span>JavaScript</span><span>80%</span></div><div class="skill-bar"><div class="skill-fill" data-level="80"></div></div></div>
-                <div class="skill"><div class="skill-top"><span>Java</span><span>75%</span></div><div class="skill-bar"><div class="skill-fill" data-level="75"></div></div></div>
-                <div class="skill"><div class="skill-top"><span>HTML &amp; CSS</span><span>88%</span></div><div class="skill-bar"><div class="skill-fill" data-level="88"></div></div></div>
-              </article>
-              <article class="card reveal">
-                <h3>Security &amp; Tools</h3>
-                <div class="pills">
-                  <span class="pill">Fortinet NSE 1</span><span class="pill">Networking</span><span class="pill">Ethical Hacking</span>
-                  <span class="pill">Vulnerability Assessment</span><span class="pill">Wireshark</span><span class="pill">Git &amp; GitHub</span>
-                  <span class="pill">Linux</span><span class="pill">Postman</span>
-                </div>
-              </article>
-              <article class="card reveal">
-                <h3>Professional Skills</h3>
-                <div class="pills">
-                  <span class="pill pill--accent">Problem-solving</span><span class="pill pill--accent">Teamwork</span>
-                  <span class="pill pill--accent">Communication</span><span class="pill pill--accent">Time management</span>
-                  <span class="pill pill--accent">Adaptability</span>
-                </div>
-              </article>
+      <section class="section" id="projects">
+        <div class="container">
+          <h2 class="section-title reveal">Projects</h2>
+          <p class="section-desc reveal">Selected work in security and software development.</p>
+          <div class="grid-2">
+            <article class="card reveal">
+              <h3>SOC Dashboard</h3>
+              <p>Full-stack dashboard for monitoring alerts, triaging incidents, and visualizing attack trends.</p>
+              <div class="tags"><span>React</span><span>Node.js</span><span>Security</span></div>
+              <a class="card-link" href="https://github.com/dinujathishean/SOC-Dashboard" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+            </article>
+            <article class="card reveal">
+              <h3>Automated Vulnerability Scanner</h3>
+              <p>Flask tool that automates web vulnerability checks with organized triage output.</p>
+              <div class="tags"><span>Python</span><span>Flask</span></div>
+              <a class="card-link" href="https://github.com/dinujathishean/Automated-Vulnerability-Scanner" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+            </article>
+            <article class="card reveal">
+              <h3>Hotel Reservation System</h3>
+              <p>Spring Boot booking platform with REST APIs and MySQL persistence.</p>
+              <div class="tags"><span>Java</span><span>Spring Boot</span><span>MySQL</span></div>
+              <a class="card-link" href="https://github.com/dinujathishean" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+            </article>
+            <article class="card reveal">
+              <h3>Portfolio Website</h3>
+              <p>Personal portfolio deployed on Vercel with fast static hosting.</p>
+              <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+              <a class="card-link" href="https://github.com/dinujathishean/Portfolio" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+              <a class="card-link" href="https://dinuja-portfolio.vercel.app" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-gray" id="education">
+        <div class="container">
+          <h2 class="section-title reveal">Education</h2>
+          <div class="timeline">
+            <div class="timeline-item reveal">
+              <span class="timeline-date">2024 – 2028</span>
+              <div><h3>SLIIT</h3><p>B.Sc. IT (Hons) — Cyber Security</p></div>
             </div>
-          </section>
-
-          <section class="chapter" id="projects">
-            <header class="chapter-head reveal">
-              <span class="chapter-num">03</span>
-              <div>
-                <p class="chapter-label">Chapter Three</p>
-                <h2 class="chapter-title">Project Archive</h2>
-                <p class="chapter-desc">Security and development work with measurable outcomes.</p>
-              </div>
-            </header>
-            <div class="bento">
-              <article class="bento-item bento-item--featured card reveal">
-                <span class="bento-tag">Featured</span>
-                <h3>SOC Dashboard</h3>
-                <p>Full-stack SOC-style dashboard for monitoring alerts, triaging incidents, and visualizing attack trends.</p>
-                <div class="tags"><span>React</span><span>Node.js</span><span>Security</span></div>
-                <a class="link" href="https://github.com/dinujathishean/SOC-Dashboard" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> View Code</a>
-              </article>
-              <article class="bento-item card reveal">
-                <h3>Vulnerability Scanner</h3>
-                <p>Flask tool automating web vulnerability checks with organized triage output.</p>
-                <div class="tags"><span>Python</span><span>Flask</span></div>
-                <a class="link" href="https://github.com/dinujathishean/Automated-Vulnerability-Scanner" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Code</a>
-              </article>
-              <article class="bento-item card reveal">
-                <h3>Hotel Reservation System</h3>
-                <p>Spring Boot booking platform with REST APIs and MySQL persistence.</p>
-                <div class="tags"><span>Java</span><span>Spring Boot</span></div>
-                <a class="link" href="https://github.com/dinujathishean" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
-              </article>
-              <article class="bento-item card reveal">
-                <h3>Portfolio Website</h3>
-                <p>This security dossier — fast, static, deployed on Vercel.</p>
-                <div class="tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
-                <a class="link" href="https://github.com/dinujathishean/Portfolio" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Code</a>
-                <a class="link" href="https://dinuja-portfolio.vercel.app" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
-              </article>
+            <div class="timeline-item reveal">
+              <span class="timeline-date">2023</span>
+              <div><h3>Sri Dharmaloka Central College</h3><p>G.C.E. A/L — Commerce (Accounting B, Economics C, ICT S)</p></div>
             </div>
-          </section>
-
-          <section class="chapter chapter--alt" id="education">
-            <header class="chapter-head reveal">
-              <span class="chapter-num">04</span>
-              <div>
-                <p class="chapter-label">Chapter Four</p>
-                <h2 class="chapter-title">Education</h2>
-              </div>
-            </header>
-            <div class="timeline">
-              <article class="timeline-item reveal"><div class="timeline-year">2024–2028</div><div><h3>SLIIT</h3><p class="timeline-sub">B.Sc. IT (Hons) — Cyber Security</p></div></article>
-              <article class="timeline-item reveal"><div class="timeline-year">2023</div><div><h3>Sri Dharmaloka Central College</h3><p class="timeline-sub">G.C.E. A/L — Commerce (Accounting B, Economics C, ICT S)</p></div></article>
-              <article class="timeline-item reveal"><div class="timeline-year">2020</div><div><h3>Sri Dharmaloka Central College</h3><p class="timeline-sub">G.C.E. O/L — 9 subjects incl. Mathematics (B), ICT (C)</p></div></article>
+            <div class="timeline-item reveal">
+              <span class="timeline-date">2020</span>
+              <div><h3>Sri Dharmaloka Central College</h3><p>G.C.E. O/L — 9 subjects incl. Mathematics (B), ICT (C)</p></div>
             </div>
-          </section>
+          </div>
+        </div>
+      </section>
 
-          <section class="chapter" id="experience">
-            <header class="chapter-head reveal">
-              <span class="chapter-num">05</span>
-              <div>
-                <p class="chapter-label">Chapter Five</p>
-                <h2 class="chapter-title">Experience</h2>
-              </div>
-            </header>
-            <div class="card-grid cols-3">
-              <article class="card reveal card--highlight">
-                <span class="card-badge">Current</span>
-                <h3>Network Engineer Intern</h3>
-                <p class="card-meta">Hayleys Fentons IT · Sep 2026 – Present</p>
-                <ul><li>Network monitoring, troubleshooting &amp; IT operations</li><li>LAN/WAN configuration &amp; documentation</li><li>Network security practices &amp; maintenance</li></ul>
-              </article>
-              <article class="card reveal">
-                <h3>SLIIT XStream 4.0</h3>
-                <p class="card-meta">Finance Team · IEEE Committee</p>
-                <ul><li>Secured sponsorships and managed event budgets</li><li>Aligned sponsor deliverables with timelines</li></ul>
-              </article>
-              <article class="card reveal">
-                <h3>Commerce Day</h3>
-                <p class="card-meta">Media &amp; English Announcer</p>
-                <ul><li>Created promotional videos for event build-up</li><li>Hosted programme as English announcer</li></ul>
-              </article>
+      <section class="section" id="experience">
+        <div class="container">
+          <h2 class="section-title reveal">Experience</h2>
+          <div class="grid-3">
+            <div class="card reveal">
+              <span class="badge">Current</span>
+              <h3>Network Engineer Intern</h3>
+              <p class="meta">Hayleys Fentons IT · Sep 2026 – Present</p>
+              <ul>
+                <li>Network monitoring, troubleshooting &amp; IT operations</li>
+                <li>LAN/WAN configuration &amp; documentation</li>
+                <li>Network security &amp; system maintenance</li>
+              </ul>
             </div>
-          </section>
-
-          <section class="chapter chapter--alt" id="certifications">
-            <header class="chapter-head reveal">
-              <span class="chapter-num">06</span>
-              <div>
-                <p class="chapter-label">Chapter Six</p>
-                <h2 class="chapter-title">Verified Credentials</h2>
-                <p class="chapter-desc">Industry and academic certifications with proof on file.</p>
-              </div>
-            </header>
-            <div class="cred-grid">
-              <article class="cred card reveal">
-                <div class="verify-seal" aria-hidden="true"><i class="fa-solid fa-check"></i></div>
-                <h3>NSE 1 — Network Security Expert</h3>
-                <p class="card-meta">Fortinet · June 2026</p>
-                <a class="link" href="assets/certificates/NSE-1-certificate.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-certificate"></i> Verify PDF</a>
-              </article>
-              <article class="cred card reveal">
-                <div class="verify-seal" aria-hidden="true"><i class="fa-solid fa-check"></i></div>
-                <h3>Introduction to Cybersecurity</h3>
-                <p class="card-meta">Cisco · March 2026</p>
-                <a class="link" href="assets/certificates/Introduction-to-Cybersecurity-certificate.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-certificate"></i> Verify PDF</a>
-              </article>
-              <article class="cred card reveal">
-                <h3>Network Basics</h3>
-                <p class="card-meta">Cisco · In Progress</p>
-              </article>
-              <article class="cred card reveal">
-                <div class="verify-seal" aria-hidden="true"><i class="fa-solid fa-check"></i></div>
-                <h3>Python for Beginners</h3>
-                <p class="card-meta">University of Moratuwa · June 2025</p>
-                <a class="link" href="assets/certificates/Python-for-Beginners-certificate.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-certificate"></i> Verify PDF</a>
-              </article>
-              <article class="cred card reveal">
-                <h3>Certificate Course in English</h3>
-                <p class="card-meta">University of Colombo · 2025</p>
-              </article>
+            <div class="card reveal">
+              <h3>SLIIT XStream 4.0</h3>
+              <p class="meta">Finance Team · IEEE Committee</p>
+              <ul><li>Secured sponsorships and managed budgets</li><li>Coordinated sponsor deliverables</li></ul>
             </div>
-          </section>
-
-          <section class="chapter" id="contact">
-            <header class="chapter-head reveal">
-              <span class="chapter-num">07</span>
-              <div>
-                <p class="chapter-label">Chapter Seven</p>
-                <h2 class="chapter-title">Contact</h2>
-                <p class="chapter-desc">Open to internships, collaborations, and security discussions.</p>
-              </div>
-            </header>
-            <div class="contact-split">
-              <div class="contact-direct card reveal">
-                <div class="contact-row"><i class="fa-solid fa-envelope"></i><div><span>Email</span><a href="mailto:dinujathishean@gmail.com">dinujathishean@gmail.com</a></div></div>
-                <div class="contact-row"><i class="fa-solid fa-phone"></i><div><span>Phone</span><p>071 541 7733</p></div></div>
-                <div class="contact-row"><i class="fa-brands fa-github"></i><div><span>GitHub</span><a href="https://github.com/dinujathishean" target="_blank" rel="noopener">dinujathishean</a></div></div>
-                <div class="contact-row"><i class="fa-brands fa-linkedin"></i><div><span>LinkedIn</span><a href="https://www.linkedin.com/in/dinuja-thishean-b1451427b/" target="_blank" rel="noopener">dinuja-thishean</a></div></div>
-              </div>
-              <form class="card contact-form reveal" id="contactForm" novalidate>
-                <div class="field"><label for="contactName">Name</label><input id="contactName" type="text" placeholder="Your name" required /><p class="error" id="errName"></p></div>
-                <div class="field"><label for="contactEmail">Email</label><input id="contactEmail" type="email" placeholder="you@example.com" required /><p class="error" id="errEmail"></p></div>
-                <div class="field"><label for="contactMessage">Message</label><textarea id="contactMessage" rows="4" placeholder="Your message..." required></textarea><p class="error" id="errMessage"></p></div>
-                <button class="btn" type="submit"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
-                <p class="form-success" id="formSuccess" hidden>Message ready — connect a backend to deliver it.</p>
-              </form>
+            <div class="card reveal">
+              <h3>Commerce Day</h3>
+              <p class="meta">Media &amp; English Announcer</p>
+              <ul><li>Created promotional videos</li><li>Hosted event as announcer</li></ul>
             </div>
-          </section>
-        </main>
+          </div>
+        </div>
+      </section>
 
-        <footer class="footer">
-          <p>© <span id="year"></span> Dinuja Thishean · Security Dossier Portfolio</p>
-        </footer>
+      <section class="section section-gray" id="certifications">
+        <div class="container">
+          <h2 class="section-title reveal">Certifications</h2>
+          <div class="grid-2">
+            <div class="card reveal">
+              <h3>NSE 1 — Network Security Expert</h3>
+              <p class="meta">Fortinet · June 2026</p>
+              <a class="card-link" href="assets/certificates/NSE-1-certificate.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-certificate"></i> View Certificate</a>
+            </div>
+            <div class="card reveal">
+              <h3>Introduction to Cybersecurity</h3>
+              <p class="meta">Cisco · March 2026</p>
+              <a class="card-link" href="assets/certificates/Introduction-to-Cybersecurity-certificate.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-certificate"></i> View Certificate</a>
+            </div>
+            <div class="card reveal">
+              <h3>Python for Beginners</h3>
+              <p class="meta">University of Moratuwa · June 2025</p>
+              <a class="card-link" href="assets/certificates/Python-for-Beginners-certificate.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-certificate"></i> View Certificate</a>
+            </div>
+            <div class="card reveal">
+              <h3>Network Basics</h3>
+              <p class="meta">Cisco · In Progress</p>
+            </div>
+            <div class="card reveal">
+              <h3>Certificate Course in English</h3>
+              <p class="meta">University of Colombo · 2025</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="container">
+          <h2 class="section-title reveal">Contact</h2>
+          <p class="section-desc reveal">Open to internships, collaborations, and opportunities.</p>
+          <div class="contact-grid">
+            <div class="card reveal">
+              <div class="contact-item"><i class="fa-solid fa-envelope"></i><div><strong>Email</strong><br><a href="mailto:dinujathishean@gmail.com">dinujathishean@gmail.com</a></div></div>
+              <div class="contact-item"><i class="fa-solid fa-phone"></i><div><strong>Phone</strong><br>071 541 7733</div></div>
+              <div class="contact-item"><i class="fa-brands fa-github"></i><div><strong>GitHub</strong><br><a href="https://github.com/dinujathishean" target="_blank" rel="noopener">dinujathishean</a></div></div>
+              <div class="contact-item"><i class="fa-brands fa-linkedin"></i><div><strong>LinkedIn</strong><br><a href="https://www.linkedin.com/in/dinuja-thishean-b1451427b/" target="_blank" rel="noopener">dinuja-thishean</a></div></div>
+            </div>
+            <form class="card contact-form reveal" id="contactForm" novalidate>
+              <div class="field"><label for="contactName">Name</label><input id="contactName" type="text" required /><p class="error" id="errName"></p></div>
+              <div class="field"><label for="contactEmail">Email</label><input id="contactEmail" type="email" required /><p class="error" id="errEmail"></p></div>
+              <div class="field"><label for="contactMessage">Message</label><textarea id="contactMessage" rows="4" required></textarea><p class="error" id="errMessage"></p></div>
+              <button class="btn btn-primary" type="submit">Send Message</button>
+              <p class="success" id="formSuccess" hidden>Thank you! Your message is ready to send.</p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>© <span id="year"></span> Dinuja Thishean. All rights reserved.</p>
       </div>
-    </div>
+    </footer>
 
-    <button class="to-top" id="toTop" type="button" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+    <button class="to-top" id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
     <script src="assets/js/main.js"></script>
   </body>
 </html>
