@@ -265,6 +265,15 @@
       "certificateUrl": "assets/certificates/NSE-1-certificate.pdf"
     },
     {
+      "name": "Fortinet Certified Fundamentals in Cybersecurity",
+      "date": "June 2026",
+      "issuer": "Fortinet",
+      "details": "Valid until June 2028",
+      "certificateUrl": "assets/certificates/Fortinet-Certified-Fundamentals-Cybersecurity.pdf",
+      "certId": "3929359620DT",
+      "verifyUrl": "https://training.fortinet.com/admin/tool/certificate/index.php"
+    },
+    {
       "name": "Introduction to Cybersecurity",
       "date": "March 2026",
       "issuer": "Cisco Networking Academy",
