@@ -1,19 +1,19 @@
 {
   "bio": {
     "name": "Dinuja Thishean",
-    "title": "Network Engineer Intern | Hayleys Fentons IT",
-    "description": "Network Engineer Intern at Hayleys Fentons IT and Cyber Security undergraduate at SLIIT. I combine hands-on networking experience with secure software development, vulnerability analysis, and practical security projects."
+    "title": "Network Security Engineer Intern | Hayleys Fentons IT",
+    "description": "Network Security Engineer Intern at Hayleys Fentons IT and Cyber Security undergraduate at SLIIT. I combine hands-on network security experience with secure software development, vulnerability analysis, and practical defensive engineering."
   },
   "about": {
     "headline": "Building secure, reliable, and user-focused digital solutions.",
     "summary": "I combine cyber security fundamentals with hands-on web development to create projects that are both functional and resilient. My interests include secure coding, vulnerability assessment, and continuous learning through practical implementation.",
     "highlights": [
-      "Network Engineer Intern at Hayleys Fentons IT since September 2026",
+      "Network Security Engineer Intern at Hayleys Fentons IT since September 2026",
       "Focused on cyber security and secure application development",
       "Hands-on project experience with Python, Flask, Java, and web technologies"
     ],
     "stats": [
-      { "label": "Current Role", "value": "Network Engineer Intern" },
+      { "label": "Current Role", "value": "Network Security Engineer Intern" },
       { "label": "Company", "value": "Hayleys Fentons IT" },
       { "label": "Specialization", "value": "Cyber Security" }
     ]
@@ -80,13 +80,13 @@
     {
       "tier": "Professional",
       "context": "Hayleys Fentons IT",
-      "title": "Network Engineer Intern",
-      "role": "Network Engineer Intern",
-      "tagline": "Hands-on networking and IT infrastructure experience",
+      "title": "Network Security Engineer Intern",
+      "role": "Network Security Engineer Intern",
+      "tagline": "Hands-on network security and infrastructure protection",
       "bullets": [
-        "Support network infrastructure monitoring, troubleshooting, and day-to-day IT operations.",
-        "Assist with LAN/WAN configuration, connectivity issues, and network documentation.",
-        "Collaborate with the IT team on network security practices and system maintenance."
+        "Support network security monitoring, access controls, and infrastructure protection.",
+        "Assist with LAN/WAN configuration, connectivity troubleshooting, and secure documentation.",
+        "Collaborate on firewall policies, network hardening, and day-to-day IT security operations."
       ],
       "period": "Sep 25, 2026 – Present"
     },
