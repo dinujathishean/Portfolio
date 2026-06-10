@@ -223,19 +223,6 @@ ul li { margin: 6px 0; }
 .card-link:hover { text-decoration: underline; }
 
 /* Skills */
-.skill { margin-bottom: 14px; }
-.skill:last-child { margin-bottom: 0; }
-.skill-row {
-  display: flex; justify-content: space-between;
-  font-size: 13px; font-weight: 600; margin-bottom: 6px;
-  color: var(--gray-700);
-}
-.bar { height: 6px; background: var(--gray-100); border-radius: 999px; overflow: hidden; }
-.fill {
-  height: 100%; width: 0; background: var(--blue);
-  border-radius: 999px; transition: width 800ms ease;
-}
-
 .tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .tags span {
   font-size: 12px; font-weight: 600; padding: 6px 12px;
@@ -318,5 +305,5 @@ ul li { margin: 6px 0; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal, .fill { transition: none; }
+  .reveal { transition: none; }
 }

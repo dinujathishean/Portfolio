@@ -29,16 +29,6 @@
   }, { threshold: 0.1 });
   $$(".reveal").forEach((el) => io.observe(el));
 
-  const skills = $("#skills");
-  if (skills) {
-    const sio = new IntersectionObserver((entries) => {
-      if (!entries.some((e) => e.isIntersecting)) return;
-      $$(".fill").forEach((f) => { f.style.width = `${f.dataset.level || 0}%`; });
-      sio.disconnect();
-    }, { threshold: 0.2 });
-    sio.observe(skills);
-  }
-
   const sections = navLinkEls.map((a) => document.getElementById(a.getAttribute("href")?.slice(1))).filter(Boolean);
   window.addEventListener("scroll", () => {
     const pos = scrollY + 100;
