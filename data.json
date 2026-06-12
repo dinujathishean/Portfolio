@@ -227,32 +227,30 @@
       }
     },
     {
-      "title": "Hotel Reservation System",
+      "title": "StyleHub — Online Clothing Shop",
       "category": "web",
-      "description": "A full-stack academic hotel booking platform with Spring Boot services, REST-style APIs, and MySQL persistence—focused on clean reservation flows and maintainable Java structure.",
-      "role": "Full-stack developer · academic team / individual project",
-      "tech": ["Spring Boot", "Java", "REST APIs", "MySQL"],
+      "description": "A responsive online clothing store with product catalog, category filters, shopping cart, and persistent localStorage checkout—built as a front-end e-commerce demo.",
+      "role": "Full-stack developer · individual project",
+      "tech": ["HTML", "CSS", "JavaScript", "localStorage"],
       "outcomes": [
-        "Implemented reservation and room management flows across UI and service layers",
-        "Practiced layered Spring Boot design with practical CRUD operations",
-        "Strengthened database modeling and API thinking for real-world booking scenarios"
+        "Built a 12-product catalog with men, women, and accessories categories",
+        "Implemented filter, cart, and quantity controls with persistent storage",
+        "Designed a clean, mobile-friendly e-commerce UI ready for backend integration"
       ],
-      "github": "#",
-      "screenshots": [
-        "assets/hotel-1.svg",
-        "assets/hotel-2.svg"
-      ],
+      "github": "https://github.com/dinujathishean/Online-Clothing-Shop",
+      "screenshots": [],
       "modalDetails": {
-        "problem": "Booking systems need consistent rules: room availability, guest data, and updates must stay in sync across the UI and database—academic projects often oversimplify that story.",
-        "whatItDoes": "This project models a hotel reservation domain with Spring Boot on the server side and MySQL for persistence. The focus is on structured REST interactions, sensible layering, and CRUD paths that mirror how a small property might manage rooms and reservations.",
+        "problem": "E-commerce sites need clear product discovery, smooth cart management, and a trustworthy checkout flow—even demo projects should feel like real shopping experiences.",
+        "whatItDoes": "StyleHub is an online clothing shop where users browse collections, filter by category, add items to a cart, adjust quantities, and complete a demo checkout. Cart state persists across sessions using localStorage.",
         "keyFeatures": [
-          "Reservation and room management workflows",
-          "REST API surface for core operations",
-          "MySQL-backed persistence and practical schema thinking",
-          "Java/Spring Boot structure suitable for extension and testing"
+          "Product catalog with category filters",
+          "Slide-out shopping cart with quantity controls",
+          "Persistent cart via localStorage",
+          "Responsive layout for all screen sizes",
+          "Demo checkout flow"
         ],
-        "techSummary": "Java with Spring Boot for application services, REST endpoints for client interaction, and MySQL as the relational store. The stack reflects common enterprise-style web service patterns.",
-        "impact": "Demonstrates backend fundamentals that transfer beyond hospitality: transactional thinking, API design, and data modeling—useful when interviewers ask for examples beyond front-end work."
+        "techSummary": "Vanilla HTML, CSS, and JavaScript with no framework dependencies. Product data is defined in a separate module; styling uses CSS Grid and Flexbox.",
+        "impact": "Demonstrates front-end e-commerce fundamentals and provides a foundation to connect a payment API or backend inventory system later."
       }
     }
   ],
